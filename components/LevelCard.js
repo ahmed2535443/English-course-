@@ -25,9 +25,14 @@ export default function LevelCard({ level, index, completedCount, totalCount, is
             </div>
             <div className="flex-1 min-w-0">
               <div className="text-base font-bold text-[var(--text-primary)] group-hover:text-primary transition-colors">
-                المستوى {level.id}: {level.title}
+                {level.name}
               </div>
               <div className="text-xs text-[var(--text-muted)] mt-0.5 line-clamp-1">{level.description}</div>
+              {level.cefr && (
+                <span className="inline-block mt-1 px-2 py-0.5 text-[10px] font-bold bg-primary/10 text-primary rounded-full">
+                  {level.cefr}
+                </span>
+              )}
             </div>
             {isCompleted && (
               <div className="w-8 h-8 rounded-full bg-success/15 flex items-center justify-center text-success text-sm flex-shrink-0">
@@ -41,20 +46,28 @@ export default function LevelCard({ level, index, completedCount, totalCount, is
             )}
           </div>
 
-          <div className="flex items-center justify-between text-xs text-[var(--text-muted)] mb-2">
-            <span>{totalCount} وحدات</span>
-            <span>{completedCount}/{totalCount} مكتملة</span>
-          </div>
+          {totalCount > 0 && (
+            <>
+              <div className="flex items-center justify-between text-xs text-[var(--text-muted)] mb-2">
+                <span>{totalCount} درس</span>
+                <span>{completedCount}/{totalCount} مكتملة</span>
+              </div>
 
-          <div className="progress-track h-1.5">
-            <div
-              className="progress-fill h-full transition-all duration-500"
-              style={{
-                width: `${pct}%`,
-                backgroundColor: isCompleted ? 'var(--color-success, #22c55e)' : level.color,
-              }}
-            />
-          </div>
+              <div className="progress-track h-1.5">
+                <div
+                  className="progress-fill h-full transition-all duration-500"
+                  style={{
+                    width: `${pct}%`,
+                    backgroundColor: isCompleted ? 'var(--color-success, #22c55e)' : level.color,
+                  }}
+                />
+              </div>
+            </>
+          )}
+
+          {totalCount === 0 && !isLocked && (
+            <div className="text-xs text-[var(--text-muted)]">قريباً إن شاء الله</div>
+          )}
 
           {isCurrent && (
             <div className="mt-3 text-xs font-bold text-primary">← ابدأ هنا</div>

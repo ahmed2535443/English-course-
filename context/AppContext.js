@@ -1,10 +1,11 @@
 'use client'
 import { createContext, useContext, useReducer, useEffect, useCallback } from 'react'
 import { LESSONS } from '@/data/lessons'
+import { getAllCourseLessons } from '@/data/curriculum'
 
 const AppContext = createContext()
 
-const STORAGE_KEY = 'zAE_v5'
+const STORAGE_KEY = 'zAE_v6'
 
 function getDefaultState() {
   return {
@@ -24,6 +25,13 @@ function getDefaultState() {
     cst: {},
     lastUnit: 0,
     lastStep: '',
+    lastLesson: null,
+    lastCourse: null,
+    lastLevel: null,
+    lessonProgress: {},
+    courseProgress: {},
+    levelProgress: {},
+    quizAttempts: [],
   }
 }
 
@@ -140,6 +148,36 @@ function reducer(state, action) {
       const { unitId, step } = action.payload
       return { ...state, lastUnit: unitId, lastStep: step }
     }
+    case 'SET_LAST_LESSON': {
+      const { lessonId, courseId, levelId } = action.payload
+      return {
+        ...state,
+        lastLesson: lessonId,
+        lastCourse: courseId,
+        lastLevel: levelId,
+      }
+    }
+    case 'COMPLETE_LESSON': {
+      const { lessonId, courseId, levelId, score } = action.payload
+      const newLessonProgress = {
+        ...state.lessonProgress,
+        [lessonId]: { completed: true, score, completedAt: Date.now() },
+      }
+      const newDon = state.don.includes(lessonId) ? state.don : [...state.don, lessonId]
+      return {
+        ...state,
+        lessonProgress: newLessonProgress,
+        don: newDon,
+      }
+    }
+    case 'SAVE_QUIZ_ATTEMPT': {
+      const { lessonId, score, passed } = action.payload
+      const newQuizAttempts = [
+        ...state.quizAttempts,
+        { lessonId, score, passed, date: Date.now() },
+      ]
+      return { ...state, quizAttempts: newQuizAttempts }
+    }
     case 'RESET':
       return getDefaultState()
     default:
@@ -218,6 +256,18 @@ export function AppProvider({ children }) {
     dispatch({ type: 'SET_LAST_LOCATION', payload: { unitId, step } })
   }, [])
 
+  const setLastLesson = useCallback((lessonId, courseId, levelId) => {
+    dispatch({ type: 'SET_LAST_LESSON', payload: { lessonId, courseId, levelId } })
+  }, [])
+
+  const completeLesson = useCallback((lessonId, courseId, levelId, score) => {
+    dispatch({ type: 'COMPLETE_LESSON', payload: { lessonId, courseId, levelId, score } })
+  }, [])
+
+  const saveQuizAttempt = useCallback((lessonId, score, passed) => {
+    dispatch({ type: 'SAVE_QUIZ_ATTEMPT', payload: { lessonId, score, passed } })
+  }, [])
+
   const buildSRS = useCallback(() => {
     if (state.srs.length > 0) return
     const srs = []
@@ -249,6 +299,9 @@ export function AppProvider({ children }) {
     buildSRS,
     completeStep,
     setLastLocation,
+    setLastLesson,
+    completeLesson,
+    saveQuizAttempt,
     lessons: LESSONS,
   }
 

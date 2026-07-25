@@ -1,14 +1,21 @@
 'use client'
-import { use, useState, useMemo } from 'react'
+import { use, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { getUnit, getLevelForUnit, STEP_INFO } from '@/data/course'
+import { getCourseById, getLessonsForCourse, getLevelForCourse } from '@/data/curriculum'
 import { LESSONS } from '@/data/lessons'
 import { useApp } from '@/context/AppContext'
 import Sidebar from '@/components/Sidebar'
 import TopNav from '@/components/TopNav'
 import BottomNav from '@/components/BottomNav'
 import Link from 'next/link'
+
+const STEP_INFO = {
+  explanation: { title: "شرح الدرس", icon: "📖", description: "شرح المفاهيم والقواعد الجديدة" },
+  vocabulary: { title: "الكلمات الجديدة", icon: "📝", description: "تعلم الكلمات والمصطلحات الجديدة" },
+  conversation: { title: "المحادثة", icon: "🗣️", description: "تدريب على المحادثة اليومية" },
+  practice: { title: "التدريبات", icon: "✏️", description: "تمارين تدريبية على محتوى الدرس" },
+}
 
 const STEP_GRADIENTS = {
   explanation: 'from-indigo-500 to-blue-500',
@@ -163,72 +170,47 @@ export default function UnitDetailPage({ params }) {
   const router = useRouter()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [activeStep, setActiveStep] = useState(null)
-  const { cst, completeStep, setLastLocation } = useApp()
+  const { cst, completeStep, setLastLocation, don } = useApp()
 
-  const unit = getUnit(Number(id))
-  const level = unit ? getLevelForUnit(unit.id) : null
-  const lesson = unit ? LESSONS.find((l) => l.id === unit.lessonId) : null
+  const courseId = id
+  const course = getCourseById(courseId)
+  const level = course ? getLevelForCourse(courseId) : null
+  const lessons = course ? getLessonsForCourse(courseId) : []
 
-  if (!unit || !lesson) {
+  if (!course || lessons.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p className="text-[var(--text-muted)]">الوحدة غير موجودة</p>
+      <div className="flex min-h-screen">
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
+          <TopNav title="الكورس" onMenuClick={() => setSidebarOpen(true)} />
+          <main className="flex-1 page-container pb-32 flex items-center justify-center">
+            <div className="text-center">
+              <div className="text-4xl mb-4">🔒</div>
+              <h2 className="text-xl font-bold text-[var(--text-primary)]">الكورس غير متاح</h2>
+              <p className="text-sm text-[var(--text-muted)] mt-2">قريباً إن شاء الله</p>
+              {level && (
+                <Link href={`/level/${level.id}`} className="btn btn-primary mt-4">
+                  العودة للمستوى
+                </Link>
+              )}
+            </div>
+          </main>
+        </div>
+        <BottomNav />
       </div>
     )
   }
 
-  const completedSteps = cst[unit.id] || []
-  const totalSteps = unit.steps.length
-  const completedCount = completedSteps.length
-  const pct = totalSteps > 0 ? Math.round((completedCount / totalSteps) * 100) : 0
-  const isUnitCompleted = completedCount >= totalSteps
-
-  const toggleStep = (step) => {
-    setActiveStep(activeStep === step ? null : step)
-    setLastLocation(unit.id, step)
-  }
-
-  const markComplete = (step) => {
-    completeStep(unit.id, step)
-  }
-
-  const currentStepIndex = activeStep ? unit.steps.indexOf(activeStep) : -1
-  const prevStep = currentStepIndex > 0 ? unit.steps[currentStepIndex - 1] : null
-  const nextStep = currentStepIndex < unit.steps.length - 1 ? unit.steps[currentStepIndex + 1] : null
-
-  const renderStepContent = () => {
-    if (!activeStep) return null
-    switch (activeStep) {
-      case 'explanation':
-        return <ExplanationContent lesson={lesson} />
-      case 'vocabulary':
-        return <VocabularyContent lesson={lesson} />
-      case 'conversation':
-        return <ConversationContent lesson={lesson} />
-      case 'practice':
-        return (
-          <div className="text-center py-6">
-            <div className="text-4xl mb-3">✏️</div>
-            <p className="text-sm text-[var(--text-muted)] mb-4">تمارين تدريبية على محتوى الدرس</p>
-            <Link
-              href={`/exercise/${lesson.id}`}
-              className="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-[var(--radius-md)] text-sm font-bold"
-            >
-              ابدأ التمرين
-            </Link>
-          </div>
-        )
-      default:
-        return null
-    }
-  }
+  const completedLessons = lessons.filter((l) => don.includes(l.id)).length
+  const totalLessons = lessons.length
+  const pct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0
 
   return (
     <div className="flex min-h-screen">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
-        <TopNav title={`الوحدة ${unit.id}`} onMenuClick={() => setSidebarOpen(true)} />
+        <TopNav title={course.name} onMenuClick={() => setSidebarOpen(true)} />
 
         <main className="flex-1 page-container pb-32">
           {level && (
@@ -236,7 +218,7 @@ export default function UnitDetailPage({ params }) {
               href={`/level/${level.id}`}
               className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mb-4 hover:underline"
             >
-              <span>←</span> العودة لـ {level.title}
+              <span>←</span> العودة لـ {level.name}
             </Link>
           )}
 
@@ -248,19 +230,19 @@ export default function UnitDetailPage({ params }) {
             <div className="p-5">
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-14 h-14 rounded-[var(--radius-md)] bg-gradient-to-br from-primary/80 to-primary flex items-center justify-center text-3xl text-white shadow-lg shadow-primary/20">
-                  {unit.icon}
+                  📖
                 </div>
                 <div className="flex-1">
                   <h1 className="text-xl md:text-2xl font-extrabold text-[var(--text-primary)]">
-                    الوحدة {unit.id}: {unit.title}
+                    {course.name}
                   </h1>
-                  <p className="text-sm text-[var(--text-muted)] mt-1">{unit.description}</p>
+                  <p className="text-sm text-[var(--text-muted)] mt-1">{course.nameEn}</p>
                 </div>
               </div>
 
               <div className="flex items-center justify-between text-xs text-[var(--text-muted)] mb-2 mt-4">
-                <span>{totalSteps} خطوات</span>
-                <span>{completedCount}/{totalSteps} مكتملة</span>
+                <span>{totalLessons} دروس</span>
+                <span>{completedLessons}/{totalLessons} مكتملة</span>
               </div>
 
               <div className="progress-track h-2">
@@ -272,119 +254,58 @@ export default function UnitDetailPage({ params }) {
                 />
               </div>
 
-              {isUnitCompleted && (
+              {completedLessons >= totalLessons && totalLessons > 0 && (
                 <div className="mt-3 flex items-center gap-2 text-success text-sm font-bold">
-                  <span>✓</span> أكملت هذه الوحدة
+                  <span>✓</span> أكملت هذا الكورس
                 </div>
               )}
             </div>
           </motion.div>
 
           <div className="section-gap">
-            <h2 className="text-base font-bold text-[var(--text-primary)] mb-3">خطوات التعلم</h2>
+            <h2 className="text-base font-bold text-[var(--text-primary)] mb-3">الدروس</h2>
           </div>
 
           <div className="space-y-2.5">
-            {unit.steps.map((step, i) => {
-              const info = STEP_INFO[step]
-              const isDone = completedSteps.includes(step)
-              const isActive = activeStep === step
-
+            {lessons.map((lesson, i) => {
+              const isCompleted = don.includes(lesson.id)
               return (
                 <motion.div
-                  key={step}
+                  key={lesson.id}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.06, duration: 0.35 }}
                 >
-                  <button
-                    onClick={() => toggleStep(step)}
-                    className={`w-full text-start solid-card transition-all duration-200 ${
-                      isActive ? 'ring-2 ring-primary/30' : ''
-                    }`}
+                  <Link
+                    href={`/lesson/${lesson.id}`}
+                    className={`w-full text-start solid-card transition-all duration-200 hover:shadow-lg block`}
                   >
                     <div className="p-4 flex items-center gap-4">
-                      <div className={`w-11 h-11 rounded-[var(--radius-sm)] bg-gradient-to-br ${STEP_GRADIENTS[step]} flex items-center justify-center text-xl text-white flex-shrink-0 shadow-md transition-transform duration-300 ${isActive ? 'scale-105' : ''}`}>
-                        {info.icon}
+                      <div className={`w-11 h-11 rounded-[var(--radius-sm)] flex items-center justify-center text-xl text-white flex-shrink-0 shadow-md transition-transform duration-300 ${
+                        isCompleted
+                          ? 'bg-gradient-to-br from-success to-green-400'
+                          : 'bg-gradient-to-br from-primary/20 to-secondary/20'
+                      }`}>
+                        {isCompleted ? '✅' : (lesson.icon || '📝')}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[15px] font-bold text-[var(--text-primary)]">
-                          {info.title}
-                        </div>
-                        <div className="text-xs text-[var(--text-muted)] mt-0.5">{info.description}</div>
-                      </div>
-                      {isDone ? (
-                        <div className="w-8 h-8 rounded-full bg-success/15 flex items-center justify-center text-success text-sm flex-shrink-0">
-                          ✓
-                        </div>
-                      ) : (
-                        <div className={`w-8 h-8 rounded-full bg-[var(--bg-surface-hover)] flex items-center justify-center text-[var(--text-faint)] text-sm flex-shrink-0 transition-transform duration-200 ${isActive ? 'rotate-180' : ''}`}>
-                          ↓
-                        </div>
-                      )}
-                    </div>
-                  </button>
-
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] border-t-0 rounded-b-[var(--radius-md)] p-4">
-                          {renderStepContent()}
-
-                          <div className="flex items-center justify-between mt-5 pt-4 border-t border-[var(--border-subtle)]">
-                            <div className="flex items-center gap-2">
-                              {!isDone && step !== 'practice' && (
-                                <button
-                                  onClick={(e) => { e.stopPropagation(); markComplete(step) }}
-                                  className="btn-primary px-4 py-2 rounded-[var(--radius-sm)] text-xs font-bold"
-                                >
-                                  ✓ تم الإكمال
-                                </button>
-                              )}
-                              {!isDone && step === 'practice' && (
-                                <button
-                                  onClick={(e) => { e.stopPropagation(); markComplete(step) }}
-                                  className="btn-primary px-4 py-2 rounded-[var(--radius-sm)] text-xs font-bold"
-                                >
-                                  ✓ تم الإكمال
-                                </button>
-                              )}
-                              {isDone && (
-                                <span className="text-xs text-success font-bold flex items-center gap-1">
-                                  ✓ مكتمل
-                                </span>
-                              )}
-                            </div>
-
-                            <div className="flex items-center gap-2">
-                              {prevStep && (
-                                <button
-                                  onClick={(e) => { e.stopPropagation(); toggleStep(prevStep) }}
-                                  className="btn-ghost px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-semibold"
-                                >
-                                  ← السابق
-                                </button>
-                              )}
-                              {nextStep && (
-                                <button
-                                  onClick={(e) => { e.stopPropagation(); toggleStep(nextStep) }}
-                                  className="btn-ghost px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-semibold"
-                                >
-                                  التالي →
-                                </button>
-                              )}
-                            </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                            {lesson.order}
+                          </span>
+                          <div className="text-[15px] font-bold text-[var(--text-primary)] truncate">
+                            {lesson.title}
                           </div>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        {lesson.titleEn && (
+                          <div className="text-xs text-[var(--text-muted)] mt-0.5">{lesson.titleEn}</div>
+                        )}
+                      </div>
+                      <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-surface-hover)] flex items-center justify-center text-[var(--text-muted)]">
+                        ←
+                      </div>
+                    </div>
+                  </Link>
                 </motion.div>
               )
             })}

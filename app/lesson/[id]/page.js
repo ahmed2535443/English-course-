@@ -3,7 +3,7 @@ import { use, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { LESSONS } from '@/data/lessons'
-import { getUnitByLessonId } from '@/data/course'
+import { getCourseForLesson, getLevelForLesson } from '@/data/curriculum'
 import { useApp } from '@/context/AppContext'
 import { useSpeech } from '@/hooks/useSpeech'
 import Sidebar from '@/components/Sidebar'
@@ -44,14 +44,15 @@ export default function LessonPage({ params }) {
   const { id } = use(params)
   const router = useRouter()
   const lesson = LESSONS.find((l) => l.id === Number(id))
-  const unit = getUnitByLessonId(Number(id))
+  const course = getCourseForLesson(Number(id))
+  const level = getLevelForLesson(Number(id))
   const { speak } = useSpeech()
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   if (!lesson) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-[var(--text-muted)]">الحلقة غير موجودة</p>
+        <p className="text-[var(--text-muted)]">الدرس غير موجود</p>
       </div>
     )
   }
@@ -61,15 +62,25 @@ export default function LessonPage({ params }) {
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
-        <TopNav title={`الحلقة ${lesson.id}`} onMenuClick={() => setSidebarOpen(true)} />
+        <TopNav title={lesson.t} onMenuClick={() => setSidebarOpen(true)} />
 
         <main className="flex-1 page-container pb-32">
-          <Link
-            href={unit ? `/unit/${unit.id}` : '/'}
-            className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mb-4 hover:underline"
-          >
-            <span>←</span> العودة للوحدة
-          </Link>
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-sm mb-4 flex-wrap">
+            {level && (
+              <Link href={`/level/${level.id}`} className="text-primary hover:underline">
+                {level.name}
+              </Link>
+            )}
+            {level && course && <span className="text-[var(--text-muted)]">←</span>}
+            {course && (
+              <Link href={`/course/${course.id}`} className="text-primary hover:underline">
+                {course.name}
+              </Link>
+            )}
+            {course && <span className="text-[var(--text-muted)]">←</span>}
+            <span className="text-[var(--text-muted)]">{lesson.t}</span>
+          </div>
 
           <motion.h1
             initial={{ opacity: 0, y: 8 }}
@@ -77,7 +88,7 @@ export default function LessonPage({ params }) {
             className="text-xl md:text-2xl font-extrabold text-[var(--text-primary)] mb-5"
           >
             <span className="text-2xl">{lesson.i}</span>{' '}
-            الحلقة {lesson.id}: {lesson.t}
+            {lesson.t}
           </motion.h1>
 
           {/* Dialogue */}
@@ -211,13 +222,19 @@ export default function LessonPage({ params }) {
             </Section>
           )}
 
-          {/* Start Exercise */}
-          <div className="mb-4">
+          {/* Start Exercise & Quiz */}
+          <div className="flex gap-3 mb-4 max-w-md mx-auto">
             <button
               onClick={() => router.push(`/exercise/${lesson.id}`)}
-              className="btn btn-primary block w-full max-w-xs mx-auto py-3.5 text-[15px]"
+              className="flex-1 btn btn-secondary py-3.5 text-[15px]"
             >
-              📝 ابدأ التمرين
+              📝 التمرين
+            </button>
+            <button
+              onClick={() => router.push(`/quiz/${lesson.id}`)}
+              className="flex-1 btn btn-primary py-3.5 text-[15px]"
+            >
+              🎯 الكويز
             </button>
           </div>
         </main>

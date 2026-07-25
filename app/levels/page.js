@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { LEVELS, getUnitsForLevel } from '@/data/course'
+import { LEVELS } from '@/data/course'
 import { useApp } from '@/context/AppContext'
 import Sidebar from '@/components/Sidebar'
 import TopNav from '@/components/TopNav'
@@ -13,33 +13,44 @@ export default function LevelsPage() {
   const { cst, don } = useApp()
 
   const getLevelProgress = (level) => {
-    const units = getUnitsForLevel(level.id)
     let completedCount = 0
-    units.forEach((unit) => {
-      const steps = cst[unit.id] || []
-      if (steps.length >= 4) completedCount++
-    })
-    return { completedCount, totalCount: units.length }
+    let totalCount = 0
+    for (const category of level.categories) {
+      for (const lesson of category.lessons) {
+        totalCount++
+        if (don.includes(lesson.id)) {
+          completedCount++
+        }
+      }
+    }
+    return { completedCount, totalCount }
   }
 
   const getLevelStatus = (level, index) => {
+    if (!level.isPublished) {
+      return { isLocked: true, isCompleted: false, isCurrent: false }
+    }
     if (index === 0) return { isLocked: false, isCompleted: false, isCurrent: true }
+    
     const prevLevel = LEVELS[index - 1]
-    const prevUnits = getUnitsForLevel(prevLevel.id)
-    const prevCompleted = prevUnits.every((unit) => {
-      const steps = cst[unit.id] || []
-      return steps.length >= 4
-    })
-    if (prevCompleted) {
-      const { completedCount, totalCount } = getLevelProgress(level)
+    if (!prevLevel.isPublished) {
+      return { isLocked: false, isCompleted: false, isCurrent: true }
+    }
+    
+    const { completedCount, totalCount } = getLevelProgress(prevLevel)
+    if (completedCount >= totalCount && totalCount > 0) {
+      const { completedCount: currentCompleted, totalCount: currentTotal } = getLevelProgress(level)
       return {
         isLocked: false,
-        isCompleted: completedCount >= totalCount,
-        isCurrent: completedCount < totalCount,
+        isCompleted: currentCompleted >= currentTotal && currentTotal > 0,
+        isCurrent: currentCompleted < currentTotal,
       }
     }
     return { isLocked: true, isCompleted: false, isCurrent: false }
   }
+
+  const publishedLevels = LEVELS.filter((l) => l.isPublished)
+  const comingSoonLevels = LEVELS.filter((l) => !l.isPublished)
 
   return (
     <div className="flex min-h-screen">
@@ -56,11 +67,12 @@ export default function LevelsPage() {
             className="section-gap"
           >
             <h2 className="text-lg md:text-xl font-extrabold text-[var(--text-primary)]">اختر مستواك</h2>
-            <p className="text-sm text-[var(--text-muted)] mt-0.5">4 مستويات لتعلم المحادثة الإنجليزية</p>
+            <p className="text-sm text-[var(--text-muted)] mt-0.5">4 مستويات لتعلم الإنجليزية من الصفر إلى الاحتراف</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 section-gap">
-            {LEVELS.map((level, i) => {
+          {/* Published Levels */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 section-gap">
+            {publishedLevels.map((level, i) => {
               const { completedCount, totalCount } = getLevelProgress(level)
               const { isLocked, isCompleted, isCurrent } = getLevelStatus(level, i)
               return (
@@ -76,6 +88,36 @@ export default function LevelsPage() {
                 />
               )
             })}
+          </div>
+
+          {/* Coming Soon Levels */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="section-gap"
+          >
+            <h2 className="text-lg md:text-xl font-extrabold text-[var(--text-primary)]">المستويات القادمة</h2>
+            <p className="text-sm text-[var(--text-muted)] mt-0.5">قريباً إن شاء الله</p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {comingSoonLevels.map((level) => (
+              <div
+                key={level.id}
+                className="glass-card p-4 opacity-50 cursor-not-allowed"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-lg">
+                    🔒
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-[var(--text-primary)]">{level.name}</div>
+                    <div className="text-xs text-[var(--text-muted)]">قريباً</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </main>
       </div>

@@ -2,7 +2,8 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
-import { COURSE, LEVELS, getUnitsForLevel } from '@/data/course'
+import { COURSE, LEVELS, getUnitsForLevel, getPublishedLevels } from '@/data/course'
+import { getCourseForLesson } from '@/data/curriculum'
 import Sidebar from '@/components/Sidebar'
 import TopNav from '@/components/TopNav'
 import BottomNav from '@/components/BottomNav'
@@ -11,7 +12,7 @@ import LevelCard from '@/components/LevelCard'
 import Link from 'next/link'
 
 export default function HomePage() {
-  const { don, cst, srs, buildSRS, lastUnit, lastStep } = useApp()
+  const { don, cst, srs, buildSRS, lastLesson, lastCourse, lastLevel, lessonProgress } = useApp()
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useEffect(() => {
@@ -21,30 +22,39 @@ export default function HomePage() {
   const dueCount = srs ? srs.filter((w) => w.nx <= Date.now()).length : 0
 
   const completedLessons = don.length
-  const totalLessons = COURSE.totalLessons
+  const totalLessons = 8
   const progressPct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0
 
+  const publishedLevels = getPublishedLevels()
+
   const getLevelProgress = (level) => {
-    const units = getUnitsForLevel(level.id)
-    const completed = units.filter((u) => {
-      const steps = cst[u.id] || []
-      return steps.length >= 4
-    }).length
-    return { completed, total: units.length }
+    let completed = 0
+    let total = 0
+    for (const category of level.categories) {
+      for (const lesson of category.lessons) {
+        total++
+        if (don.includes(lesson.id)) {
+          completed++
+        }
+      }
+    }
+    return { completed, total }
   }
 
-  const getNextUnit = () => {
-    for (const level of LEVELS) {
-      const units = getUnitsForLevel(level.id)
-      for (const unit of units) {
-        const steps = cst[unit.id] || []
-        if (steps.length < 4) return unit
+  const getNextLesson = () => {
+    for (const level of publishedLevels) {
+      for (const category of level.categories) {
+        for (const lesson of category.lessons) {
+          if (!don.includes(lesson.id)) {
+            return { lesson, category, level }
+          }
+        }
       }
     }
     return null
   }
 
-  const nextUnit = getNextUnit()
+  const next = getNextLesson()
 
   return (
     <div className="flex min-h-screen">
@@ -65,7 +75,7 @@ export default function HomePage() {
           >
             <div className="flex items-start gap-4">
               <div className="w-14 h-14 rounded-[var(--radius-md)] bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-2xl text-white shadow-lg shadow-primary/20 flex-shrink-0">
-                ✈️
+                📚
               </div>
               <div className="flex-1 min-w-0">
                 <h1 className="text-lg md:text-xl font-extrabold text-[var(--text-primary)]">{COURSE.title}</h1>
@@ -90,12 +100,12 @@ export default function HomePage() {
               </div>
             </div>
 
-            {nextUnit && (
+            {next && (
               <Link
-                href={`/unit/${nextUnit.id}`}
+                href={`/lesson/${next.lesson.id}`}
                 className="btn btn-primary w-full mt-4 py-3"
               >
-                ▶️ استكمال التعلم - {nextUnit.title}
+                ▶️ استكمال التعلم - {next.lesson.title}
               </Link>
             )}
           </motion.div>
@@ -115,12 +125,12 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
-            {LEVELS.map((level, i) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-5">
+            {publishedLevels.map((level, i) => {
               const { completed, total } = getLevelProgress(level)
-              const isCompleted = completed === total
-              const isCurrent = !isCompleted && (i === 0 || getLevelProgress(LEVELS[i - 1]).completed > 0)
-              const isLocked = !isCompleted && !isCurrent && i > 0 && getLevelProgress(LEVELS[i - 1]).completed === 0
+              const isCompleted = completed === total && total > 0
+              const isCurrent = !isCompleted && (i === 0 || getLevelProgress(publishedLevels[i - 1]).completed > 0)
+              const isLocked = !isCompleted && !isCurrent && i > 0 && getLevelProgress(publishedLevels[i - 1]).completed === 0
               return (
                 <LevelCard
                   key={level.id}
@@ -134,6 +144,37 @@ export default function HomePage() {
                 />
               )
             })}
+          </div>
+
+          {/* Coming Soon Levels */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mb-4"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-lg font-extrabold text-[var(--text-primary)]">المستويات القادمة</h2>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-5">
+            {LEVELS.filter((l) => !l.isPublished).map((level) => (
+              <div
+                key={level.id}
+                className="glass-card p-4 opacity-50 cursor-not-allowed"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-lg">
+                    🔒
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-[var(--text-primary)]">{level.name}</div>
+                    <div className="text-xs text-[var(--text-muted)]">قريباً</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* SRS Card */}

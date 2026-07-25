@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #0070f3;
+  --color-primary-dark: #0051c9;
+  --color-primary-light: #3291ff;
+  --color-secondary: #7928ca;
+  --color-secondary-light: #b388ff;
+  --color-accent: #ff0080;
+  --color-success: #00c853;
+  --color-success-light: #69f0ae;
+  --color-error: #ff1744;
+  --color-warning: #ff9100;
+  --color-sidebar: #2e2e2e;
+}
+
+:root {
+  --sidebar-w: 260px;
+  --topnav-h: 56px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f5f5;
+  color: #171717;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dark mode */
+.dk body,
+.dk {
+  background: #0a0a0a;
+  color: #ededed;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e5e5e5;
+  border-radius: 4px;
+}
+.dk ::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.animate-float {
+  animation: float 2s ease-in-out infinite;
+}
+
+.animate-confetti {
+  animation: confetti-fall 3s ease-out forwards;
+}

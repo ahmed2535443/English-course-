@@ -2,6 +2,7 @@ import { Inter, Cairo } from 'next/font/google'
 import './globals.css'
 import { AppProvider } from '@/context/AppProvider'
 import DarkModeProvider from '@/context/DarkModeProvider'
+import { ClerkProvider } from '@clerk/nextjs'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,17 +21,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ar" dir="rtl" className={`${inter.variable} ${cairo.variable}`} suppressHydrationWarning>
-      <head>
-        <style>{`
-          :root { font-family: var(--font-cairo), var(--font-inter), system-ui, sans-serif; }
-        `}</style>
-      </head>
-      <body>
-        <AppProvider>
-          <DarkModeProvider>{children}</DarkModeProvider>
-        </AppProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="ar" dir="rtl" className={`${inter.variable} ${cairo.variable}`} suppressHydrationWarning>
+        <head>
+          <style>{`
+            :root { font-family: var(--font-cairo), var(--font-inter), system-ui, sans-serif; }
+          `}</style>
+        </head>
+        <body>
+          <AppProvider>
+            <DarkModeProvider>{children}</DarkModeProvider>
+          </AppProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

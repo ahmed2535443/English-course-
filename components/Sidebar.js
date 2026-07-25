@@ -3,6 +3,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
+import { useUser, useClerk, UserButton } from '@clerk/nextjs'
 
 const NAV_LINKS = [
   { href: '/', icon: '🏠', label: 'الرئيسية' },
@@ -10,7 +11,10 @@ const NAV_LINKS = [
   { href: '/vocabulary', icon: '📖', label: 'المفردات' },
   { href: '/stories', icon: '📚', label: 'القصص' },
   { href: '/activity', icon: '📅', label: 'نشاطي' },
-  { href: '/achievements', icon: '🏆', label: 'إنجازات' },
+  { href: '/leaderboard', icon: '🏆', label: 'لوحة الصدارة' },
+  { href: '/friends', icon: '👥', label: 'أصدقائي' },
+  { href: '/challenges', icon: '⚔️', label: 'تحديات' },
+  { href: '/achievements', icon: '🎯', label: 'إنجازاتي' },
   { href: '/stats', icon: '📊', label: 'إحصائيات' },
 ]
 
@@ -37,6 +41,8 @@ function NavLink({ href, icon, label, active, onClick }) {
 export default function Sidebar({ open, onClose }) {
   const pathname = usePathname()
   const { xp, tot, dk, toggleDark, srs } = useApp()
+  const { isSignedIn, user } = useUser()
+  const { signOut } = useClerk()
   const dueCount = srs ? srs.filter((w) => w.nx <= Date.now()).length : 0
 
   return (
@@ -54,6 +60,38 @@ export default function Sidebar({ open, onClose }) {
               <div className="text-[11px] text-[var(--text-muted)] mt-0.5">كورس المحادثة</div>
             </div>
           </div>
+        </div>
+
+        {/* User Profile / Auth */}
+        <div className="p-3 border-b border-[var(--border-subtle)]">
+          {isSignedIn ? (
+            <div className="flex items-center gap-3 px-3 py-2">
+              <UserButton 
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    avatarBox: 'w-10 h-10',
+                  }
+                }}
+              />
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-bold text-[var(--text-primary)] truncate">
+                  {user.firstName || user.emailAddresses[0]?.emailAddress}
+                </div>
+                <div className="text-xs text-[var(--text-muted)] truncate">
+                  {user.emailAddresses[0]?.emailAddress}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <Link
+              href="/auth/login"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-sm)] text-sm font-semibold bg-primary/10 text-primary hover:bg-primary/20 transition-all"
+            >
+              <span className="text-lg w-7 text-center">👤</span>
+              <span>تسجيل الدخول</span>
+            </Link>
+          )}
         </div>
 
         {/* Nav */}
@@ -128,6 +166,39 @@ export default function Sidebar({ open, onClose }) {
                   </div>
                 </div>
                 <button onClick={onClose} className="btn-icon text-lg">✕</button>
+              </div>
+
+              {/* Mobile User Profile */}
+              <div className="p-3 border-b border-[var(--border-subtle)]">
+                {isSignedIn ? (
+                  <div className="flex items-center gap-3 px-3 py-2">
+                    <UserButton 
+                      afterSignOutUrl="/"
+                      appearance={{
+                        elements: {
+                          avatarBox: 'w-10 h-10',
+                        }
+                      }}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-bold text-[var(--text-primary)] truncate">
+                        {user.firstName || user.emailAddresses[0]?.emailAddress}
+                      </div>
+                      <div className="text-xs text-[var(--text-muted)] truncate">
+                        {user.emailAddresses[0]?.emailAddress}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    href="/auth/login"
+                    onClick={onClose}
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-sm)] text-sm font-semibold bg-primary/10 text-primary hover:bg-primary/20 transition-all"
+                  >
+                    <span className="text-lg w-7 text-center">👤</span>
+                    <span>تسجيل الدخول</span>
+                  </Link>
+                )}
               </div>
 
               <nav className="flex-1 p-3 space-y-0.5">

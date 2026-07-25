@@ -161,6 +161,107 @@ export const LESSONS = [
   },
   {
     id: 3,
+    t: "صالة الوصول والاستقبال",
+    i: "🛬",
+    w: 11,
+    n: 4,
+    dlg: [
+      { s: "Greeter", c: "#0070f3", e: "Hey Thomas, how are you doing?", a: "أهلاً توماس، كيف حالك؟" },
+      { s: "Thomas", c: "#7928ca", e: "Doing great. And you?", a: "بخير جداً، وأنت؟" },
+      { s: "Greeter", c: "#0070f3", e: "I'm fine. You look great!", a: "أنا بخير. تبدو بحالة ممتازة (غير مرهق)!" },
+      { s: "Thomas", c: "#7928ca", e: "Oh, thanks.", a: "أوه، شكراً." },
+      { s: "Greeter", c: "#0070f3", e: "Yeah, how was your flight over?", a: "نعم، كيف كانت رحلتك للوصول إلى هنا؟" },
+      { s: "Thomas", c: "#7928ca", e: "It was quite a long flight.", a: "كانت رحلة طويلة جداً." },
+      { s: "Greeter", c: "#0070f3", e: "How many hours did it take?", a: "كم عدد الساعات التي استغرقتها؟" },
+      { s: "Thomas", c: "#7928ca", e: "It took 12 hours.", a: "استغرقت 12 ساعة." },
+      { s: "Greeter", c: "#0070f3", e: "Did you have to stop anywhere on the way?", a: "هل اضطررت للتوقف في أي مكان في الطريق؟" },
+      { s: "Thomas", c: "#7928ca", e: "No, it was a direct flight.", a: "لا، كانت رحلة طيران مباشرة." },
+      { s: "Greeter", c: "#0070f3", e: "Is home far from the airport?", a: "هل المنزل بعيد عن المطار؟" },
+      { s: "Thomas", c: "#7928ca", e: "No, only 40 minutes.", a: "لا، 40 دقيقة فقط." },
+      { s: "Greeter", c: "#0070f3", e: "Is there going to be a lot of traffic?", a: "هل سيكون هناك زحام مروري؟" },
+      { s: "Thomas", c: "#7928ca", e: "The traffic should be light.", a: "من المفترض أن يكون المرور خفيفاً." },
+      { s: "Greeter", c: "#0070f3", e: "Hey, are you ready to go?", a: "هل أنت مستعد للذهاب؟" },
+      { s: "Thomas", c: "#7928ca", e: "Yes, let's go.", a: "نعم، هيا بنا." }
+    ],
+    voc: [
+      { e: "Flight", a: "رحلة طيران / جوية", d: "تستخدم لوصف رحلة الطيران. مثال: How was your flight?", cl: ["How was your flight?", "Have a safe flight"], ms: [{ w: "How was your journey?", c: "How was your flight?", n: "في الطيران نستخدم flight" }], us: [{ t: "في السؤال", e: "How was your flight?", a: "كيف كانت رحلتك الجوية؟" }] },
+      { e: "Quite", a: "جداً / إلى حد كبير", d: "تأتي قبل الصفة لتقوية المعنى. لا تخلط مع Quiet (هادئ).", cl: ["Quite a long flight", "Quite good"], ms: [{ w: "quiet", c: "quite", n: "Quiet تعني هادئ" }], us: [{ t: "في الوصف", e: "It was quite a long flight.", a: "كانت رحلة طويلة جداً." }] },
+      { e: "Direct flight", a: "رحلة طيران مباشرة", d: "رحلة بدون توقف ترانزيت في الطريق.", cl: ["It was a direct flight without stops"], ms: [{ w: "straight flight", c: "direct flight", n: "المصطلح الصحيح direct flight" }], us: [{ t: "نوع الرحلة", e: "It was a direct flight without stops.", a: "كانت رحلة مباشرة بدون توقف." }] },
+      { e: "Traffic", a: "زحام مروري / حركة المرور", d: "تصف حركة السيارات والزحام في الشارع.", cl: ["Is there going to be a lot of traffic?"], ms: [{ w: "traffic is big", c: "heavy traffic", n: "نقول heavy traffic أو a lot of traffic" }], us: [{ t: "في السؤال", e: "Is there going to be a lot of traffic?", a: "هل سيكون هناك زحام مروري؟" }] },
+      { e: "Light traffic", a: "مرور خفيف / الشوارع فاضية", d: "تصف حركة المرور السلسة وغير المزدحمة.", cl: ["The traffic should be light"], ms: [{ w: "small traffic", c: "light traffic", n: "المرور الخفيف يسمى light traffic" }], us: [{ t: "وصف المرور", e: "The traffic should be light.", a: "من المفترض أن يكون المرور خفيفاً." }] },
+      { e: "Stop", a: "يتوقف / توقف", d: "التوقف أثناء خط سير الرحلة.", cl: ["Did you have to stop anywhere?"], ms: [{ w: "make a stop", c: "stop", n: "الفعل المباشر stop" }], us: [{ t: "التوقف", e: "Did you have to stop anywhere on the way?", a: "هل اضطررت للتوقف في أي مكان في الطريق؟" }] },
+      { e: "You look great", a: "تبدو بحالة ممتازة", d: "تُقال للتعبير عن أن الشخص لا يبدو عليه الإرهاق بعد السفر.", cl: ["You look great!"], ms: [{ w: "You see great", c: "You look great", n: "look تعني يبدو هنا" }], us: [{ t: "المجاملة", e: "I'm fine. You look great!", a: "أنا بخير. تبدو بحالة ممتازة!" }] },
+      { e: "How was your flight over?", a: "كيف كانت رحلتك للوصول إلى هنا؟", d: "كلمة over هنا تعني للوصول إلى هذا المكان تحديداً.", cl: ["How was your flight over?"], ms: [{ w: "How was your flight to here?", c: "How was your flight over?", n: "over أسلوب متحدث أصلي" }], us: [{ t: "سؤال الاستقبال", e: "Yeah, how was your flight over?", a: "كيف كانت رحلتك للوصول إلى هنا؟" }] },
+      { e: "How many hours did it take?", a: "كم ساعة استغرقتها الرحلة؟", d: "السؤال عن مدة الرحلة باستخدام الفعل take.", cl: ["How many hours did it take?", "It took 12 hours"], ms: [{ w: "How many hours it took?", c: "How many hours did it take?", n: "استخدام did في السؤال" }], us: [{ t: "مدة الرحلة", e: "How many hours did it take? — It took 12 hours.", a: "كم ساعة استغرقتها الرحلة؟ — استغرق 12 ساعة." }] },
+      { e: "On the way", a: "في الطريق", d: "تُستخدم للسؤال عما إذا كان هناك توقف أثناء خط سير الرحلة.", cl: ["On the way", "Stop anywhere on the way?"], ms: [{ w: "in the way", c: "on the way", n: "حرف الجر الصحيح on" }], us: [{ t: "في الطريق", e: "Did you stop anywhere on the way?", a: "هل توقفت في أي مكان في الطريق؟" }] },
+      { e: "Are you ready to go?", a: "هل أنت مستعد للذهاب؟", d: "تُقال عند الاستعداد للتحرك أو مغادرة المكان.", cl: ["Hey, are you ready to go?", "Yes, let's go"], ms: [{ w: "Are you ready for go?", c: "Are you ready to go?", n: "to + المصدر" }], us: [{ t: "التحرك", e: "Hey, are you ready to go? — Yes, let's go!", a: "هل أنت مستعد للذهاب؟ — نعم، هيا بنا!" }] }
+    ],
+    gram: [
+      {
+        t: "1. استخدام over بعد كلمة الرحلة (flight over)",
+        d: "كلمة over هنا تعني 'للوصول إلى هذا المكان'. نقول: How was your flight over? للتعبير الطبيعي عن رحلة وصول الشخص لمكانك.",
+        r: "How was your flight over?",
+        ex: [{ e: "How was your flight over?", a: "كيف كانت رحلتك للوصول إلى هنا؟" }],
+        tp: "تمنح الجملة طابعاً طبيعياً مثل أهل اللغة الأصليين."
+      },
+      {
+        t: "2. السؤال والتعبير عن المدة بـ (Take / Took)",
+        d: "نستخدم الفعل take للسؤال والإجابة عن الوقت واستغراق المدة. في الماضي: It took 12 hours.",
+        r: "How many hours did it take? -> It took [12] hours.",
+        ex: [
+          { e: "How many hours did it take?", a: "كم عدد الساعات التي استغرقتها؟" },
+          { e: "It took 12 hours.", a: "استغرقت 12 ساعة." }
+        ],
+        tp: "تذكر استخدام did في السؤال وتحول take إلى took في الماضي."
+      },
+      {
+        t: "3. المجاملة والوصف بـ (You look great) و (Quite)",
+        d: "You look great تُقال للترحيب للتعبير عن عدم ظهور الإرهاق بعد السفر. وQuite تعني جداً / إلى حد كبير.",
+        r: "You look + [adj] | Quite + a [adj] [noun]",
+        ex: [
+          { e: "You look great!", a: "تبدو بحالة ممتازة (غير مرهق)!" },
+          { e: "It was quite a long flight.", a: "كانت رحلة طويلة جداً." }
+        ],
+        tp: "فرق بين Quite (جداً/إلى حد كبير) و Quiet (هادئ)."
+      },
+      {
+        t: "4. التوقعات والاستعداد (Traffic & Ready to go)",
+        d: "المرور يُوصف بـ light traffic (خفيف) أو heavy traffic (شديد). وعند التحرك نقول: Are you ready to go?",
+        r: "The traffic should be light | Are you ready to go?",
+        ex: [
+          { e: "The traffic should be light.", a: "من المفترض أن يكون المرور خفيفاً." },
+          { e: "Are you ready to go? — Yes, let's go.", a: "هل أنت مستعد للذهاب؟ — نعم، هيا بنا." }
+        ],
+        tp: "should هنا تعبر عن التوقع المرجح وليس النصيحة."
+      }
+    ],
+    pron: [
+      { w: "Flight over", t: "تنطق متصلة: فلايت أوفَر" },
+      { w: "Quite a long", t: "تنطق كوايت أ لونغ بفرز Quite عن Quiet" },
+      { w: "Traffic", t: "حرف a قصير ومفتوح: ترافيك" }
+    ],
+    cul: [
+      { n: "You look great: مجاملة أمريكية شائعة للترحيب بالقادمين من سفر طويل لتأكيد أنهم بخير." },
+      { n: "Light traffic: التعبير الشائع لوصف الشوارع الفاضية بدلاً من free traffic." },
+      { n: "Direct flight: رحلة طيران مباشرة بدون توقف ترانزيت." }
+    ],
+    ex: [
+      { tp: "mcq", q: "ما المعنى الدقيق لجملة 'How was your flight over'؟", a: "رحلة الوصول", o: ["كيف كانت رحلتك للوصول إلى هنا؟", "كيف كان الطيران فوق الجبال؟", "هل انتهت رحلتك؟", "أين كانت رحلتك؟"], c: 0 },
+      { tp: "mcq", q: "كيف تجامل شخصاً قادماً من السفر بأنه لا يبدو عليه التعب؟", a: "مجاملة السفر", o: ["You look great!", "You look tired!", "You look old!", "You look quiet!"], c: 0 },
+      { tp: "fill", q: "It ________ 12 hours.", a: "استغرقت 12 ساعة", an: "took" },
+      { tp: "reorder", q: "رتّب الجملة: هل كانت رحلة طيران مباشرة؟", a: "was it a direct flight", w: ["was", "it", "a", "direct", "flight"] },
+      { tp: "match", q: "طابق الكلمة بالمعنى الصحيح", p: [["Direct flight", "رحلة مباشرة بدون توقف"], ["Light traffic", "مرور خفيف وشوارع فاضية"], ["On the way", "في الطريق"], ["Quite long", "طويلة جداً"]] },
+      { tp: "mcq", q: "ما الفرق بين Quite و Quiet؟", a: "الفارق اللغوي", o: ["Quite = جداً، Quiet = هادئ", "Quiet = جداً، Quite = هادئ", "كلاهما نفس المعنى", "Quite = سريع، Quiet = بطيء"], c: 0 },
+      { tp: "fill", q: "The traffic should be ________.", a: "خفيفاً", an: "light" },
+      { tp: "listen", q: "استمع واختر المعنى الصحيح", en: "Are you ready to go?", o: ["هل أنت مستعد للذهاب؟", "هل وصلتك الشنط؟", "هل الشوارع زحمة؟", "كم ساعة استغرقت الرحلة؟"], c: 0 },
+      { tp: "translate", q: "ترجم: كانت رحلة طويلة جداً", a: "", an: "it was quite a long flight" },
+      { tp: "mcq", q: "ماذا تعني كلمة over في 'flight over'؟", a: "دلالة over", o: ["تحديد الوصول إلى مكان المتحدث", "فوق السحاب", "انتهاء الرحلة", "الزيادة عن الحد"], c: 0 },
+      { tp: "egpt", q: "ازاي تسأل صاحبك اللي جايلك من السفر 'الرحلة خدت كام ساعة؟' بالإنجليزي؟", hint: "فكر في: How many hours did it take?", an: "how many hours did it take", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة traffic", w: "traffic" }
+    ]
+  },
+  {
+    id: 4,
     t: "التسوق والملابس في لندن",
     i: "🛍️",
     w: 6,
@@ -211,7 +312,7 @@ export const LESSONS = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     t: "ضابط الهجرة والجمارك",
     i: "🛂",
     w: 6,
@@ -262,7 +363,7 @@ export const LESSONS = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     t: "السؤال عن العدد والأمتعة",
     i: "🧳",
     w: 6,
@@ -308,52 +409,6 @@ export const LESSONS = [
       { tp: "mcq", q: "30$ لكل حقيبة = ", a: "", o: ["30$ per bag", "30$ in bag", "30$ at bag", "30$ on bag"], c: 0 },
       { tp: "egpt", q: "ازاي تسأل 'كم عدد الشنط' بالإنجليزي؟", hint: "فكر في: How many bags", an: "how many bags", ph: "اكتب الإنجليزي..." },
       { tp: "usage", q: "اكتب جملة باستخدام كلمة carry-on", w: "carry-on" }
-    ]
-  },
-  {
-    id: 6,
-    t: "اختصارات الأسماء والمجاملات",
-    i: "👋",
-    w: 6,
-    n: 8,
-    dlg: [
-      { s: "Chris", c: "#0070f3", e: "Hi, my name is Christopher, but call me Chris.", a: "مرحباً، اسمي كريستوفر لكن نادني كريس." },
-      { s: "Jane", c: "#ff0080", e: "Nice to meet you Chris! Where are you heading?", a: "سررت بلقائك كريس! إلى أين تتجه؟" },
-      { s: "Chris", c: "#0070f3", e: "I'm heading to London. We have a lot in common!", a: "متجه إلى لندن. لدينا الكثير من المشتركات!" },
-      { s: "Jane", c: "#ff0080", e: "Yes, we do have a lot in common!", a: "نعم، لدينا بالفعل الكثير من المشتركات!" }
-    ],
-    voc: [
-      { e: "Call me...", a: "نادني", d: "لاختصار الاسم.", cl: ["Call me Chris"], ms: [{ w: "name me", c: "call me", n: "نستخدم call" }], us: [{ t: "عند التعريف", e: "My name is Christopher, but call me Chris.", a: "اسمي كريستوفر بس نادني كريس." }, { t: "في الصداقة", e: "You can call me Ahmed.", a: "تقدر تناديني أحمد." }] },
-      { e: "Heading to", a: "متجه إلى", d: "بديل رسمى لـ Going to.", cl: ["I'm heading to"], ms: [{ w: "heading for", c: "heading to", n: "نستخدم to" }], us: [{ t: "في التخطيط", e: "I'm heading to London tomorrow.", a: "ناشد لندن بكرة." }, { t: "في السؤال", e: "Where are you heading?", a: "روّح فين؟" }] },
-      { e: "Have a lot in common", a: "مشتركات كثيرة", d: "تستخدم عند اكتشاف تشابه.", cl: ["We have a lot in common"], ms: [{ w: "in common", c: "a lot in common", n: "نحتاج a lot" }], us: [{ t: "في الاكتشاف", e: "We have a lot in common!", a: "عندنا أشياء كتير مشتركة!" }, { t: "في الصداقة", e: "I think we have a lot in common.", a: "أعتقد عندنا أشياء كتير مشتركة." }] },
-      { e: "Nice to meet you", a: "سررت بلقائك", d: "عند لقاء شخص لأول مرة.", cl: ["Nice to meet you"], ms: [{ w: "nice meeting you", c: "nice to meet you", n: "أول لقاء نستخدم to meet" }], us: [{ t: "في اللقاء", e: "Nice to meet you! I'm Sarah.", a: "سررت بلقائك! أنا سارة." }, { t: "في الرد", e: "Nice to meet you too!", a: "أنا كمان سعيد بلمعاك!" }] },
-      { e: "Christopher", a: "كريستوفر", d: "يختصر إلى Chris.", cl: ["Christopher → Chris"], ms: [{ w: "Cris", c: "Chris", n: "بالحاء" }], us: [{ t: "في التعريف", e: "My full name is Christopher.", a: "اسمي الكامل كريستوفر." }, { t: "في الاختصار", e: "But everyone calls me Chris.", a: "بس الكل يناديني كريس." }] },
-      { e: "Common", a: "مشترك", d: "شيء مشترك بين اثنين.", cl: ["In common"], ms: [{ w: "commonly", c: "common", n: "common = مشترك" }], us: [{ t: "في التشابه", e: "We have many things in common.", a: "عندنا أشياء كتير مشتركة." }, { t: "في الوصف", e: "English is a common language.", a: "الإنجليزي لغة مشتركة." }] }
-    ],
-    gram: [
-      { t: "التوكيد بـ do", d: "نستخدم do قبل الفعل في الإثبات.", ex: [{ e: "We do have a lot in common", a: "لدينا بالفعل مشتركات كثيرة" }], tp: "do للتوكيد القوي فقط" }
-    ],
-    pron: [
-      { w: "Christopher", t: "تنطق كريستوفر بسكون" },
-      { w: "Common", t: "تنطق كومون بسكون الميم" }
-    ],
-    cul: [
-      { n: "Christopher → Chris (الأكثر شيوعاً)" },
-      { n: "William → Will / Bill، Robert → Bob" }
-    ],
-    ex: [
-      { tp: "mcq", q: "كيف تختصر اسم Christopher؟", a: "", o: ["Chris", "Toph", "Cris", "Kris"], c: 0 },
-      { tp: "fill", q: "Nice to ________ you Chris!", a: "سررت بلقائك", an: "meet" },
-      { tp: "mcq", q: "ماذا تعني We have a lot in common؟", a: "", o: ["لدينا مكان مشترك", "لدينا مشتركات كثيرة", "نحب بعض", "نتكلم نفس اللغة"], c: 1 },
-      { tp: "reorder", q: "رتّب", a: "متجه إلى لندن", w: ["I'm", "heading", "to", "London"] },
-      { tp: "match", q: "طابق", p: [["Call me", "نادني"], ["Heading", "متجه"], ["Common", "مشترك"], ["Nice to meet", "سررت بلقائك"]] },
-      { tp: "fill", q: "We ________ a lot in common!", a: "لدينا بالفعل مشتركات", an: "do" },
-      { tp: "mcq", q: "لماذا نستخدم do في we do have؟", a: "", o: ["للتوكيد", "للنفي", "للسؤال", "للمستقبل"], c: 0 },
-      { tp: "listen", q: "استمع واختر", en: "My name is Christopher, but call me Chris.", o: ["اسمي كريس", "اسمي كريستوفر لكن نادني كريس", "اسمي كريستوفر", "أنا كريس"], c: 1 },
-      { tp: "translate", q: "ترجم: نادني كريس", a: "", an: "call me Chris" },
-      { tp: "mcq", q: "هل Thomas يختصر إلى؟", a: "", o: ["Tom / Tommy", "Thom", "Toms", "Ty"], c: 0 },
-      { tp: "egpt", q: "ازاي تقول 'نادني كريس' بالإنجليزي؟", hint: "فكر في: Call me + اسم", an: "call me chris", ph: "اكتب الإنجليزي..." },
-      { tp: "usage", q: "اكتب جملة باستخدام كلمة common", w: "common" }
     ]
   },
   {

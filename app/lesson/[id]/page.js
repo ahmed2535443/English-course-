@@ -214,7 +214,7 @@ export default function LessonPage({ params }) {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="text-center mt-5 pb-6"
+            className="text-center mt-5 pb-4"
           >
             <button
               onClick={() => router.push(`/exercise/${lesson.id}`)}

@@ -93,35 +93,38 @@ export default function LessonPage({ params }) {
 
           {/* Dialogue */}
           <Section {...SECTIONS.dialog} delay={0.1} title="المحادثة">
-            <div className="space-y-2.5">
-              {lesson.dlg.map((line, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: 12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.04 * i }}
-                  className="flex gap-2.5 items-start"
-                >
-                  <span
-                    className="min-w-[64px] px-2 py-1.5 rounded-[var(--radius-sm)] text-[11px] font-bold text-white text-center flex-shrink-0"
-                    style={{ backgroundColor: line.c }}
+            <div className="bg-gradient-to-br from-indigo-50/50 to-blue-50/50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-[var(--radius-lg)] p-4 border border-indigo-100/50 dark:border-indigo-900/30">
+              <div className="space-y-3">
+                {lesson.dlg.map((line, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.04 * i }}
+                    className="flex gap-3 items-start"
                   >
-                    {line.s}
-                  </span>
-                  <div className="flex-1 bg-[var(--bg-surface-hover)] border border-[var(--border-subtle)] rounded-[var(--radius-md)] p-3 flex items-center justify-between gap-2">
-                    <div className="min-w-0">
-                      <div className="text-sm font-semibold direction-ltr text-[var(--text-primary)]">{line.e}</div>
-                      <div className="text-xs text-[var(--text-muted)] mt-0.5">{line.a}</div>
-                    </div>
-                    <button
-                      onClick={() => speak(line.e)}
-                      className="btn-icon w-8 h-8 flex-shrink-0 text-sm hover:text-primary"
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 shadow-md"
+                      style={{ backgroundColor: line.c }}
                     >
-                      🔊
-                    </button>
-                  </div>
-                </motion.div>
-              ))}
+                      {line.s.charAt(0)}
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-[11px] font-bold mb-1" style={{ color: line.c }}>{line.s}</div>
+                      <div className="bg-white/80 dark:bg-gray-800/80 border border-[var(--border-subtle)] rounded-2xl rounded-tr-sm p-3 shadow-sm">
+                        <div className="text-sm font-semibold direction-ltr text-[var(--text-primary)] leading-relaxed">{line.e}</div>
+                        <div className="text-xs text-[var(--text-muted)] mt-1.5 italic">{line.a}</div>
+                      </div>
+                      <button
+                        onClick={() => speak(line.e)}
+                        className="mt-1.5 btn-ghost text-xs px-2 py-1 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-900/30"
+                      >
+                        🔊 استمع
+                      </button>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </Section>
 

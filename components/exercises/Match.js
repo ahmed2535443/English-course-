@@ -12,9 +12,7 @@ export default function Match({ pairs, onAnswer }) {
   const handleSelect = (side, value) => {
     if (matched.includes(value)) return
 
-    if (!selected) {
-      setSelected({ side, value })
-    } else if (selected.side === side) {
+    if (!selected || selected.side === side) {
       setSelected({ side, value })
     } else {
       const pair = pairs.find(
@@ -23,60 +21,53 @@ export default function Match({ pairs, onAnswer }) {
           (p[1] === selected.value && p[0] === value)
       )
       if (pair) {
-        setMatched([...matched, selected.value, value])
+        const newMatched = [...matched, selected.value, value]
+        setMatched(newMatched)
         setSelected(null)
-        if (matched.length + 2 === pairs.length * 2) {
+        if (newMatched.length === pairs.length * 2) {
           onAnswer(true, 'كل الكلمات مطابقة')
         }
       } else {
         setWrongPair({ a: selected.value, b: value })
-        setTimeout(() => {
-          setWrongPair(null)
-          setSelected(null)
-        }, 400)
+        setTimeout(() => { setWrongPair(null); setSelected(null) }, 400)
       }
     }
   }
 
-  const getButtonClass = (side, value) => {
-    if (matched.includes(value))
-      return 'bg-emerald-50 dark:bg-emerald-500/10 border-emerald-400 text-emerald-700 dark:text-emerald-300'
-    if (selected?.value === value)
-      return 'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-400 text-indigo-700 dark:text-indigo-300'
-    if (wrongPair && ((wrongPair.a === value) || (wrongPair.b === value)))
-      return 'bg-red-50 dark:bg-red-500/10 border-red-400 text-red-700 dark:text-red-300 animate-shake'
-    return 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 hover:border-indigo-400 dark:hover:border-indigo-400 text-slate-700 dark:text-slate-200'
+  const getBtnClass = (side, value) => {
+    if (matched.includes(value)) return 'bg-success/10 border-success text-success'
+    if (selected?.value === value) return 'bg-primary/10 border-primary text-primary'
+    if (wrongPair && (wrongPair.a === value || wrongPair.b === value)) return 'bg-error/10 border-error text-error animate-shake'
+    return 'bg-[var(--bg-surface)] border-[var(--border-default)] text-[var(--text-primary)] hover:border-primary/40'
   }
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2.5">
-          <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 text-center uppercase tracking-wider">English</div>
-          {left.map((v) => (
-            <motion.button
-              key={v}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleSelect('left', v)}
-              className={`w-full border-2 rounded-xl p-3.5 text-sm font-semibold text-center transition-all duration-200 ${getButtonClass('left', v)}`}
-            >
-              {v}
-            </motion.button>
-          ))}
-        </div>
-        <div className="space-y-2.5">
-          <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 text-center uppercase tracking-wider">العربية</div>
-          {right.map((v) => (
-            <motion.button
-              key={v}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleSelect('right', v)}
-              className={`w-full border-2 rounded-xl p-3.5 text-sm font-semibold text-center transition-all duration-200 ${getButtonClass('right', v)}`}
-            >
-              {v}
-            </motion.button>
-          ))}
-        </div>
+    <div className="grid grid-cols-2 gap-3">
+      <div className="space-y-2">
+        <div className="text-[11px] font-bold text-[var(--text-muted)] text-center uppercase tracking-wider">English</div>
+        {left.map((v) => (
+          <motion.button
+            key={v}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => handleSelect('left', v)}
+            className={`w-full border-2 rounded-[var(--radius-md)] p-3 text-sm font-semibold text-center transition-all duration-200 ${getBtnClass('left', v)}`}
+          >
+            {v}
+          </motion.button>
+        ))}
+      </div>
+      <div className="space-y-2">
+        <div className="text-[11px] font-bold text-[var(--text-muted)] text-center uppercase tracking-wider">العربية</div>
+        {right.map((v) => (
+          <motion.button
+            key={v}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => handleSelect('right', v)}
+            className={`w-full border-2 rounded-[var(--radius-md)] p-3 text-sm font-semibold text-center transition-all duration-200 ${getBtnClass('right', v)}`}
+          >
+            {v}
+          </motion.button>
+        ))}
       </div>
     </div>
   )

@@ -19,18 +19,24 @@ import Modal from '@/components/Modal'
 import Confetti from '@/components/Confetti'
 import XPPopup from '@/components/XPPopup'
 
+const LABELS = {
+  mcq: { text: 'اختيار متعدد', color: 'bg-primary' },
+  fill: { text: 'ملء الفراغ', color: 'bg-secondary' },
+  reorder: { text: 'ترتيب الجمل', color: 'bg-success' },
+  match: { text: 'مطابقة', color: 'bg-warning' },
+  listen: { text: 'استماع', color: 'bg-accent' },
+  translate: { text: 'ترجمة', color: 'bg-error' },
+  egpt: { text: 'سؤال مصري', color: 'bg-accent' },
+  usage: { text: 'استخدام الكلمة', color: 'bg-warning' },
+}
+
+const XP_MAP = { mcq: 10, fill: 15, egpt: 15, translate: 20, reorder: 20, usage: 20, listen: 10, match: 10 }
+
 export default function ExercisePage({ params }) {
   const { id } = use(params)
   const router = useRouter()
   const lesson = LESSONS.find((l) => l.id === Number(id))
-  const {
-    addXP,
-    completeExercise,
-    unlockAchievement,
-    don,
-    xp,
-    ach,
-  } = useApp()
+  const { addXP, completeExercise, unlockAchievement, don, ach } = useApp()
 
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [currentEx, setCurrentEx] = useState(0)
@@ -42,41 +48,21 @@ export default function ExercisePage({ params }) {
   const [xpAmount, setXpAmount] = useState(0)
   const [resultBanner, setResultBanner] = useState(null)
 
-  useEffect(() => {
-    if (lesson && !don.includes(lesson.id)) {
-      // lesson not completed yet, that's fine
-    }
-  }, [lesson, don])
-
   if (!lesson) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p>التمرين غير موجود</p>
+        <p className="text-[var(--text-muted)]">التمرين غير موجود</p>
       </div>
     )
   }
 
   const exercises = lesson.ex
   const exercise = exercises[currentEx]
-  const progress = ((currentEx) / exercises.length) * 100
-
-  const exerciseLabels = {
-    mcq: ['اختيار متعدد', 'bg-primary'],
-    fill: ['ملء الفراغ', 'bg-secondary'],
-    reorder: ['ترتيب الجمل', 'bg-success'],
-    match: ['مطابقة', 'bg-warning'],
-    listen: ['استماع', 'bg-accent'],
-    translate: ['ترجمة', 'bg-error'],
-    egpt: ['سؤال مصري', 'bg-accent'],
-    usage: ['استخدام الكلمة', 'bg-warning'],
-  }
+  const progress = (currentEx / exercises.length) * 100
+  const label = LABELS[exercise?.tp] || LABELS.mcq
 
   const showResult = (correct, detail) => {
-    setResultBanner({
-      correct,
-      title: correct ? 'ممتاز! 🎉' : 'خاطئ ❌',
-      detail,
-    })
+    setResultBanner({ correct, title: correct ? 'ممتاز! 🎉' : 'خاطئ ❌', detail })
     setTimeout(() => setResultBanner(null), 1200)
   }
 
@@ -87,26 +73,7 @@ export default function ExercisePage({ params }) {
     setTimeout(() => setShowXP(false), 1200)
   }
 
-  const handleAnswer = useCallback(
-    (correct, detail) => {
-      if (correct) {
-        const xpMap = { mcq: 10, fill: 15, egpt: 15, translate: 20, reorder: 20, usage: 20, listen: 10, match: 10 }
-        awardXP(xpMap[exercise.tp] || 10)
-      }
-      showResult(correct, detail)
-      setResults([...results, correct])
-      setTimeout(() => {
-        if (currentEx + 1 >= exercises.length) {
-          finishExercise([...results, correct])
-        } else {
-          setCurrentEx(currentEx + 1)
-        }
-      }, 1200)
-    },
-    [currentEx, results, exercises.length, exercise]
-  )
-
-  const finishExercise = (allResults) => {
+  const finishExercise = useCallback((allResults) => {
     const correct = allResults.filter(Boolean).length
     const total = allResults.length
     const rate = Math.round((correct / total) * 100)
@@ -114,9 +81,8 @@ export default function ExercisePage({ params }) {
 
     completeExercise(correct, total, lesson.id, wordsLearned)
 
-    if (rate === 100) {
-      const achId = `p${lesson.id}`
-      if (!ach.includes(achId)) unlockAchievement(achId)
+    if (rate === 100 && !ach.includes(`p${lesson.id}`)) {
+      unlockAchievement(`p${lesson.id}`)
     }
 
     const newDon = [...don]
@@ -132,11 +98,24 @@ export default function ExercisePage({ params }) {
       desc: `لقد أكملت الحلقة ${lesson.id} بنتيجة ${rate}% (${correct}/${total})`,
     })
     setShowModal(true)
-  }
+  }, [lesson, don, ach, completeExercise, unlockAchievement])
+
+  const handleAnswer = useCallback((correct, detail) => {
+    if (correct) awardXP(XP_MAP[exercise?.tp] || 10)
+    showResult(correct, detail)
+    const newResults = [...results, correct]
+    setResults(newResults)
+    setTimeout(() => {
+      if (currentEx + 1 >= exercises.length) {
+        finishExercise(newResults)
+      } else {
+        setCurrentEx(currentEx + 1)
+      }
+    }, 1200)
+  }, [currentEx, results, exercises.length, exercise])
 
   const renderExercise = () => {
     if (!exercise) return null
-
     switch (exercise.tp) {
       case 'mcq':
         return <MCQ question={exercise.q} options={exercise.o} correctIndex={exercise.c} onAnswer={handleAnswer} />
@@ -147,45 +126,17 @@ export default function ExercisePage({ params }) {
       case 'match':
         return <Match pairs={exercise.p} onAnswer={handleAnswer} />
       case 'listen':
-        return (
-          <Listen
-            englishText={exercise.en}
-            question={exercise.q}
-            options={exercise.o}
-            correctIndex={exercise.c}
-            onAnswer={handleAnswer}
-          />
-        )
+        return <Listen englishText={exercise.en} question={exercise.q} options={exercise.o} correctIndex={exercise.c} onAnswer={handleAnswer} />
       case 'translate':
         return <Translate question={exercise.q} answer={exercise.an} onAnswer={handleAnswer} />
       case 'egpt':
-        return (
-          <EgyptianQA
-            question={exercise.q}
-            hint={exercise.hint}
-            answer={exercise.an}
-            placeholder={exercise.ph}
-            onAnswer={handleAnswer}
-          />
-        )
+        return <EgyptianQA question={exercise.q} hint={exercise.hint} answer={exercise.an} placeholder={exercise.ph} onAnswer={handleAnswer} />
       case 'usage':
         return <UsageSentence word={exercise.w} onAnswer={handleAnswer} />
       default:
         return null
     }
   }
-
-  const labelColors = {
-    mcq: 'bg-gradient-to-r from-indigo-500 to-blue-500',
-    fill: 'bg-gradient-to-r from-purple-500 to-pink-500',
-    reorder: 'bg-gradient-to-r from-emerald-500 to-teal-500',
-    match: 'bg-gradient-to-r from-amber-500 to-orange-500',
-    listen: 'bg-gradient-to-r from-rose-500 to-red-500',
-    translate: 'bg-gradient-to-r from-blue-500 to-cyan-500',
-    egpt: 'bg-gradient-to-r from-pink-500 to-fuchsia-500',
-    usage: 'bg-gradient-to-r from-teal-500 to-emerald-500',
-  }
-  const label = exerciseLabels[exercise?.tp] || ['تمرين', 'mcq']
 
   return (
     <div className="flex min-h-screen">
@@ -194,83 +145,69 @@ export default function ExercisePage({ params }) {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title={`الحلقة ${lesson.id}: تمرين`} onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container">
+        <main className="flex-1 page-container max-w-2xl mx-auto">
           {/* Header */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="text-base font-bold text-slate-800 dark:text-slate-100">الحلقة {lesson.id}: {lesson.t}</div>
-            <div className="text-sm text-slate-400 dark:text-slate-500 font-semibold">
-              {currentEx + 1}/{exercises.length}
-            </div>
+          <div className="flex items-center justify-between mb-3">
+            <div className="text-sm font-bold text-[var(--text-primary)]">الحلقة {lesson.id}: {lesson.t}</div>
+            <div className="text-sm text-[var(--text-muted)] font-semibold">{currentEx + 1}/{exercises.length}</div>
           </div>
 
-          {/* Progress bar */}
-          <div className="w-full h-2 bg-slate-200/80 dark:bg-slate-700/50 rounded-full mb-6 overflow-hidden">
+          {/* Progress */}
+          <div className="progress-track mb-5">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full"
+              className="progress-fill"
             />
           </div>
 
-          {/* Exercise card */}
+          {/* Exercise Card */}
           <AnimatePresence mode="wait">
             <motion.div
               key={currentEx}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              className="card p-6 md:p-8 text-center"
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.25 }}
+              className="glass-card-strong p-6 md:p-8 text-center"
             >
-              <span
-                className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold text-white mb-5 shadow-md ${labelColors[exercise?.tp] || labelColors.mcq}`}
-              >
-                {label[0]}
+              <span className={`inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold text-white mb-4 ${label.color}`}>
+                {label.text}
               </span>
 
               {exercise?.q && exercise.tp !== 'reorder' && (
-                <p className="text-lg md:text-xl font-bold mb-6 leading-relaxed text-slate-800 dark:text-slate-100">{exercise.q}</p>
+                <p className="text-lg font-bold mb-5 text-[var(--text-primary)] leading-relaxed">{exercise.q}</p>
               )}
 
               {renderExercise()}
 
-              {/* Result banner */}
+              {/* Result Banner */}
               <AnimatePresence>
                 {resultBanner && (
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    className={`mt-5 p-4 rounded-2xl ${
+                    exit={{ opacity: 0, y: 8 }}
+                    className={`mt-4 p-3.5 rounded-[var(--radius-md)] border ${
                       resultBanner.correct
-                        ? 'bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20'
-                        : 'bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20'
+                        ? 'bg-success/10 border-success/20 text-success'
+                        : 'bg-error/10 border-error/20 text-error'
                     }`}
                   >
-                    <div
-                      className={`text-base font-bold ${
-                        resultBanner.correct ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'
-                      }`}
-                    >
-                      {resultBanner.title}
-                    </div>
-                    <div className="text-xs text-slate-500 mt-1">{resultBanner.detail}</div>
+                    <div className="text-base font-bold">{resultBanner.title}</div>
+                    <div className="text-xs text-[var(--text-muted)] mt-0.5">{resultBanner.detail}</div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </motion.div>
           </AnimatePresence>
 
-          {/* Back button */}
           <button
             onClick={() => router.push(`/lesson/${lesson.id}`)}
-            className="mt-4 inline-flex items-center gap-1.5 text-sm text-indigo-600 dark:text-indigo-400 font-semibold hover:underline"
+            className="mt-3 text-sm text-primary font-semibold hover:underline"
           >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M10 4L6 8L10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            العودة للحلقة
+            ← العودة للحلقة
           </button>
         </main>
       </div>
@@ -282,10 +219,7 @@ export default function ExercisePage({ params }) {
         emoji={modalData.emoji}
         title={modalData.title}
         description={modalData.desc}
-        onClose={() => {
-          setShowModal(false)
-          router.push('/')
-        }}
+        onClose={() => { setShowModal(false); router.push('/') }}
       />
 
       <Confetti show={showConfetti} />

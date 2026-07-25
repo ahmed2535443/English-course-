@@ -1,38 +1,42 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-const COLORS = ['#0070f3', '#7928ca', '#ff0080', '#00c853', '#ff9100', '#ff1744']
+const COLORS = ['#6366f1', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b', '#ef4444']
 
 export default function Confetti({ show }) {
   const [particles, setParticles] = useState([])
 
   useEffect(() => {
     if (!show) return
-    const newParticles = Array.from({ length: 50 }, (_, i) => ({
+    const p = Array.from({ length: 50 }, (_, i) => ({
       id: i,
+      color: COLORS[i % COLORS.length],
       left: Math.random() * 100,
-      color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      delay: Math.random() * 2,
-      duration: 2 + Math.random() * 2,
+      delay: Math.random() * 0.8,
+      size: 4 + Math.random() * 6,
     }))
-    setParticles(newParticles)
-    const timer = setTimeout(() => setParticles([]), 4000)
+    setParticles(p)
+    const timer = setTimeout(() => setParticles([]), 3500)
     return () => clearTimeout(timer)
   }, [show])
 
-  if (particles.length === 0) return null
+  if (!particles.length) return null
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-50">
+    <div className="fixed inset-0 pointer-events-none z-[100]">
       {particles.map((p) => (
         <div
           key={p.id}
-          className="absolute w-2.5 h-2.5 rounded-sm animate-confetti"
+          className="animate-confetti"
           style={{
+            position: 'absolute',
             left: `${p.left}%`,
+            top: -10,
+            width: p.size,
+            height: p.size,
             backgroundColor: p.color,
+            borderRadius: Math.random() > 0.5 ? '50%' : '2px',
             animationDelay: `${p.delay}s`,
-            animationDuration: `${p.duration}s`,
           }}
         />
       ))}

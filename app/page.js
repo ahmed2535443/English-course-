@@ -30,47 +30,43 @@ export default function HomePage() {
           <StreakBanner />
 
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="section-gap"
           >
-            <h2 className="text-xl md:text-2xl font-extrabold text-slate-800 dark:text-slate-100">الدروس</h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">اختر حلقة وابدأ التعلم</p>
+            <h2 className="text-lg md:text-xl font-extrabold text-[var(--text-primary)]">الدروس</h2>
+            <p className="text-sm text-[var(--text-muted)] mt-0.5">اختر حلقة وابدأ التعلم</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 section-gap">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 section-gap">
             {lessons.map((lesson, i) => (
               <LessonCard key={lesson.id} lesson={lesson} index={i} />
             ))}
           </div>
 
+          {/* SRS Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.3 }}
           >
-            <h2 className="text-xl md:text-2xl font-extrabold text-slate-800 dark:text-slate-100 mb-5">🧠 مراجعة ذكية</h2>
-            <Link
-              href="/srs"
-              className="group block card overflow-hidden"
-            >
-              <div className="p-5 md:p-6 flex items-center gap-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg shadow-purple-500/20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+            <h2 className="text-lg md:text-xl font-extrabold text-[var(--text-primary)] mb-4">🧠 مراجعة ذكية</h2>
+            <Link href="/srs" className="group block solid-card">
+              <div className="p-5 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-xl text-white shadow-lg shadow-secondary/20 transition-transform duration-300 group-hover:scale-105">
                   🧠
                 </div>
                 <div className="flex-1">
-                  <div className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                  <div className="text-[15px] font-bold text-[var(--text-primary)] group-hover:text-secondary transition-colors">
                     مراجعة الكلمات
                   </div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+                  <div className="text-sm text-[var(--text-muted)] mt-0.5">
                     {dueCount > 0 ? `${dueCount} كلمات تحتاج مراجعة` : 'كل الكلمات محفوظة!'}
                   </div>
                 </div>
-                <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-500/10 flex items-center justify-center text-purple-500 transition-all duration-300 group-hover:-translate-x-1">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-secondary/10 flex items-center justify-center text-secondary transition-transform duration-200 group-hover:-translate-x-1">
+                  ←
                 </div>
               </div>
             </Link>

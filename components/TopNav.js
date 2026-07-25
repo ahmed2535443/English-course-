@@ -5,24 +5,22 @@ export default function TopNav({ title, onMenuClick }) {
   const { xp, str } = useApp()
 
   return (
-    <header className="h-[60px] glass border-b border-slate-200/60 dark:border-slate-700/60 px-4 md:px-6 flex items-center justify-between sticky top-0 z-30">
+    <header className="h-[var(--topnav-h)] glass-surface px-4 md:px-6 flex items-center justify-between sticky top-0 z-30 border-b border-[var(--border-subtle)]">
       <div className="flex items-center gap-3">
         <button
           onClick={onMenuClick}
-          className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center lg:hidden hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+          className="btn-icon lg:hidden"
         >
-          <span className="text-lg text-slate-600 dark:text-slate-300">☰</span>
+          ☰
         </button>
-        <h1 className="text-base md:text-lg font-extrabold text-slate-800 dark:text-slate-100">{title}</h1>
+        <h1 className="text-[15px] font-extrabold text-[var(--text-primary)]">{title}</h1>
       </div>
       <div className="flex items-center gap-2">
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-50 dark:bg-orange-500/10 border border-orange-200/60 dark:border-orange-500/15">
-          <span className="text-sm">🔥</span>
-          <span className="text-sm font-extrabold text-orange-700 dark:text-orange-300">{str}</span>
+        <div className="badge bg-orange-500/10 text-orange-600 dark:bg-orange-400/15 dark:text-orange-400 border border-orange-200/50 dark:border-orange-400/20">
+          🔥 <span className="font-extrabold">{str}</span>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200/60 dark:border-amber-500/15">
-          <span className="text-sm">⭐</span>
-          <span className="text-sm font-extrabold text-amber-700 dark:text-amber-300">{xp}</span>
+        <div className="badge bg-primary/10 text-primary border border-primary/20">
+          ⭐ <span className="font-extrabold">{xp}</span>
         </div>
       </div>
     </header>

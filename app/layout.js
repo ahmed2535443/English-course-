@@ -9,7 +9,7 @@ const inter = Inter({
 })
 
 const cairo = Cairo({
-  subsets: ['arabic'],
+  subsets: ['arabic', 'latin'],
   variable: '--font-cairo',
 })
 
@@ -21,7 +21,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ar" dir="rtl" className={`${inter.variable} ${cairo.variable}`} suppressHydrationWarning>
-      <body className="font-[var(--font-cairo),var(--font-inter),sans-serif]">
+      <head>
+        <style>{`
+          :root { font-family: var(--font-cairo), var(--font-inter), system-ui, sans-serif; }
+        `}</style>
+      </head>
+      <body>
         <AppProvider>
           <DarkModeProvider>{children}</DarkModeProvider>
         </AppProvider>

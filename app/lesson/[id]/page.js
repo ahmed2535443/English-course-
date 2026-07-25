@@ -10,28 +10,28 @@ import TopNav from '@/components/TopNav'
 import BottomNav from '@/components/BottomNav'
 import Link from 'next/link'
 
-const sectionIcons = {
-  dialog: { icon: '💬', gradient: 'from-indigo-500 to-blue-500', shadow: 'shadow-indigo-500/20' },
-  vocab: { icon: '📖', gradient: 'from-emerald-500 to-teal-400', shadow: 'shadow-emerald-500/20' },
-  grammar: { icon: '💡', gradient: 'from-purple-500 to-pink-400', shadow: 'shadow-purple-500/20' },
-  pron: { icon: '🗣️', gradient: 'from-amber-500 to-orange-400', shadow: 'shadow-amber-500/20' },
-  cul: { icon: '🌍', gradient: 'from-rose-500 to-red-400', shadow: 'shadow-rose-500/20' },
+const SECTIONS = {
+  dialog: { icon: '💬', gradient: 'from-indigo-500 to-blue-500' },
+  vocab: { icon: '📖', gradient: 'from-emerald-500 to-teal-400' },
+  grammar: { icon: '💡', gradient: 'from-violet-500 to-purple-400' },
+  pron: { icon: '🗣️', gradient: 'from-amber-500 to-orange-400' },
+  cul: { icon: '🌍', gradient: 'from-rose-500 to-pink-400' },
 }
 
-function SectionCard({ icon, gradient, shadow, title, delay, children }) {
+function Section({ icon, gradient, title, delay, children }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-      className="card overflow-hidden mb-4"
+      transition={{ delay, duration: 0.35 }}
+      className="solid-card mb-3"
     >
-      <div className="p-5 md:p-6">
-        <div className="flex items-center gap-3 mb-5">
-          <div className={`w-11 h-11 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center text-white text-lg shadow-lg ${shadow}`}>
+      <div className="p-5">
+        <div className="flex items-center gap-3 mb-4">
+          <div className={`w-10 h-10 rounded-[var(--radius-sm)] bg-gradient-to-br ${gradient} flex items-center justify-center text-white text-base shadow-md`}>
             {icon}
           </div>
-          <div className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100">{title}</div>
+          <h3 className="text-base font-bold text-[var(--text-primary)]">{title}</h3>
         </div>
         {children}
       </div>
@@ -49,7 +49,7 @@ export default function LessonPage({ params }) {
   if (!lesson) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-slate-500">الحلقة غير موجودة</p>
+        <p className="text-[var(--text-muted)]">الحلقة غير موجودة</p>
       </div>
     )
   }
@@ -64,48 +64,45 @@ export default function LessonPage({ params }) {
         <main className="flex-1 page-container">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 text-sm font-semibold mb-5 hover:underline"
+            className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mb-4 hover:underline"
           >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M10 4L6 8L10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            العودة للدروس
+            <span>←</span> العودة للدروس
           </Link>
 
           <motion.h1
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-6 text-slate-800 dark:text-slate-100"
+            className="text-xl md:text-2xl font-extrabold text-[var(--text-primary)] mb-5"
           >
-            <span className="text-2xl md:text-3xl">{lesson.i}</span>{' '}
+            <span className="text-2xl">{lesson.i}</span>{' '}
             الحلقة {lesson.id}: {lesson.t}
           </motion.h1>
 
           {/* Dialogue */}
-          <SectionCard {...sectionIcons.dialog} delay={0.1} title="المحادثة">
-            <div className="space-y-3">
+          <Section {...SECTIONS.dialog} delay={0.1} title="المحادثة">
+            <div className="space-y-2.5">
               {lesson.dlg.map((line, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: 12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * i }}
+                  transition={{ delay: 0.04 * i }}
                   className="flex gap-2.5 items-start"
                 >
                   <span
-                    className="min-w-[70px] px-2.5 py-1.5 rounded-xl text-[11px] font-bold text-white text-center flex-shrink-0 shadow-sm"
+                    className="min-w-[64px] px-2 py-1.5 rounded-[var(--radius-sm)] text-[11px] font-bold text-white text-center flex-shrink-0"
                     style={{ backgroundColor: line.c }}
                   >
                     {line.s}
                   </span>
-                  <div className="flex-1 bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50 rounded-xl p-3 flex items-center justify-between gap-2">
-                    <div>
-                      <div className="text-sm font-semibold direction-ltr text-left text-slate-700 dark:text-slate-200">{line.e}</div>
-                      <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">{line.a}</div>
+                  <div className="flex-1 bg-[var(--bg-surface-hover)] border border-[var(--border-subtle)] rounded-[var(--radius-md)] p-3 flex items-center justify-between gap-2">
+                    <div className="min-w-0">
+                      <div className="text-sm font-semibold direction-ltr text-[var(--text-primary)]">{line.e}</div>
+                      <div className="text-xs text-[var(--text-muted)] mt-0.5">{line.a}</div>
                     </div>
                     <button
                       onClick={() => speak(line.e)}
-                      className="w-9 h-9 rounded-xl bg-indigo-500 text-white flex items-center justify-center text-sm flex-shrink-0 hover:scale-110 transition-transform shadow-sm"
+                      className="btn-icon w-8 h-8 flex-shrink-0 text-sm hover:text-primary"
                     >
                       🔊
                     </button>
@@ -113,155 +110,118 @@ export default function LessonPage({ params }) {
                 </motion.div>
               ))}
             </div>
-          </SectionCard>
+          </Section>
 
           {/* Vocabulary */}
-          <SectionCard {...sectionIcons.vocab} delay={0.2} title="المفردات التفصيلية">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <Section {...SECTIONS.vocab} delay={0.15} title="المفردات التفصيلية">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
               {lesson.voc.map((v, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.05 * i }}
+                  transition={{ delay: 0.04 * i }}
                   onClick={() => speak(v.e)}
-                  className="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 rounded-xl p-4 text-center cursor-pointer hover:border-indigo-300 dark:hover:border-indigo-500/30 hover:shadow-md transition-all duration-200"
+                  className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-md)] p-4 cursor-pointer hover:border-primary/30 hover:shadow-md transition-all duration-200"
                 >
-                  <div className="text-base font-bold direction-ltr text-slate-700 dark:text-slate-200">{v.e}</div>
-                  <div className="text-sm text-indigo-600 dark:text-indigo-400 mt-1 font-semibold">{v.a}</div>
+                  <div className="text-base font-bold direction-ltr text-[var(--text-primary)]">{v.e}</div>
+                  <div className="text-sm text-primary font-semibold mt-1">{v.a}</div>
                   {v.d && (
-                    <div className="text-xs text-slate-400 dark:text-slate-500 mt-2 text-right leading-relaxed">
-                      {v.d}
-                    </div>
+                    <div className="text-xs text-[var(--text-muted)] mt-1.5 leading-relaxed">{v.d}</div>
                   )}
                   {v.cl && (
-                    <div className="flex flex-wrap gap-1.5 mt-2 justify-center">
+                    <div className="flex flex-wrap gap-1 mt-2">
                       {v.cl.map((c, j) => (
-                        <span
-                          key={j}
-                          className="bg-slate-100 dark:bg-slate-700/50 px-2.5 py-1 rounded-full text-[11px] font-semibold direction-ltr text-slate-600 dark:text-slate-300"
-                        >
+                        <span key={j} className="bg-[var(--bg-surface-hover)] px-2 py-0.5 rounded-full text-[10px] font-semibold text-[var(--text-muted)] direction-ltr">
                           {c}
                         </span>
                       ))}
                     </div>
                   )}
-                  {v.us &&
-                    v.us.map((u, j) => (
-                      <div
-                        key={j}
-                        className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-500/10 dark:to-purple-500/10 border border-indigo-100 dark:border-indigo-500/15 rounded-lg p-2.5 mt-2 text-left"
-                      >
-                        <div className="text-[11px] font-bold text-indigo-500 mb-1">📝 {u.t}</div>
-                        <div className="text-xs font-semibold direction-ltr text-slate-700 dark:text-slate-200">{u.e}</div>
-                        <div className="text-[11px] text-slate-400 mt-0.5">{u.a}</div>
-                      </div>
-                    ))}
-                  {v.ms &&
-                    v.ms.map((m, j) => (
-                      <div
-                        key={j}
-                        className="bg-red-50 dark:bg-red-500/10 border border-red-100 dark:border-red-500/15 rounded-lg p-2.5 mt-2"
-                      >
-                        <div className="text-xs font-semibold text-red-500 line-through direction-ltr">
-                          ❌ {m.w}
-                        </div>
-                        <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 direction-ltr">
-                          ✅ {m.c}
-                        </div>
-                        <div className="text-[11px] text-slate-400 mt-1">{m.n}</div>
-                      </div>
-                    ))}
+                  {v.us && v.us.map((u, j) => (
+                    <div key={j} className="bg-primary/5 border border-primary/10 rounded-[var(--radius-sm)] p-2.5 mt-2 text-left">
+                      <div className="text-[11px] font-bold text-primary mb-0.5">📝 {u.t}</div>
+                      <div className="text-xs font-semibold direction-ltr text-[var(--text-primary)]">{u.e}</div>
+                      <div className="text-[11px] text-[var(--text-muted)] mt-0.5">{u.a}</div>
+                    </div>
+                  ))}
+                  {v.ms && v.ms.map((m, j) => (
+                    <div key={j} className="bg-error/5 border border-error/10 rounded-[var(--radius-sm)] p-2.5 mt-2">
+                      <div className="text-xs font-semibold text-error line-through direction-ltr">❌ {m.w}</div>
+                      <div className="text-xs font-semibold text-success direction-ltr">✅ {m.c}</div>
+                      <div className="text-[11px] text-[var(--text-muted)] mt-1">{m.n}</div>
+                    </div>
+                  ))}
                 </motion.div>
               ))}
             </div>
-          </SectionCard>
+          </Section>
 
           {/* Grammar */}
-          <SectionCard {...sectionIcons.grammar} delay={0.3} title="القواعد النحوية">
-            <div className="space-y-3">
+          <Section {...SECTIONS.grammar} delay={0.2} title="القواعد النحوية">
+            <div className="space-y-2.5">
               {lesson.gram.map((g, i) => (
-                <div
-                  key={i}
-                  className="bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50 rounded-xl p-4"
-                >
-                  <div className="text-sm font-bold text-purple-600 dark:text-purple-400 mb-2">{g.t}</div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{g.d}</div>
+                <div key={i} className="bg-[var(--bg-surface-hover)] border border-[var(--border-subtle)] rounded-[var(--radius-md)] p-4">
+                  <div className="text-sm font-bold text-secondary mb-1.5">{g.t}</div>
+                  <div className="text-xs text-[var(--text-muted)] leading-relaxed">{g.d}</div>
                   {g.r && (
-                    <div className="text-xs text-slate-500 dark:text-slate-400 mt-1.5">
-                      القاعدة: <strong className="text-slate-800 dark:text-slate-100">{g.r}</strong>
+                    <div className="text-xs text-[var(--text-muted)] mt-1.5">
+                      القاعدة: <strong className="text-[var(--text-primary)]">{g.r}</strong>
                     </div>
                   )}
-                  {g.ex &&
-                    g.ex.map((x, j) => (
-                      <div
-                        key={j}
-                        className="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 rounded-lg p-2.5 mt-2"
-                      >
-                        <div className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 direction-ltr text-left">
-                          {x.e}
-                        </div>
-                        <div className="text-xs text-slate-400 mt-0.5">{x.a}</div>
-                      </div>
-                    ))}
-                  {g.tp && (
-                    <div className="text-xs text-purple-500 mt-2">💡 {g.tp}</div>
-                  )}
+                  {g.ex && g.ex.map((x, j) => (
+                    <div key={j} className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[var(--radius-sm)] p-2.5 mt-2">
+                      <div className="text-sm font-semibold text-primary direction-ltr">{x.e}</div>
+                      <div className="text-xs text-[var(--text-muted)] mt-0.5">{x.a}</div>
+                    </div>
+                  ))}
+                  {g.tp && <div className="text-xs text-secondary mt-2">💡 {g.tp}</div>}
                 </div>
               ))}
             </div>
-          </SectionCard>
+          </Section>
 
           {/* Pronunciation */}
           {lesson.pron && lesson.pron.length > 0 && (
-            <SectionCard {...sectionIcons.pron} delay={0.4} title="نصائح النطق">
+            <Section {...SECTIONS.pron} delay={0.25} title="نصائح النطق">
               <div className="space-y-2">
                 {lesson.pron.map((p, i) => (
-                  <div
-                    key={i}
-                    className="bg-amber-50 dark:bg-amber-500/10 border border-amber-100 dark:border-amber-500/15 rounded-xl p-3"
-                  >
-                    <div className="text-sm font-bold text-amber-600 dark:text-amber-400 direction-ltr">{p.w}</div>
-                    <div className="text-xs text-slate-500 mt-1">{p.t}</div>
+                  <div key={i} className="bg-amber-50 dark:bg-amber-500/10 border border-amber-200/60 dark:border-amber-500/15 rounded-[var(--radius-md)] p-3">
+                    <div className="text-sm font-bold text-amber-700 dark:text-amber-400 direction-ltr">{p.w}</div>
+                    <div className="text-xs text-[var(--text-muted)] mt-0.5">{p.t}</div>
                   </div>
                 ))}
               </div>
-            </SectionCard>
+            </Section>
           )}
 
           {/* Cultural */}
           {lesson.cul && lesson.cul.length > 0 && (
-            <SectionCard {...sectionIcons.cul} delay={0.5} title="ملاحظات ثقافية">
+            <Section {...SECTIONS.cul} delay={0.3} title="ملاحظات ثقافية">
               <div className="space-y-2">
                 {lesson.cul.map((c, i) => (
-                  <div
-                    key={i}
-                    className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-500/10 dark:to-pink-500/10 border border-rose-100 dark:border-rose-500/15 rounded-xl p-3 flex items-start gap-2"
-                  >
-                    <span className="text-base">📌</span>
-                    <span className="text-xs text-slate-500 leading-relaxed">{c.n}</span>
+                  <div key={i} className="flex items-start gap-2 bg-rose-50 dark:bg-rose-500/10 border border-rose-200/60 dark:border-rose-500/15 rounded-[var(--radius-md)] p-3">
+                    <span className="text-sm">📌</span>
+                    <span className="text-xs text-[var(--text-muted)] leading-relaxed">{c.n}</span>
                   </div>
                 ))}
               </div>
-            </SectionCard>
+            </Section>
           )}
 
           {/* Start Exercise */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="text-center mt-6 pb-8"
+            transition={{ delay: 0.35 }}
+            className="text-center mt-5 pb-6"
           >
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              whileHover={{ scale: 1.02 }}
+            <button
               onClick={() => router.push(`/exercise/${lesson.id}`)}
-              className="w-full max-w-sm mx-auto py-4 rounded-2xl btn-primary text-[15px] flex items-center justify-center gap-2"
+              className="btn btn-primary w-full max-w-xs mx-auto py-3.5 text-[15px]"
             >
-              <span>📝</span>
-              <span>ابدأ التمرين</span>
-            </motion.button>
+              📝 ابدأ التمرين
+            </button>
           </motion.div>
         </main>
       </div>

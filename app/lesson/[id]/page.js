@@ -210,19 +210,14 @@ export default function LessonPage({ params }) {
           )}
 
           {/* Start Exercise */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="text-center mt-5 pb-4"
-          >
+          <div className="mt-8 mb-4">
             <button
               onClick={() => router.push(`/exercise/${lesson.id}`)}
-              className="btn btn-primary w-full max-w-xs mx-auto py-3.5 text-[15px]"
+              className="btn btn-primary block w-full max-w-xs mx-auto py-3.5 text-[15px]"
             >
               📝 ابدأ التمرين
             </button>
-          </motion.div>
+          </div>
         </main>
       </div>
 

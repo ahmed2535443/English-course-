@@ -125,7 +125,33 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-5">
+          {/* Mobile: Horizontal Scroll */}
+          <div className="md:hidden mb-5">
+            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {publishedLevels.map((level, i) => {
+                const { completed, total } = getLevelProgress(level)
+                const isCompleted = completed === total && total > 0
+                const isCurrent = !isCompleted && (i === 0 || getLevelProgress(publishedLevels[i - 1]).completed > 0)
+                const isLocked = !isCompleted && !isCurrent && i > 0 && getLevelProgress(publishedLevels[i - 1]).completed === 0
+                return (
+                  <div key={level.id} className="min-w-[280px] max-w-[320px] snap-center flex-shrink-0">
+                    <LevelCard
+                      level={level}
+                      index={i}
+                      completedCount={completed}
+                      totalCount={total}
+                      isLocked={isLocked}
+                      isCompleted={isCompleted}
+                      isCurrent={isCurrent}
+                    />
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Desktop: Grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
             {publishedLevels.map((level, i) => {
               const { completed, total } = getLevelProgress(level)
               const isCompleted = completed === total && total > 0
@@ -159,22 +185,66 @@ export default function HomePage() {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-5">
-            {LEVELS.filter((l) => !l.isPublished).map((level) => (
-              <div
+            {LEVELS.filter((l) => !l.isPublished).map((level, i) => (
+              <motion.div
                 key={level.id}
-                className="glass-card p-4 opacity-50 cursor-not-allowed"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + i * 0.05 }}
+                className="glass-card p-4 opacity-60 cursor-not-allowed hover:opacity-80 transition-opacity"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-[var(--radius-sm)] bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-lg">
+                  <div className="w-12 h-12 rounded-[var(--radius-md)] bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-700 flex items-center justify-center text-lg shadow-md">
                     🔒
                   </div>
                   <div>
                     <div className="text-sm font-bold text-[var(--text-primary)]">{level.name}</div>
-                    <div className="text-xs text-[var(--text-muted)]">قريباً</div>
+                    <div className="text-xs text-[var(--text-muted)]">قريباً إن شاء الله</div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
+          </div>
+
+          {/* Quick Actions Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
+            className="mb-5"
+          >
+            <h2 className="text-lg font-extrabold text-[var(--text-primary)] mb-3">الوصول السريع</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+            <Link href="/stories" className="group solid-card p-4 hover:shadow-lg transition-all">
+              <div className="text-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">📚</div>
+                <div className="text-sm font-bold text-[var(--text-primary)]">القصص</div>
+                <div className="text-xs text-[var(--text-muted)]">قصص تفاعلية</div>
+              </div>
+            </Link>
+            <Link href="/vocabulary" className="group solid-card p-4 hover:shadow-lg transition-all">
+              <div className="text-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">📖</div>
+                <div className="text-sm font-bold text-[var(--text-primary)]">المفردات</div>
+                <div className="text-xs text-[var(--text-muted)]">قائمة الكلمات</div>
+              </div>
+            </Link>
+            <Link href="/leaderboard" className="group solid-card p-4 hover:shadow-lg transition-all">
+              <div className="text-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">🏆</div>
+                <div className="text-sm font-bold text-[var(--text-primary)]">التصنيف</div>
+                <div className="text-xs text-[var(--text-muted)]">لوحة الصدارة</div>
+              </div>
+            </Link>
+            <Link href="/activity" className="group solid-card p-4 hover:shadow-lg transition-all">
+              <div className="text-center">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">📅</div>
+                <div className="text-sm font-bold text-[var(--text-primary)]">النشاط</div>
+                <div className="text-xs text-[var(--text-muted)]">تقويم النشاط</div>
+              </div>
+            </Link>
           </div>
 
           {/* SRS Card */}
@@ -183,21 +253,21 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h2 className="text-lg font-extrabold text-[var(--text-primary)] mb-3">🧠 مراجعة ذكية</h2>
-            <Link href="/srs" className="group block solid-card">
+            <Link href="/srs" className="group block solid-card overflow-hidden">
+              <div className="h-1.5 w-full bg-gradient-to-r from-secondary to-accent" />
               <div className="p-5 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-[var(--radius-sm)] bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-xl text-white shadow-lg shadow-secondary/20 transition-transform duration-300 group-hover:scale-105">
+                <div className="w-14 h-14 rounded-[var(--radius-md)] bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-2xl text-white shadow-lg shadow-secondary/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                   🧠
                 </div>
                 <div className="flex-1">
                   <div className="text-[15px] font-bold text-[var(--text-primary)] group-hover:text-secondary transition-colors">
-                    مراجعة الكلمات
+                    مراجعة ذكية (SRS)
                   </div>
                   <div className="text-sm text-[var(--text-muted)] mt-0.5">
-                    {dueCount > 0 ? `${dueCount} كلمات تحتاج مراجعة` : 'كل الكلمات محفوظة!'}
+                    {dueCount > 0 ? `${dueCount} كلمات تحتاج مراجعة` : '✓ كل الكلمات محفوظة!'}
                   </div>
                 </div>
-                <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-secondary/10 flex items-center justify-center text-secondary transition-transform duration-200 group-hover:-translate-x-1">
+                <div className="w-10 h-10 rounded-[var(--radius-md)] bg-secondary/10 flex items-center justify-center text-secondary transition-transform duration-200 group-hover:-translate-x-1">
                   ←
                 </div>
               </div>

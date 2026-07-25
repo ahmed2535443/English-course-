@@ -35,7 +35,7 @@ export default function FillBlank({ question, answer, onAnswer }) {
               ? isCorrect
                 ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
                 : 'border-red-400 bg-red-50 dark:bg-red-500/10 text-red-700 dark:text-red-300 animate-shake'
-              : 'border-slate-200 dark:border-slate-700 focus:border-indigo-400 dark:focus:border-indigo-500/30 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 dark:text-slate-100'
+              : 'border-slate-300 dark:border-slate-600 focus:border-indigo-400 dark:focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-800'
           }`}
         />
       </div>

@@ -30,7 +30,7 @@ export default function Listen({ englishText, question, options, correctIndex, o
             whileTap={{ scale: 0.95 }}
             whileHover={{ scale: 1.02 }}
             onClick={() => handleClick(i)}
-            className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-4 text-sm font-semibold text-center transition-all duration-200 hover:border-indigo-400 dark:hover:border-indigo-500/30 hover:shadow-md text-slate-700 dark:text-slate-200"
+            className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 rounded-2xl p-4 text-sm font-semibold text-center transition-all duration-200 hover:border-indigo-400 dark:hover:border-indigo-400 hover:shadow-md text-slate-700 dark:text-slate-200"
           >
             {opt}
           </motion.button>

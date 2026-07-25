@@ -12,7 +12,7 @@ export default function BottomNav() {
   ]
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 glass border-t border-white/30 dark:border-indigo-500/10 flex lg:hidden z-30 px-2 pb-safe">
+    <nav className="fixed bottom-0 left-0 right-0 glass border-t border-slate-200/60 dark:border-slate-700/60 flex lg:hidden z-30 px-2 pb-safe">
       {links.map((link) => {
         const active = pathname === link.href
         return (
@@ -20,7 +20,7 @@ export default function BottomNav() {
             key={link.href}
             href={link.href}
             className={`flex-1 flex flex-col items-center py-2.5 gap-0.5 transition-all duration-200 ${
-              active ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500'
+              active ? 'text-indigo-700 dark:text-indigo-300' : 'text-slate-500 dark:text-slate-400'
             }`}
           >
             <span className={`text-xl transition-all duration-200 ${active ? 'scale-110 -translate-y-0.5' : ''}`}>

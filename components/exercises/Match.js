@@ -40,19 +40,19 @@ export default function Match({ pairs, onAnswer }) {
 
   const getButtonClass = (side, value) => {
     if (matched.includes(value))
-      return 'bg-emerald-50 dark:bg-emerald-500/10 border-emerald-400 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
+      return 'bg-emerald-50 dark:bg-emerald-500/10 border-emerald-400 text-emerald-700 dark:text-emerald-300'
     if (selected?.value === value)
-      return 'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-400 dark:border-indigo-500/30 text-indigo-600 dark:text-indigo-400'
+      return 'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-400 text-indigo-700 dark:text-indigo-300'
     if (wrongPair && ((wrongPair.a === value) || (wrongPair.b === value)))
-      return 'bg-red-50 dark:bg-red-500/10 border-red-400 dark:border-red-500/30 text-red-600 dark:text-red-400 animate-shake'
-    return 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-500/30 text-slate-700 dark:text-slate-200'
+      return 'bg-red-50 dark:bg-red-500/10 border-red-400 text-red-700 dark:text-red-300 animate-shake'
+    return 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 hover:border-indigo-400 dark:hover:border-indigo-400 text-slate-700 dark:text-slate-200'
   }
 
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2.5">
-          <div className="text-[11px] font-bold text-slate-400 dark:text-slate-500 text-center uppercase tracking-wider">English</div>
+          <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 text-center uppercase tracking-wider">English</div>
           {left.map((v) => (
             <motion.button
               key={v}
@@ -65,7 +65,7 @@ export default function Match({ pairs, onAnswer }) {
           ))}
         </div>
         <div className="space-y-2.5">
-          <div className="text-[11px] font-bold text-slate-400 dark:text-slate-500 text-center uppercase tracking-wider">العربية</div>
+          <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 text-center uppercase tracking-wider">العربية</div>
           {right.map((v) => (
             <motion.button
               key={v}

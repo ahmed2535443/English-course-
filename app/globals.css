@@ -326,9 +326,9 @@ body::before {
 .page-container {
   padding-left: var(--page-px);
   padding-right: var(--page-px);
-  padding-top: 20px;
+  padding-top: 24px;
   padding-bottom: 160px;
-  max-width: 960px;
+  max-width: 1280px;
   margin: 0 auto;
   width: 100%;
 }
@@ -428,6 +428,42 @@ body::before {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
+}
+
+/* ═══════════════════════════════════════════
+   DESKTOP - BIGGER & MORE COMFORTABLE
+   ═══════════════════════════════════════════ */
+
+@media (min-width: 1024px) {
+  :root {
+    --page-px: 40px;
+    --sidebar-w: 280px;
+  }
+
+  h1 { font-size: 2.25rem; line-height: 1.25; }
+  h2 { font-size: 1.5rem; line-height: 1.3; }
+  h3 { font-size: 1.25rem; line-height: 1.35; }
+  p, span { font-size: 1.05rem; line-height: 1.75; }
+
+  .solid-card, .glass-card {
+    border-radius: var(--radius-xl);
+  }
+
+  .btn {
+    padding: 14px 28px;
+    font-size: 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .btn-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .input {
+    padding: 16px 20px;
+    font-size: 16px;
+  }
 }
 
 /* ═══════════════════════════════════════════

@@ -186,9 +186,9 @@ export default function LessonPage({ params }) {
             <Section {...SECTIONS.pron} delay={0.25} title="نصائح النطق">
               <div className="space-y-2">
                 {lesson.pron.map((p, i) => (
-                  <div key={i} className="bg-amber-50 dark:bg-amber-500/10 border border-amber-200/60 dark:border-amber-500/15 rounded-[var(--radius-md)] p-3">
-                    <div className="text-sm font-bold text-amber-700 dark:text-amber-400 direction-ltr">{p.w}</div>
-                    <div className="text-xs text-[var(--text-muted)] mt-0.5">{p.t}</div>
+                  <div key={i} className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200/60 dark:border-amber-500/20 rounded-[var(--radius-md)] p-3">
+                    <div className="text-sm font-bold text-amber-700 dark:text-amber-300 direction-ltr">{p.w}</div>
+                    <div className="text-xs text-amber-800 dark:text-amber-200/70 mt-0.5">{p.t}</div>
                   </div>
                 ))}
               </div>
@@ -200,9 +200,9 @@ export default function LessonPage({ params }) {
             <Section {...SECTIONS.cul} delay={0.3} title="ملاحظات ثقافية">
               <div className="space-y-2">
                 {lesson.cul.map((c, i) => (
-                  <div key={i} className="flex items-start gap-2 bg-rose-50 dark:bg-rose-500/10 border border-rose-200/60 dark:border-rose-500/15 rounded-[var(--radius-md)] p-3">
+                  <div key={i} className="flex items-start gap-2 bg-rose-50 dark:bg-rose-900/20 border border-rose-200/60 dark:border-rose-500/20 rounded-[var(--radius-md)] p-3">
                     <span className="text-sm">📌</span>
-                    <span className="text-xs text-[var(--text-muted)] leading-relaxed">{c.n}</span>
+                    <span className="text-xs text-rose-800 dark:text-rose-200/70 leading-relaxed">{c.n}</span>
                   </div>
                 ))}
               </div>

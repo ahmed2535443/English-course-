@@ -531,50 +531,75 @@ export const LESSONS = [
   },
   {
     id: 8,
-    t: "بدء المحادثات والتعارف",
-    i: "💬",
-    w: 6,
-    n: 8,
+    t: "النقاط السياحية والنقل العام",
+    i: "🚌",
+    w: 12,
+    n: 7,
     dlg: [
-      { s: "A", c: "#ff9100", e: "Excuse me, is anyone sitting here?", a: "عفواً، هل يجلس أحد هنا؟" },
-      { s: "B", c: "#00c853", e: "No, it is free. Please go ahead.", a: "لا، إنه فارغ. تفضل." },
-      { s: "A", c: "#ff9100", e: "Thanks! Are you on your way to London as well?", a: "شكراً! هل أنت في طريقك إلى لندن أيضاً؟" },
-      { s: "B", c: "#00c853", e: "Yes, I am heading to London for a conference.", a: "نعم، متجه إلى لندن لمؤتمر." },
-      { s: "A", c: "#ff9100", e: "Sounds interesting! Have a great time!", a: "يبدو ممتعاً! أتمنى لك وقتاً رائعاً!" }
+      { s: "A", c: "#ff9100", e: "Would you like me to show you the public transport system?", a: "هل تحب أوريك نظام النقل العام؟" },
+      { s: "B", c: "#00c853", e: "Yes, please. I'm a little tired.", a: "نعم من فضلك. أنا قليلاً متعب." },
+      { s: "A", c: "#ff9100", e: "Okay then, let's go.", a: "تمام إذن، يلا بنا." },
+      { s: "B", c: "#00c853", e: "Where are the museums located?", a: "المتاحف فين موجودة؟" },
+      { s: "A", c: "#ff9100", e: "They are not far from here. They're on Exhibition Road.", a: "هم مش بعيد من هنا. هم على طريق المعرض." },
+      { s: "B", c: "#00c853", e: "What is your favorite museum?", a: "المتحف المفضل عندك أيهم؟" },
+      { s: "A", c: "#ff9100", e: "My favorite is the Science Museum.", a: "المتحف المفضل عندي المتحف العلمي." },
+      { s: "B", c: "#00c853", e: "Is it an interesting place?", a: "هل هو مكان مثير للاهتمام؟" },
+      { s: "A", c: "#ff9100", e: "Yes, it is. It has many interesting things.", a: "نعم. فيه أشياء كتير مثيرة للاهتمام." },
+      { s: "B", c: "#00c853", e: "Do you think I would like it?", a: "هل تعتقد أنني سأعجب به؟" },
+      { s: "A", c: "#ff9100", e: "Yes, I think you would like it a lot.", a: "نعم، أعتقد أنك ستعجب به جداً." },
+      { s: "B", c: "#00c853", e: "Would you like to go there?", a: "هل تحب نروح هناك؟" },
+      { s: "A", c: "#ff9100", e: "Sure, I'd love to!", a: "أكيد، أحب ذلك!" }
     ],
     voc: [
-      { e: "Excuse me", a: "عفواً", d: "للإذن أو جلب الانتباه.", cl: ["Excuse me, where is...?"], ms: [{ w: "sorry", c: "excuse me", n: "excuse me للإذن، sorry للاعتذار" }], us: [{ t: "لجلب الانتباه", e: "Excuse me, where is the gate?", a: "عفواً، البوابة فين؟" }, { t: "للإذن", e: "Excuse me, can I sit here?", a: "عفواً، ممكن أجلس هنا؟" }] },
-      { e: "Free", a: "فارغ", d: "غير مشغول. مقعد فارغ = free seat.", cl: ["Is this seat free?"], ms: [{ w: "empty", c: "free", n: "free = غير مشغول، empty = فارغ تماماً" }], us: [{ t: "في السؤال", e: "Is this seat free?", a: "المقعد ده فاضي؟" }, { t: "في الرد", e: "Yes, it's free. Go ahead.", a: "أيوه، فاضي. تفضل." }] },
-      { e: "Go ahead", a: "تفضل", d: "إذن بالفعل. بديل لـ Please.", cl: ["Go ahead"], ms: [{ w: "go on", c: "go ahead", n: "go ahead أدق" }], us: [{ t: "في الإذن", e: "Can I sit here? — Go ahead!", a: "ممكن أجلس هنا؟ — تفضل!" }, { t: "في التحدث", e: "You go ahead. I'll wait.", a: "أنت تكلم. أنا هستنى." }] },
-      { e: "As well", a: "أيضاً", d: "بديل رسمى لـ too.", cl: ["As well"], ms: [{ w: "as well too", c: "as well", n: "لا نستخدم as well too" }], us: [{ t: "في الإضافة", e: "I'm going to London as well.", a: "أنا كمان رايح لندن." }, { t: "في الموافقة", e: "Me as well!", a: "أنا كمان!" }] },
-      { e: "Conference", a: "مؤتمر", d: "مؤتمر رسمى. Seminar = ندوة.", cl: ["Attend a conference"], ms: [{ w: "meeting", c: "conference", n: "conference أكبر من meeting" }], us: [{ t: "في الحضور", e: "I'm going to attend a conference.", a: "رايح أحضر مؤتمر." }, { t: "في السؤال", e: "What kind of conference?", a: "مؤتمر إيه؟" }] },
-      { e: "Sounds interesting", a: "يبدو ممتعاً", d: "تعبير عن الإعجاب. Sounds + صفة.", cl: ["Sounds interesting", "Sounds great"], ms: [{ w: "it sounds", c: "sounds", n: "نحذف it في العامية" }], us: [{ t: "في التعبير", e: "That sounds interesting!", a: "ده يبدو ممتعاً!" }, { t: "في الموافقة", e: "Sounds great! Let's do it.", a: "يبدو حلو! يلا نعمله." }] }
+      { e: "Public transport", a: "النقل العام", d: "النقل العام أو الجماعي. مرادفات: Public Transit, Mass Transit.", cl: ["Public transport system", "Public transit systems"], ms: [{ w: "public transportation", c: "public transport", n: "transport و transportation صحيحتان" }], us: [{ t: "في السؤال", e: "Where is the public transport station?", a: "محطة النقل العام فين؟" }, { t: "في الوصف", e: "Public transport is efficient.", a: "النقل العام فعال." }] },
+      { e: "Public Transit / Mass Transit", a: "مرادفات للنقل العام", d: "Mass transit systems are efficient. أنظمة النقل الجماعي فعالة.", cl: ["Mass transit systems are efficient"], ms: [{ w: "public transit", c: "mass transit", n: "كلاهما مرادف للنقل العام" }], us: [{ t: "في الوصف", e: "Mass transit systems are efficient.", a: "أنظمة النقل الجماعي فعالة." }] },
+      { e: "Ready", a: "جاهز", d: "صفة تأتي بعد فعل الكينونة (am/is/are). Are you ready to leave?", cl: ["Are you ready to leave?", "I'm ready."], ms: [{ w: "ready to go", c: "ready", n: "ready = جاهز" }], us: [{ t: "في السؤال", e: "Are you ready to leave?", a: "هل أنت جاهز للذهاب؟" }, { t: "في الرد", e: "Yes, I'm ready.", a: "نعم، أنا جاهز." }] },
+      { e: "Would you like...", a: "هل تحب... / هل تريد...", d: "تُستخدم للعرض أو الاقتراح بلطف. أكثر تهذيباً من Do you want.", cl: ["Would you like me to show you?", "Would you like to go there?"], ms: [{ w: "Do you want", c: "Would you like", n: "Would you like أرق وأكثر تهذيباً" }], us: [{ t: "في العرض", e: "Would you like me to show you the public transport system?", a: "هل تحب أوريك نظام النقل العام؟" }, { t: "في الاقتراح", e: "Would you like to go there?", a: "هل تحب نروح هناك؟" }] },
+      { e: "A little tired", a: "قليلاً متعب", d: "A little تأتي قبل الصفة لتقليل درجتها. a little tired = قليلاً متعب.", cl: ["I'm a little tired"], ms: [{ w: "a little bit tired", c: "a little tired", n: "a little = قليلاً" }], us: [{ t: "في الوصف", e: "I'm a little tired.", a: "أنا قليلاً متعب." }] },
+      { e: "Then", a: "إذاً", d: "تُستخدم للربط بين الجمل. Okay then, let's go = تمام إذن، يلا بنا.", cl: ["Okay then, let's go"], ms: [{ w: "so", c: "then", n: "then و so مترادفتان" }], us: [{ t: "في الربط", e: "Okay then, let's go.", a: "تمام إذن، يلا بنا." }] },
+      { e: "Located", a: "يقع / تقع", d: "صفة من الفعل locate. Where are the museums located? = المتاحف فين موجودة؟", cl: ["Where are the museums located?"], ms: [{ w: "location", c: "located", n: "located = يقع، location = موقع" }], us: [{ t: "في السؤال", e: "Where are the museums located?", a: "المتاحف فين موجودة؟" }, { t: "في الإجابة", e: "They're located on Exhibition Road.", a: "هم موجودين على طريق المعرض." }] },
+      { e: "Far from", a: "بعيد عن", d: "يُستخدم للتعبير عن المسافة. not far from here = مش بعيد من هنا.", cl: ["They are not far from here"], ms: [{ w: "far to", c: "far from", n: "نستخدم from مع far" }], us: [{ t: "في السؤال", e: "Is it far from here?", a: "هل هو بعيد من هنا؟" }, { t: "في الإجابة", e: "No, it's not far from here.", a: "لا، مش بعيد من هنا." }] },
+      { e: "Exhibition Road", a: "طريق المعرض", d: "اسم شارع في لندن. The road is called Exhibition Road.", cl: ["The road is called Exhibition Road"], ms: [{ w: "exhibition", c: "exhibition", n: "exhibition = معرض" }], us: [{ t: "في الوصف", e: "The road is called Exhibition Road.", a: "الشارع اسمه طريق المعرض." }] },
+      { e: "Named / Called", a: "يُسمى / يُطلق عليه", d: "يُستخدم لتسمية الأماكن والأسماء. The road is called... = الشارع اسمه...", cl: ["The road is called Exhibition Road", "It is named after..."], ms: [{ w: "named", c: "called", n: "called أكثر شيوعاً" }], us: [{ t: "في التسمية", e: "The road is called Exhibition Road.", a: "الشارع اسمه طريق المعرض." }, { t: "في السبب", e: "It is named after a famous scientist.", a: "يُسمى تكريماً لعالم مشهور." }] },
+      { e: "Museum", a: "متحف", d: "مكان لعرض القطع التاريخية والعلمية. المتاحف في لندن كتير.", cl: ["Science Museum", "The museum is interesting"], ms: [{ w: "museums", c: "museum", n: "مفرده museum، جمعه museums" }], us: [{ t: "في السؤال", e: "What is your favorite museum?", a: "المتحف المفضل عندك أيهم؟" }, { t: "في الإجابة", e: "My favorite is the Science Museum.", a: "المتحف المفضل عندي المتحف العلمي." }] },
+      { e: "Interesting", a: "مثير للاهتمام", d: "صفة لوصف الشيء المشوق. It is an interesting place = مكان مثير للاهتمام.", cl: ["It is an interesting place", "Many interesting things"], ms: [{ w: "interested", c: "interesting", n: "interested = مهتم، interesting = مثير للاهتمام" }], us: [{ t: "في الوصف", e: "It is an interesting place.", a: "هو مكان مثير للاهتمام." }, { t: "في الإضافة", e: "It has many interesting things.", a: "فيه أشياء كتير مثيرة للاهتمام." }] },
+      { e: "Do you think I would like it?", a: "هل تعتقد أنني سأعجب به؟", d: "يُستخدم would بدل will للتخيل أو الاحتمال. I think you would like it = أعتقد أنك ستعجب به.", cl: ["Do you think I would like it?"], ms: [{ w: "Do you think I will like it?", c: "Do you think I would like it?", n: "would للتخيل والاحتمال" }], us: [{ t: "في السؤال", e: "Do you think I would like it?", a: "هل تعتقد أنني سأعجب به؟" }, { t: "في الإجابة", e: "Yes, I think you would like it a lot.", a: "نعم، أعتقد أنك ستعجب به جداً." }] }
     ],
     gram: [
-      { t: "Excuse me للاستئذان", d: "نبدأ بها عند التحدث لغريب.", ex: [{ e: "Excuse me, is anyone sitting here?", a: "عفواً، هل يجلس أحد هنا؟" }], tp: "لا تستخدمها مع الأصدقاء" },
-      { t: "Is anyone sitting here؟", d: "سؤال مهذب للتحقق من مقعد فارغ.", ex: [{ e: "Is anyone sitting here?", a: "هل يجلس أحد هنا؟" }], tp: "أرق من Can I sit here?" }
+      { t: "1. استخدام (A / An) مع الصفات", d: "تُوضع أداة التعريف قبل الصفة إذا كان الموصوف مفرد ومذكور. It is an interesting place / many interesting things.", ex: [{ e: "It is an interesting place.", a: "هو مكان مثير للاهتمام." }, { e: "It has many interesting things.", a: "فيه أشياء كتير مثيرة للاهتمام." }], tp: "A مع الأسماء المبتدئة بحرف ساكن، An مع الحروف الصوتية" },
+      { t: "2. حذف الكلمة اختصاراً", d: "عدم تكرار الكلمة إذا كان السياق واضحاً. My favorite is the Science Museum (بدون تكرار museum).", ex: [{ e: "What is your favorite museum? — My favorite is the Science Museum.", a: "المتحف المفضل عندك أيهم؟ — المتحف المفضل عندي المتحف العلمي." }], tp: "لا نكرر museum في الإجابة" },
+      { t: "3. التعبير عن التردد بذوق", d: "استخدام عبارات مهذبة بدلاً من الرفض الفج. I'm not sure (لست متأكداً) أو I'm a little tired (أنا قليلاً متعب).", ex: [{ e: "I'm a little tired.", a: "أنا قليلاً متعب." }], tp: "A little قبل الصفة لتقليل الدرجة" },
+      { t: "4. الحالة الثانية للافتراض (would)", d: "يُستخدم would بدل will للتخيل أو الاحتمال أو الطلب المهذب. Do you think I would like it?", ex: [{ e: "Do you think I would like it?", a: "هل تعتقد أنني سأعجب به؟" }, { e: "Would you like me to show you?", a: "هل تحب أوريك؟" }], tp: "would للتخيل، will للحقيقة" },
+      { t: "5. Would you like للعرض والاقتراح", d: "أكثر تهذيباً من Do you want. تُستخدم للعرض أو الدعوة بلطف.", ex: [{ e: "Would you like me to show you the public transport system?", a: "هل تحب أوريك نظام النقل العام؟" }, { e: "Would you like to go there?", a: "هل تحب نروح هناك؟" }], tp: "Would you like = هل تحب (أرق من Do you want)" },
+      { t: "6. Located و Far from", d: "Located = يقع/يقع. Far from = بعيد عن. نستخدم These/They مع المتاحف لأنها جمع.", ex: [{ e: "Where are the museums located?", a: "المتاحف فين موجودة؟" }, { e: "They are not far from here.", a: "هم مش بعيد من هنا." }], tp: "They مع الجمع، It مع المفرد" },
+      { t: "7. Named / Called للتسمية", d: "يُستخدم لتسمية الأماكن والأسماء. The road is called... = الشارع اسمه...", ex: [{ e: "The road is called Exhibition Road.", a: "الشارع اسمه طريق المعرض." }], tp: "called أكثر شيوعاً من named" }
     ],
     pron: [
-      { w: "Excuse me", t: "تنطق اكسكيوز مي" },
-      { w: "Conference", t: "تنطق كونفرنس بسكون" }
+      { w: "Public transport", t: "تنطق بابليك ترانسبورت ب Stress على第一个音节" },
+      { w: "Exhibition", t: "تنطق ايكسهيبيشن ب Stress على the第三个音节" },
+      { w: "Would you like", t: "تنطق وود يو لايك بسرعة كجملة واحدة" },
+      { w: "Museum", t: "تنطق ميوزيام ب Stress على the第二个音节" }
     ],
     cul: [
-      { n: "في الطائرة، Excuse me أرق من Can I?" },
-      { n: "Sounds interesting تعبير أمريكى شائيع" }
+      { n: "النقل العام في لندن: Undergound (المترو)، Bus (الحافلات)، Overground (القطار السطحي)" },
+      { n: "Exhibition Road في لندن طريق مشهور يضم المتاحف العلمية" },
+      { n: "Science Museum في لندن مجاني وشائع جداً" },
+      { n: "British Museum (المتحف البريطاني) مجاني أيضاً" },
+      { n: "في بريطانيا نقول Museum بلفظ ميوزيوم، وفي أمريكا ميوزيام" }
     ],
     ex: [
-      { tp: "mcq", q: "كيف تبدأ حوار مع غريب؟", a: "", o: ["Excuse me", "Hey you", "Listen", "Come here"], c: 0 },
-      { tp: "fill", q: "No, it is ________. Please go ahead.", a: "فارغ", an: "free" },
-      { tp: "mcq", q: "ماذا تعني Sounds interesting؟", a: "", o: ["يبدو غريباً", "يبدو ممتعاً", "يبدو صعباً", "يبدو سهلاً"], c: 1 },
-      { tp: "reorder", q: "رتّب", a: "هل يجلس أحد هنا", w: ["is", "anyone", "sitting", "here"] },
-      { tp: "match", q: "طابق", p: [["Excuse me", "عفواً"], ["Free", "فارغ"], ["Go ahead", "تفضل"], ["As well", "أيضاً"]] },
-      { tp: "fill", q: "Are you on your ________ to London as well?", a: "في طريقك", an: "way" },
-      { tp: "mcq", q: "هل تقول Excuse me للصديق؟", a: "", o: ["أحياناً", "دائماً", "لا حاجة", "فقط في المكتب"], c: 2 },
-      { tp: "listen", q: "استمع واختر", en: "Excuse me, is anyone sitting here?", o: ["هل هذا مقعدك؟", "هل يجلس أحد هنا؟", "أين جلوسي؟", "ممكن أجلس؟"], c: 1 },
-      { tp: "translate", q: "ترجم: عفواً، هل يجلس أحد هنا؟", a: "", an: "excuse me is anyone sitting here" },
-      { tp: "mcq", q: "Conference تعني:", a: "", o: ["مؤتمر", "مقابلة", "محادثة", "ندوة"], c: 0 },
-      { tp: "egpt", q: "ازاي تقول 'عفواً، هل يجلس أحد هنا' بالإنجليزي؟", hint: "فكر في: Excuse me, is anyone sitting here", an: "excuse me is anyone sitting here", ph: "اكتب الإنجليزي..." },
-      { tp: "usage", q: "اكتب جملة باستخدام كلمة conference", w: "conference" }
+      { tp: "mcq", q: "كيف تسأل عن مكان المتاحف؟", a: "", o: ["Where are the museums located?", "Where are the museums?", "What is the museum?", "How are the museums?"], c: 0 },
+      { tp: "mcq", q: "ما الفرق بين would و will؟", a: "", o: ["would للتخيل، will للحقيقة", "will للتخيل، would للحقيقة", "كلاهما متساويان", "لا فرق"], c: 0 },
+      { tp: "fill", q: "Would you ________ me to show you?", a: "هل تحب أوريك", an: "like" },
+      { tp: "reorder", q: "رتّب الجملة: المتاحف فين موجودة؟", a: "where are the museums located", w: ["where", "are", "the", "museums", "located"] },
+      { tp: "match", q: "طابق الكلمة بالمعنى", p: [["Public transport", "النقل العام"], ["Located", "يقع/يقع"], ["Far from", "بعيد عن"], ["Interesting", "مثير للاهتمام"]] },
+      { tp: "mcq", q: "ماذا تعني Would you like?", a: "", o: ["هل تحب / هل تريد", "هل تستطيع", "هل يجب", "هل أنت"], c: 0 },
+      { tp: "fill", q: "It is ________ interesting place.", a: "مكان مثير للاهتمام", an: "an" },
+      { tp: "listen", q: "استمع واختر الإجابة", en: "They are not far from here.", o: ["هم قريبين من هنا", "هم بعيد عن هنا", "هم موجودين هنا", "هم مش هنا"], c: 1 },
+      { tp: "translate", q: "ترجم: هل تحب نروح هناك؟", a: "", an: "would you like to go there" },
+      { tp: "mcq", q: "الscience Museum في لندن:", a: "", o: ["مجاني وشائع", "غالي جداً", "مغلق", "صغير"], c: 0 },
+      { tp: "egpt", q: "ازاي تسأل 'المتاحف فين موجودة' بالإنجليزي؟", hint: "فكر في: Where are the museums located?", an: "where are the museums located", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة museum", w: "museum" }
     ]
   }
 ];

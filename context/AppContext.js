@@ -4,19 +4,20 @@ import { LESSONS } from '@/data/lessons'
 
 const AppContext = createContext()
 
-const STORAGE_KEY = 'zAE_v4'
+const STORAGE_KEY = 'zAE_v5'
 
 function getDefaultState() {
   return {
     xp: 0,
-    str: 1,
-    bst: 1,
+    str: 0,
+    bst: 0,
     dly: 0,
-    ld: new Date().toDateString(),
+    ld: '',
     tot: 0,
     cor: 0,
     wrd: 0,
     don: [],
+    prg: {},
     srs: [],
     ach: [],
     dk: false,
@@ -27,7 +28,9 @@ function loadState() {
   if (typeof window === 'undefined') return getDefaultState()
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
-    return saved ? { ...getDefaultState(), ...JSON.parse(saved) } : getDefaultState()
+    if (!saved) return getDefaultState()
+    const parsed = JSON.parse(saved)
+    return { ...getDefaultState(), ...parsed }
   } catch {
     return getDefaultState()
   }
@@ -37,6 +40,42 @@ function saveState(state) {
   if (typeof window === 'undefined') return
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
 }
+
+function getToday() {
+  return new Date().toDateString()
+}
+
+function getYesterday() {
+  const d = new Date()
+  d.setDate(d.getDate() - 1)
+  return d.toDateString()
+}
+
+function checkStreak(state) {
+  const today = getToday()
+  const yesterday = getYesterday()
+
+  if (state.ld === today) return state
+
+  if (state.ld === yesterday) {
+    return { ...state, str: state.str + 1, dly: 0, ld: today }
+  }
+
+  if (state.ld === '') {
+    return { ...state, str: 1, dly: 0, ld: today }
+  }
+
+  return { ...state, str: 1, dly: 0, ld: today }
+}
+
+const SRS_INTERVALS = [
+  1000 * 60 * 60,
+  1000 * 60 * 60 * 12,
+  1000 * 60 * 60 * 24,
+  1000 * 60 * 60 * 24 * 3,
+  1000 * 60 * 60 * 24 * 7,
+  1000 * 60 * 60 * 24 * 30,
+]
 
 function reducer(state, action) {
   switch (action.type) {
@@ -48,6 +87,12 @@ function reducer(state, action) {
       const { correct, total, lessonId, wordsLearned } = action.payload
       const newDon = state.don.includes(lessonId) ? state.don : [...state.don, lessonId]
       const newDly = state.dly + total
+      const newPrg = { ...state.prg }
+      const prev = newPrg[lessonId] || { correct: 0, total: 0 }
+      newPrg[lessonId] = {
+        correct: prev.correct + correct,
+        total: prev.total + total,
+      }
       const newBst = Math.max(state.bst, state.str)
       return {
         ...state,
@@ -56,7 +101,7 @@ function reducer(state, action) {
         dly: newDly,
         wrd: state.wrd + wordsLearned,
         don: newDon,
-        str: state.str,
+        prg: newPrg,
         bst: newBst,
       }
     }
@@ -72,21 +117,16 @@ function reducer(state, action) {
     case 'RATE_SRS': {
       const { index, level } = action.payload
       const newSrs = [...state.srs]
-      const intervals = [900000, 300000, 60000]
+      const interval = SRS_INTERVALS[Math.min(level, SRS_INTERVALS.length - 1)]
       newSrs[index] = {
         ...newSrs[index],
         lv: level,
-        nx: Date.now() + intervals[level],
+        nx: Date.now() + interval,
       }
       return { ...state, srs: newSrs }
     }
-    case 'CHECK_DAY': {
-      const today = new Date().toDateString()
-      if (state.ld !== today) {
-        return { ...state, dly: 0, ld: today }
-      }
-      return state
-    }
+    case 'CHECK_DAY':
+      return checkStreak(state)
     case 'RESET':
       return getDefaultState()
     default:
@@ -104,10 +144,37 @@ export function AppProvider({ children }) {
   }, [])
 
   useEffect(() => {
-    if (state.xp > 0 || state.don.length > 0) {
-      saveState(state)
-    }
+    saveState(state)
   }, [state])
+
+  useEffect(() => {
+    if (state.dly >= 5 && !state.ach.includes('d5')) {
+      dispatch({ type: 'UNLOCK_ACH', payload: 'd5' })
+    }
+    if (state.xp >= 100 && !state.ach.includes('x1')) {
+      dispatch({ type: 'UNLOCK_ACH', payload: 'x1' })
+    }
+    if (state.xp >= 500 && !state.ach.includes('x5')) {
+      dispatch({ type: 'UNLOCK_ACH', payload: 'x5' })
+    }
+    if (state.don.length >= 8 && !state.ach.includes('all')) {
+      dispatch({ type: 'UNLOCK_ACH', payload: 'all' })
+    }
+    for (let i = 1; i <= 8; i++) {
+      const lessonId = String(i)
+      const prg = state.prg[lessonId]
+      if (prg && prg.total >= 8 && prg.correct === prg.total && !state.ach.includes(`p${i}`)) {
+        dispatch({ type: 'UNLOCK_ACH', payload: `p${i}` })
+      }
+    }
+  }, [state.dly, state.xp, state.don.length, state.prg, state.ach])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      dispatch({ type: 'CHECK_DAY' })
+    }, 60000)
+    return () => clearInterval(interval)
+  }, [])
 
   const addXP = useCallback((n) => dispatch({ type: 'ADD_XP', payload: n }), [])
 
@@ -131,6 +198,7 @@ export function AppProvider({ children }) {
   }, [])
 
   const buildSRS = useCallback(() => {
+    if (state.srs.length > 0) return
     const srs = []
     LESSONS.forEach((lesson) => {
       lesson.voc.forEach((v) => {
@@ -146,7 +214,7 @@ export function AppProvider({ children }) {
       })
     })
     setSRS(srs)
-  }, [setSRS])
+  }, [setSRS, state.srs.length])
 
   const value = {
     ...state,

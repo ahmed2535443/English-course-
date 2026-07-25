@@ -26,8 +26,10 @@ const SHADOWS = [
 ]
 
 export default function LessonCard({ lesson, index }) {
-  const { don } = useApp()
+  const { don, prg } = useApp()
   const isDone = don.includes(lesson.id)
+  const progress = prg[lesson.id]
+  const pct = progress && progress.total > 0 ? Math.round((progress.correct / progress.total) * 100) : 0
 
   return (
     <motion.div
@@ -63,6 +65,16 @@ export default function LessonCard({ lesson, index }) {
                 📝 {lesson.ex.length}
               </span>
             </div>
+            {progress && progress.total > 0 && (
+              <div className="mt-2">
+                <div className="flex items-center gap-2">
+                  <div className="progress-track flex-1 h-1.5">
+                    <div className="progress-fill h-full" style={{ width: `${pct}%` }} />
+                  </div>
+                  <span className="text-[10px] font-bold text-[var(--text-muted)]">{pct}%</span>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Arrow */}

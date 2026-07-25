@@ -8,11 +8,15 @@ export default function UsageSentence({ word, onAnswer }) {
   const [isCorrect, setIsCorrect] = useState(false)
 
   const handleCheck = () => {
-    if (!value.trim()) return
+    const trimmed = value.trim()
+    if (!trimmed) return
     setChecked(true)
-    const correct = value.trim().length > 5 && /[a-zA-Z]/.test(value)
+    const hasWord = new RegExp(`\\b${word.toLowerCase()}\\b`, 'i').test(trimmed)
+    const hasLetters = /[a-zA-Z]{3,}/.test(trimmed)
+    const longEnough = trimmed.split(/\s+/).length >= 3
+    const correct = hasWord && hasLetters && longEnough
     setIsCorrect(correct)
-    onAnswer(correct, 'جملة رائعة!')
+    onAnswer(correct, `استخدمت "${word}" في جملة صحيحة`)
   }
 
   return (
@@ -31,6 +35,12 @@ export default function UsageSentence({ word, onAnswer }) {
         }`}
         style={{ display: 'block' }}
       />
+      {checked && !isCorrect && (
+        <div className="text-xs text-[var(--text-muted)] text-center mt-1">
+          {!new RegExp(`\\b${word.toLowerCase()}\\b`, 'i').test(value) && <span>الجملة لازم تحتوي على "<strong>{word}</strong>" • </span>}
+          {value.split(/\s+/).length < 3 && <span>الجملة قصيرة - اكتب 3 كلمات على الأقل</span>}
+        </div>
+      )}
       {!checked && (
         <motion.button
           whileTap={{ scale: 0.97 }}

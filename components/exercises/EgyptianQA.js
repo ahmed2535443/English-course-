@@ -2,14 +2,31 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
+function similarity(a, b) {
+  const al = a.toLowerCase().trim()
+  const bl = b.toLowerCase().trim()
+  if (al === bl) return 1
+  if (al.includes(bl) || bl.includes(al)) return 0.85
+  const aWords = al.split(/\s+/)
+  const bWords = bl.split(/\s+/)
+  const common = aWords.filter(w => bWords.includes(w))
+  return common.length / Math.max(aWords.length, bWords.length)
+}
+
 export default function EgyptianQA({ question, hint, answer, placeholder, onAnswer }) {
   const [value, setValue] = useState('')
   const [checked, setChecked] = useState(false)
+  const [isCorrect, setIsCorrect] = useState(false)
 
   const handleCheck = () => {
-    if (!value.trim()) return
+    const trimmed = value.trim()
+    if (!trimmed) return
     setChecked(true)
-    onAnswer(true, answer)
+    const hasEnglish = /[a-zA-Z]{2,}/.test(trimmed)
+    const score = similarity(trimmed, answer)
+    const correct = hasEnglish && score >= 0.5
+    setIsCorrect(correct)
+    onAnswer(correct, answer)
   }
 
   return (
@@ -24,9 +41,12 @@ export default function EgyptianQA({ question, hint, answer, placeholder, onAnsw
           onKeyDown={(e) => e.key === 'Enter' && handleCheck()}
           disabled={checked}
           placeholder={placeholder}
-          className={`input max-w-sm mx-auto text-center ${checked ? 'input-success' : ''}`}
+          className={`input max-w-sm mx-auto text-center ${checked ? (isCorrect ? 'input-success' : 'input-error animate-shake') : ''}`}
           style={{ display: 'block' }}
         />
+        {checked && !isCorrect && (
+          <div className="text-xs text-[var(--accent-green)] mt-2 font-medium direction-ltr">{answer}</div>
+        )}
       </div>
       {!checked && (
         <motion.button

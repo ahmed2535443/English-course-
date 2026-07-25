@@ -61,7 +61,7 @@ export default function LessonPage({ params }) {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title={`الحلقة ${lesson.id}`} onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container">
+        <main className="flex-1 page-container pb-32">
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mb-4 hover:underline"

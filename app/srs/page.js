@@ -57,7 +57,7 @@ export default function SRSPage() {
   }
 
   const StartScreen = () => (
-    <div className="flex-1 page-container flex items-center justify-center">
+    <div className="flex-1 page-container flex items-center justify-center pb-32">
       <motion.div
         initial={{ opacity: 0, scale: 0.97 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -83,7 +83,7 @@ export default function SRSPage() {
   )
 
   const ReviewScreen = () => (
-    <main className="flex-1 page-container max-w-lg mx-auto">
+    <main className="flex-1 page-container max-w-lg mx-auto pb-32">
       <div className="flex items-center justify-between mb-3">
         <button onClick={() => setStarted(false)} className="text-sm text-primary font-semibold hover:underline">← خروج</button>
         <div className="text-sm text-[var(--text-muted)] font-semibold">{currentIndex + 1}/{words.length}</div>

@@ -32,7 +32,7 @@ export default function StatsPage() {
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="إحصائيات" onMenuClick={() => setSidebarOpen(true)} />
-        <main className="flex-1 page-container">
+        <main className="flex-1 page-container pb-32">
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="section-gap">
             <h2 className="text-lg md:text-xl font-extrabold text-[var(--text-primary)]">📊 الإحصائيات</h2>
             <p className="text-sm text-[var(--text-muted)] mt-0.5">تتبع تقدمك في الكورس</p>

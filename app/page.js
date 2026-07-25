@@ -26,7 +26,7 @@ export default function HomePage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="الدروس" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container">
+        <main className="flex-1 page-container pb-32">
           <StreakBanner />
 
           <motion.div

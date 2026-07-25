@@ -4,6 +4,9 @@ import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { LESSONS } from '@/data/lessons'
 import { useApp } from '@/context/AppContext'
+import Sidebar from '@/components/Sidebar'
+import TopNav from '@/components/TopNav'
+import BottomNav from '@/components/BottomNav'
 import MCQ from '@/components/exercises/MCQ'
 import FillBlank from '@/components/exercises/FillBlank'
 import Reorder from '@/components/exercises/Reorder'
@@ -29,6 +32,7 @@ export default function ExercisePage({ params }) {
     ach,
   } = useApp()
 
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [currentEx, setCurrentEx] = useState(0)
   const [results, setResults] = useState([])
   const [showModal, setShowModal] = useState(false)
@@ -110,7 +114,6 @@ export default function ExercisePage({ params }) {
 
     completeExercise(correct, total, lesson.id, wordsLearned)
 
-    // Check achievements
     if (rate === 100) {
       const achId = `p${lesson.id}`
       if (!ach.includes(achId)) unlockAchievement(achId)
@@ -175,83 +178,91 @@ export default function ExercisePage({ params }) {
   const label = exerciseLabels[exercise?.tp] || ['تمرين', 'bg-primary']
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] dark:bg-[#0a0a0a] p-4 md:p-6">
-      <div className="max-w-md mx-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="text-base font-bold">الحلقة {lesson.id}: {lesson.t}</div>
-          <div className="text-sm text-neutral-500 font-semibold">
-            {currentEx + 1}/{exercises.length}
+    <div className="flex min-h-screen">
+      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+      <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
+        <TopNav title={`الحلقة ${lesson.id}: تمرين`} onMenuClick={() => setSidebarOpen(true)} />
+
+        <main className="flex-1 p-4 md:p-6 max-w-[800px] w-full mx-auto pb-24 lg:pb-6">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="text-base font-bold">الحلقة {lesson.id}: {lesson.t}</div>
+            <div className="text-sm text-neutral-500 font-semibold">
+              {currentEx + 1}/{exercises.length}
+            </div>
           </div>
-        </div>
 
-        {/* Progress bar */}
-        <div className="w-full h-1.5 bg-neutral-200 dark:bg-neutral-800 rounded-full mb-6 overflow-hidden">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
-          />
-        </div>
+          {/* Progress bar */}
+          <div className="w-full h-1.5 bg-neutral-200 dark:bg-neutral-800 rounded-full mb-6 overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
+            />
+          </div>
 
-        {/* Exercise card */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentEx}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.3 }}
-            className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 md:p-8 text-center"
-          >
-            <span
-              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-white mb-4 ${label[1]}`}
+          {/* Exercise card */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentEx}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 md:p-8 text-center"
             >
-              {label[0]}
-            </span>
+              <span
+                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-white mb-4 ${label[1]}`}
+              >
+                {label[0]}
+              </span>
 
-            {exercise?.q && exercise.tp !== 'reorder' && (
-              <p className="text-lg font-bold mb-5 leading-relaxed">{exercise.q}</p>
-            )}
+              {exercise?.q && exercise.tp !== 'reorder' && (
+                <p className="text-lg font-bold mb-5 leading-relaxed">{exercise.q}</p>
+              )}
 
-            {renderExercise()}
+              {renderExercise()}
 
-            {/* Result banner */}
-            <AnimatePresence>
-              {resultBanner && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  className={`mt-4 p-4 rounded-lg ${
-                    resultBanner.correct
-                      ? 'bg-success/10 border border-success/20'
-                      : 'bg-error/10 border border-error/20'
-                  }`}
-                >
-                  <div
-                    className={`text-base font-bold ${
-                      resultBanner.correct ? 'text-success' : 'text-error'
+              {/* Result banner */}
+              <AnimatePresence>
+                {resultBanner && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    className={`mt-4 p-4 rounded-lg ${
+                      resultBanner.correct
+                        ? 'bg-success/10 border border-success/20'
+                        : 'bg-error/10 border border-error/20'
                     }`}
                   >
-                    {resultBanner.title}
-                  </div>
-                  <div className="text-xs text-neutral-500 mt-1">{resultBanner.detail}</div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        </AnimatePresence>
+                    <div
+                      className={`text-base font-bold ${
+                        resultBanner.correct ? 'text-success' : 'text-error'
+                      }`}
+                    >
+                      {resultBanner.title}
+                    </div>
+                    <div className="text-xs text-neutral-500 mt-1">{resultBanner.detail}</div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          </AnimatePresence>
 
-        {/* Back button */}
-        <button
-          onClick={() => router.push(`/lesson/${lesson.id}`)}
-          className="mt-4 text-sm text-primary font-semibold hover:underline"
-        >
-          ← العودة للحلقة
-        </button>
+          {/* Back button */}
+          <button
+            onClick={() => router.push(`/lesson/${lesson.id}`)}
+            className="mt-4 text-sm text-primary font-semibold hover:underline"
+          >
+            ← العودة للحلقة
+          </button>
+        </main>
       </div>
+
+      <BottomNav />
 
       <Modal
         show={showModal}

@@ -7,6 +7,7 @@ import { useApp } from '@/context/AppContext'
 import { useSpeech } from '@/hooks/useSpeech'
 import Sidebar from '@/components/Sidebar'
 import TopNav from '@/components/TopNav'
+import BottomNav from '@/components/BottomNav'
 import Link from 'next/link'
 
 export default function LessonPage({ params }) {
@@ -286,15 +287,7 @@ export default function LessonPage({ params }) {
         </main>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 lg:hidden bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md border-t border-neutral-200 dark:border-neutral-800 flex z-30">
-        <Link
-          href="/"
-          className="flex-1 flex flex-col items-center py-2.5 gap-0.5 text-primary"
-        >
-          <span className="text-xl">🏠</span>
-          <span className="text-[10px] font-semibold">الرئيسية</span>
-        </Link>
-      </div>
+      <BottomNav />
     </div>
   )
 }

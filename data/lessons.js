@@ -51,57 +51,112 @@ export const LESSONS = [
   },
   {
     id: 2,
-    t: "صالة الوصول والرحلة",
-    i: "🧳",
-    w: 6,
-    n: 8,
+    t: "التعارف ومحادثة الطائرة",
+    i: "✈️",
+    w: 13,
+    n: 4,
     dlg: [
-      { s: "Thomas", c: "#0070f3", e: "Hey, Daniel!", a: "أهلاً يا دانيل!" },
-      { s: "Daniel", c: "#7928ca", e: "Thomas! How are you doing?", a: "توماس! كيف حالك؟" },
-      { s: "Thomas", c: "#0070f3", e: "I'm doing great. You look great. How was your flight over?", a: "أنا بخير جداً. تبدو ممتازاً. كيف كانت رحلتك إلى هنا؟" },
-      { s: "Daniel", c: "#7928ca", e: "It was quite a long flight.", a: "كانت رحلة طويلة جداً." },
-      { s: "Thomas", c: "#0070f3", e: "How many hours did it take?", a: "كم ساعة استغرقت؟" },
-      { s: "Daniel", c: "#7928ca", e: "It took 12 hours.", a: "استغرقت 12 ساعة." },
-      { s: "Thomas", c: "#0070f3", e: "Did you have to stop anywhere on the way?", a: "هل اضطررت للتوقف في الطريق؟" },
-      { s: "Daniel", c: "#7928ca", e: "No, it was a direct flight.", a: "لا، كانت رحلة مباشرة." },
-      { s: "Thomas", c: "#0070f3", e: "Is there going to be a lot of traffic?", a: "هل سيكون هناك زحام؟" },
-      { s: "Daniel", c: "#7928ca", e: "No, the traffic should be light.", a: "لا، المرور خفيف من المفترض." }
+      { s: "Chris", c: "#0070f3", e: "Hi, my name is Chris.", a: "مرحباً، اسمي كريس." },
+      { s: "Jane", c: "#7928ca", e: "My name is Jane.", a: "اسمي جين." },
+      { s: "Chris", c: "#0070f3", e: "Have you been on holiday in Bangkok?", a: "هل كنتِ في عطلة في بانكوك؟" },
+      { s: "Jane", c: "#7928ca", e: "No, I work there.", a: "لا، أنا أعمل هناك." },
+      { s: "Chris", c: "#0070f3", e: "Where are you from?", a: "من أين أنتِ؟" },
+      { s: "Jane", c: "#7928ca", e: "I'm from America. Really? Me too!", a: "أنا من أمريكا. حقاً؟ وأنا أيضاً!" },
+      { s: "Chris", c: "#0070f3", e: "Do you work in Bangkok too?", a: "هل تعملين في بانكوك أيضاً؟" },
+      { s: "Jane", c: "#7928ca", e: "Yes, I do work in Bangkok.", a: "نعم، أنا أعمل في بانكوك فعلاً." },
+      { s: "Chris", c: "#0070f3", e: "So why are you going to England?", a: "إذن، لماذا أنتِ ذاهبة إلى إنجلترا؟" },
+      { s: "Jane", c: "#7928ca", e: "I'm going to visit my friend, he works in London.", a: "أنا ذاهبة لزيارة صديقي، إنه يعمل في لندن." },
+      { s: "Chris", c: "#0070f3", e: "I am going to stay with my friends in London too.", a: "أنا سأقيم مع أصدقائي في لندن أيضاً." },
+      { s: "Jane", c: "#7928ca", e: "So how long will you be staying?", a: "كم المدة التي ستقيمينها؟" },
+      { s: "Chris", c: "#0070f3", e: "I will be staying for two weeks.", a: "سأقيم لمدة أسبوعين." },
+      { s: "Jane", c: "#7928ca", e: "We have a lot in common.", a: "لدينا الكثير من القواسم المشتركة." },
+      { s: "Chris", c: "#0070f3", e: "Yes, we do have a lot in common.", a: "نعم، لدينا بالفعل الكثير من القواسم المشتركة." }
     ],
     voc: [
-      { e: "How are you doing?", a: "كيف حالك؟", d: "بديل لـ How are you. الرد: I'm doing great.", cl: ["How are you doing?", "I'm doing great"], ms: [{ w: "How you doing?", c: "How are you doing?", n: "نحتاج are" }], us: [{ t: "في السؤال", e: "Hey! How are you doing?", a: "أهلاً! إزيك؟" }, { t: "في الرد", e: "I'm doing great, thanks!", a: "أنا كويس جداً، شكراً!" }] },
-      { e: "Quite", a: "جداً", d: "لا تخلط مع Quiet (هادئ).", cl: ["Quite a lot", "Quite big"], ms: [{ w: "quiet", c: "quite", n: "Quiet = هادئ" }], us: [{ t: "في الوصف", e: "The flight was quite long.", a: "الرحلة كانت طويلة جداً." }, { t: "في المقارنة", e: "London is quite expensive.", a: "لندن غالية جداً." }] },
-      { e: "Took", a: "استغرق", d: "ماضي take. It took + وقت.", cl: ["It took 2 hours", "How long did it take?"], ms: [{ w: "taked", c: "took", n: "take ماضيها irregular" }], us: [{ t: "في الوقت", e: "It took me 3 hours to get here.", a: "استغرقت 3 ساعات أجي هنا." }, { t: "في السؤال", e: "How long did it take?", a: "كم استغرق؟" }] },
-      { e: "Direct flight", a: "رحلة مباشرة", d: "رحلة بدون توقف. عكسها: Layover.", cl: ["Is this a direct flight?"], ms: [{ w: "straight flight", c: "direct flight", n: "straight خطأ" }], us: [{ t: "في السؤال", e: "Is this a direct flight or a connecting one?", a: "دي رحلة مباشرة ولا متصلة؟" }, { t: "في التوضيح", e: "I prefer direct flights.", a: "أفضل الرحلات المباشرة." }] },
-      { e: "Traffic", a: "حركة المرور", d: "الزحام المروري. Heavy traffic = زحام شديد.", cl: ["Heavy traffic", "Traffic jam"], ms: [{ w: "traffic is big", c: "traffic is heavy", n: "نستخدم heavy" }], us: [{ t: "في الوصف", e: "The traffic is terrible today.", a: "المرور وحش النهاردة." }, { t: "في السؤال", e: "Is there a lot of traffic?", a: "في زحام كتير؟" }] },
-      { e: "Light", a: "خفيف", d: "في سياق المرور = غير مزدحم.", cl: ["Traffic should be light"], ms: [{ w: "traffic is small", c: "traffic is light", n: "نستخدم light" }], us: [{ t: "في التوقع", e: "Traffic should be light at this hour.", a: "المرور المفروض خفيف الساعة دي." }, { t: "في الوصف", e: "The traffic is light now.", a: "المرور خفيف دلوقتي." }] }
+      { e: "Hi, my name is...", a: "مرحباً، اسمي هو...", d: "التعريف بالاسم عند اللقاء لأول مرة.", cl: ["Hi, my name is Chris", "Hi, my name is Jane"], ms: [{ w: "Hi, my name", c: "Hi, my name is...", n: "لا تنس استخدام is" }], us: [{ t: "في التعارف", e: "Hi, my name is Ahmed.", a: "مرحباً، اسمي أحمد." }] },
+      { e: "Have you been on holiday in...?", a: "هل كنت في عطلة في...؟", d: "السؤال عن تجربة سفر سابقة بدون تحديد وقت.", cl: ["Have you been on holiday in Bangkok?"], ms: [{ w: "Did you be in holiday", c: "Have you been on holiday", n: "نستخدم المضارع التام Have you been" }], us: [{ t: "السؤال عن سفر", e: "Have you been on holiday in Bangkok?", a: "هل كنت في عطلة في بانكوك؟" }] },
+      { e: "Where are you from?", a: "من أين أنت؟", d: "السؤال عن الموطن الأصل والبلد الأصلي.", cl: ["Where are you from?", "I'm from America"], ms: [{ w: "Where you from?", c: "Where are you from?", n: "لا تنس فعل الكينونة are" }], us: [{ t: "الموطن", e: "Where are you from? — I'm from Egypt.", a: "من أين أنت؟ — أنا من مصر." }] },
+      { e: "Where do you come from?", a: "من أي بلد تأتي؟", d: "صيغة بديلة وشائعة للسؤال عن الموطن الأصل.", cl: ["Where do you come from?"], ms: [{ w: "Where you come from?", c: "Where do you come from?", n: "تحتاج إلى الفعل المساعد do" }], us: [{ t: "السؤال البديل", e: "Where do you come from? — I come from Cairo.", a: "من أي بلد تأتي؟ — أتيت من القاهرة." }] },
+      { e: "What's your nationality?", a: "ما هي جنسيتك؟", d: "السؤال المباشر عن الجنسية في المواقف الرسمية والتعارف.", cl: ["What's your nationality?"], ms: [{ w: "What your nationality?", c: "What's your nationality?", n: "لا تنس is" }], us: [{ t: "الجنسية", e: "What's your nationality? — I'm Egyptian.", a: "ما هي جنسيتك؟ — أنا مصري." }] },
+      { e: "Really? Me too!", a: "حقاً؟ وأنا أيضاً!", d: "التعبير السريع عن التشابه والتوافق في الآراء والأحداث.", cl: ["Really? Me too!"], ms: [{ w: "I too", c: "Me too", n: "الشائع في المحادثة Me too" }], us: [{ t: "التوافق", e: "I love traveling. — Really? Me too!", a: "أنا بحب السفر. — حقاً؟ وأنا أيضاً!" }] },
+      { e: "I do work in...", a: "أنا بالفعل أعمل في...", d: "استخدام do قبل الفعل للتوكيد اللفظي القوي وتصحيح فكرة لدى السامع.", cl: ["I do work in Bangkok"], ms: [{ w: "I working in", c: "I do work in", n: "do تفيد التوكيد هنا" }], us: [{ t: "التأكيد", e: "Yes, I do work in London.", a: "نعم، أنا أعمل بالفعل في لندن." }] },
+      { e: "Why are you going to...?", a: "لماذا أنت ذاهب إلى...؟", d: "السؤال عن سبب ووجهة السفر المستقبلي.", cl: ["Why are you going to England?"], ms: [{ w: "Why you going to", c: "Why are you going to", n: "تحتاج إلى are" }], us: [{ t: "سبب السفر", e: "Why are you going to Paris?", a: "لماذا أنت ذاهب إلى باريس؟" }] },
+      { e: "I'm going to visit...", a: "أنا ذاهب لزيارة...", d: "التعبير عن خطة أو نية مجهزة ومؤكدة لزيارة شخص أو مكان.", cl: ["I'm going to visit my friend"], ms: [{ w: "I going to visit", c: "I'm going to visit", n: "لا تنس am" }], us: [{ t: "الزيارة", e: "I'm going to visit my friend in London.", a: "أنا ذاهب لزيارة صديقي في لندن." }] },
+      { e: "I'm going to stay with...", a: "أنا سأقيم مع...", d: "التعبير عن خطة الإقامة مع أصدقاء أو أقارب.", cl: ["I'm going to stay with my friends"], ms: [{ w: "I stay with", c: "I'm going to stay with", n: "خطة إقامة مستقبلية" }], us: [{ t: "الإقامة", e: "I'm going to stay with my family.", a: "سأقيم مع عائلتي." }] },
+      { e: "How long will you be staying?", a: "كم المدة التي ستقيمها؟", d: "السؤال باستخدام المستقبل المستمر عن مدة الإقامة المقررة.", cl: ["How long will you be staying?"], ms: [{ w: "How long you stay?", c: "How long will you be staying?", n: "استخدام المستقبل المستمر" }], us: [{ t: "مدة الإقامة", e: "How long will you be staying in London?", a: "كم المدة التي ستقيمها في لندن؟" }] },
+      { e: "I will be staying for...", a: "سأكون مقيماً لمدة...", d: "الإجابة عن مدة الإقامة بالزمن المستقبل المستمر.", cl: ["I will be staying for two weeks"], ms: [{ w: "I stay for", c: "I will be staying for", n: "المستقبل المستمر" }], us: [{ t: "تحديد المدة", e: "I will be staying for two weeks.", a: "سأكون مقيماً لمدة أسبوعين." }] },
+      { e: "We have a lot in common.", a: "لدينا الكثير من الأمور المشتركة.", d: "التعبير عن وجود اهتمامات وقواسم مشتركة كثيرة بين شخصين.", cl: ["We have a lot in common", "Yes, we do have a lot in common"], ms: [{ w: "We have many common", c: "We have a lot in common", n: "تعبير محادثة ثابت" }], us: [{ t: "التشابه", e: "We have a lot in common, we both love traveling.", a: "لدينا الكثير من القواسم المشتركة، كلانا يحب السفر." }] }
     ],
     gram: [
-      { t: "How was your flight over?", d: "إضافة over تعني إلى هنا.", ex: [{ e: "How was your flight over?", a: "كيف رحلتك إلى هنا؟" }], tp: "over تحدد اتجاه الوصول" },
-      { t: "It took + وقت", d: "الماضي البسيط للحدث المنتهي.", ex: [{ e: "It took 12 hours", a: "استغرقت 12 ساعة" }], tp: "take في الماضي = took" },
-      { t: "Going to للمستقبل", d: "للتوقعات والأحداث القادمة.", ex: [{ e: "Is there going to be traffic?", a: "هل سيكون زحام؟" }], tp: "will أقصر، going to للتخطيط" },
-      { t: "Should be للتوقع", d: "من المفترض أن (ليس النصيحة).", ex: [{ e: "The traffic should be light", a: "المرور من المفترض خفيف" }], tp: "should هنا = توقع لا نصيحة" }
+      {
+        t: "1. المضارع التام (Present Perfect)",
+        d: "التكوين: Have / Has + P.P (وفي السؤال: Have/Has + الفاعل + P.P). الاستخدام: حدث انتهى ونتيجته ما زالت موجودة، تجربة في الحياة بدون تحديد وقت (Have you been on holiday in Bangkok?)، حدث بدأ بالماضي وما زال مستمراً، أو حدث تكرر. الكلمات الشائعة معه: just, already, yet, ever, never, since, for, recently, lately, so far, until now.",
+        r: "Have / Has + التصريف الثالث (P.P)",
+        ex: [
+          { e: "Have you been on holiday in Bangkok?", a: "هل كنت في عطلة في بانكوك؟" },
+          { e: "I have traveled to London twice.", a: "سافرت إلى لندن مرتين." },
+          { e: "They have just arrived.", a: "وصلوا للتو." }
+        ],
+        tp: "نستخدم هذا الزمن عندما يكون الحدث في الماضي ولكن أثره أو أهميته مستمرة في الحاضر بدون تحديد وقت معين."
+      },
+      {
+        t: "2. المضارع البسيط (Present Simple)",
+        d: "التكوين: الفعل في التصريف الأول (نضيف s/es مع المفرد He/She/It). في النفي والاستفهام نستخدم Do / Does. الاستخدام: يعبر عن الحقائق الثابتة، الوظائف، العادات اليومية، والمواقف الدائمة.",
+        r: "Subject + Verb(s/es) | Do / Does",
+        ex: [
+          { e: "I work there.", a: "أنا أعمل هناك (وظيفة واستقرار دائم)." },
+          { e: "Where are you from?", a: "من أين أنت؟ (حقيقة ثابتة)." },
+          { e: "Yes, I do work in Bangkok.", a: "أنا بالفعل أعمل في بانكوك (do للتوكيد اللفظي)." },
+          { e: "She speaks English very well.", a: "هي تتحدث الإنجليزية بطلاقة." }
+        ],
+        tp: "ملاحظة هامة: استخدام do قبل الفعل الأساسي في الإيجاب (I do work) يفيد التوكيد اللفظي القوي لتصحيح فكرة لدى السامع."
+      },
+      {
+        t: "3. المضارع المستمر للتخطيط (Present Continuous)",
+        d: "التكوين: am / is / are + V-ing أو be + going to + المصدر. الاستخدام: يُستخدم في سياق السفر للتعبير عن الخطط والترتيبات المستقبلية المؤكدة والمنظمة مسبقاً (وليس فقط للأفعال التي تحدث في نفس لحظة الكلام).",
+        r: "am / is / are + V-ing | be going to + Verb",
+        ex: [
+          { e: "Why are you going to England?", a: "لماذا أنت مسافرة إلى إنجلترا؟ (ترتيبات سفر قائمة بالفعل)" },
+          { e: "I'm going to visit my friend.", a: "أنا ذاهبة لزيارة صديقي (نية وخطة مجهزة)" },
+          { e: "I am flying to Paris tomorrow night.", a: "أنا مسافر إلى باريس غداً ليلاً." }
+        ],
+        tp: "عندما تكون تذكرة الطيران أو الحجز جاهزاً، يفضل أهل اللغة استخدام هذا الزمن للتعبير عن المستقبل."
+      },
+      {
+        t: "4. المستقبل المستمر (Future Continuous)",
+        d: "التكوين: will be + V-ing (وفي النفي: won't be + V-ing). الاستخدام: يُستخدم للتعبير عن حدث سوف يكون مستمراً ومستغرقاً لوقت معين في نقطة محددة في المستقبل (مثل الإقامة أو الطيران).",
+        r: "will be + V-ing",
+        ex: [
+          { e: "How long will you be staying?", a: "كم المدة التي ستكون مقيماً خلالها؟" },
+          { e: "I will be staying for two weeks.", a: "سأكون مقيماً لمدة أسبوعين." },
+          { e: "This time tomorrow, I will be sitting on the plane.", a: "في مثل هذا الوقت غداً، سأكون جالساً في الطائرة." }
+        ],
+        tp: "هذا الزمن يركز على 'استمرارية الفعل' وديمومته في المستقبل، وهو ممتاز لوصف فترات الإجازات والإقامة في السفر."
+      }
     ],
     pron: [
-      { w: "Quite", t: "لا تخلط بين Quite (جداً) و Quiet (هادئ)" },
-      { w: "Traffic", t: "تنطق ترافيك بالفاء" }
+      { w: "I do work", t: "نبرة الصوت (Stress) تعلو على do لتأكيد الفعل وإثباته بالحديث." },
+      { w: "Where do you come from?", t: "تنطق بسرعة كجملة واحدة وتدغم do you إلى d'ya." },
+      { w: "We have a lot in common", t: "تنطق lot in متصلة ككلمة واحدة: لوتين." }
     ],
     cul: [
-      { n: "Daniel يختصر إلى Dan أو Danny" },
-      { n: "Thomas يختصر إلى Tom أو Tommy" }
+      { n: "المضارع التام (Have you been): نستخدمه للسؤال عن التجارب السابقة في الحياة دون تحديد زمن معين." },
+      { n: "التوكيد بـ do: استخدام do قبل الفعل الأساسي في الإثبات يفيد تصحيح فكرة خاطئة أو نفي شك لدى السامع." },
+      { n: "المستقبل المستمر (Future Continuous): ممتاز لوصف فترات الإجازات والإقامة الطويلة في السفر." }
     ],
     ex: [
-      { tp: "mcq", q: "كيف تسأل عن حالة صديقك؟", a: "كيف حالك؟", o: ["How are you doing?", "Where are you?", "What are you doing?", "When are you going?"], c: 0 },
-      { tp: "mcq", q: "ماذا تعني Quite في سياق Quite long؟", a: "", o: ["هادئ", "جداً", "قليلاً", "بطيء"], c: 1 },
-      { tp: "fill", q: "It ________ 12 hours.", a: "استغرقت 12 ساعة", an: "took" },
-      { tp: "reorder", q: "رتّب", a: "كانت رحلة مباشرة", w: ["it", "was", "a", "direct", "flight"] },
-      { tp: "match", q: "طابق", p: [["Direct flight", "رحلة مباشرة"], ["Traffic", "حركة المرور"], ["Light", "خفيف"], ["Took", "استغرق"]] },
-      { tp: "mcq", q: "ماذا تعني should في traffic should be light؟", a: "", o: ["ينبغي", "من المفترض أن", "يجب أن", "سيكون"], c: 1 },
-      { tp: "fill", q: "How was your flight ________?", a: "كيف كانت رحلتك إلى هنا؟", an: "over" },
-      { tp: "listen", q: "استمع واختر المعنى", en: "It was quite a long flight.", o: ["رحلة قصيرة", "رحلة طويلة جداً", "رحلة مباشرة", "رحلة صعبة"], c: 1 },
-      { tp: "mcq", q: "ما اختصار اسم Daniel؟", a: "", o: ["Dan / Danny", "Dave", "Dann", "Dee"], c: 0 },
-      { tp: "translate", q: "ترجم: المرور خفيف", a: "", an: "the traffic is light" },
-      { tp: "egpt", q: "ازاي تسأل صاحبك 'ازيك' بالإنجليزي؟", hint: "فيه 4 كلمات: How + are + you + doing", an: "how are you doing", ph: "اكتب الإنجليزي..." },
-      { tp: "usage", q: "اكتب جملة باستخدام كلمة traffic", w: "traffic" }
+      { tp: "mcq", q: "كيف تسأل شخصاً عن موطنه الأصلي؟", a: "السؤال عن الموطن", o: ["Where are you from?", "How long will you stay?", "Why are you going?", "Do you work here?"], c: 0 },
+      { tp: "mcq", q: "ما فائدة استخدام do في جملة 'Yes, I do work in Bangkok'؟", a: "التوكيد اللفظي", o: ["التوكيد اللفظي القوي لتصحيح فكرة لدى السامع", "النفي والإثبات", "السؤال عن الماضي", "التردد والاحتمال"], c: 0 },
+      { tp: "fill", q: "Have you ________ on holiday in Bangkok?", a: "هل كنت في عطلة؟", an: "been" },
+      { tp: "reorder", q: "رتّب الجملة: لدينا الكثير من الأمور المشتركة", a: "we have a lot in common", w: ["we", "have", "a", "lot", "in", "common"] },
+      { tp: "match", q: "طابق العبارة بالاستخدام المناسب", p: [["Where are you from?", "السؤال عن الموطن"], ["I'm going to visit...", "التعبير عن خطة زيارة"], ["How long will you be staying?", "السؤال عن مدة الإقامة"], ["We have a lot in common", "وجود اهتمامات مشتركة"]] },
+      { tp: "mcq", q: "أي زمن تُفضل استخدامه عندما تكون تذكرة الطيران وحجز السفر جاهزاً ومؤكداً؟", a: "المستقبل والترتيبات", o: ["المضارع المستمر (I'm going to / I'm flying)", "الماضي البسيط", "المستقبل البسيط فقط", "الماضي التام"], c: 0 },
+      { tp: "fill", q: "I will be ________ for two weeks.", a: "سأكون مقيماً", an: "staying" },
+      { tp: "listen", q: "استمع واختر المعنى الصحيح", en: "We have a lot in common.", o: ["لدينا الكثير من الأمور المشتركة", "سنقيم لمدة أسبوعين", "لماذا أنت ذاهب إلى إنجلترا؟", "أنا ذاهب لزيارة صديقي"], c: 0 },
+      { tp: "translate", q: "ترجم: كم المدة التي ستقيمها؟", a: "", an: "how long will you be staying" },
+      { tp: "mcq", q: "ما التركيب الصحيح للمستقبل المستمر (Future Continuous)؟", a: "تركيب المستقبل المستمر", o: ["will be + V-ing", "will + V1", "have + P.P", "am/is/are + V-ing"], c: 0 },
+      { tp: "egpt", q: "ازاي تقول 'عندنا حاجات كتير مشتركة' بالإنجليزي؟", hint: "فكر في: We have a lot in common", an: "we have a lot in common", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة common أو تعبير in common", w: "common" }
     ]
   },
   {

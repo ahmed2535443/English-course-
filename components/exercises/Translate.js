@@ -20,7 +20,7 @@ export default function Translate({ question, answer, onAnswer }) {
   return (
     <div className="space-y-4">
       <div className="text-center">
-        <p className="text-lg font-bold mb-4">{question}</p>
+        <p className="text-lg font-bold mb-4 text-slate-800 dark:text-slate-100">{question}</p>
         <input
           type="text"
           value={value}
@@ -28,12 +28,12 @@ export default function Translate({ question, answer, onAnswer }) {
           onKeyDown={(e) => e.key === 'Enter' && handleCheck()}
           disabled={checked}
           placeholder="اكتب الترجمة بالإنجليزي..."
-          className={`w-full max-w-sm px-4 py-3 border-2 rounded-lg text-center text-base font-semibold outline-none transition-all ${
+          className={`w-full max-w-sm mx-auto block px-5 py-3.5 border-2 rounded-2xl text-center text-base font-semibold outline-none transition-all duration-200 direction-ltr ${
             checked
               ? isCorrect
-                ? 'border-success bg-success/5'
-                : 'border-error bg-error/5 animate-shake'
-              : 'border-neutral-200 dark:border-neutral-700 focus:border-primary focus:ring-2 focus:ring-primary/10'
+                ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
+                : 'border-red-400 bg-red-50 dark:bg-red-500/10 text-red-700 dark:text-red-300 animate-shake'
+              : 'border-slate-200 dark:border-slate-700 focus:border-indigo-400 dark:focus:border-indigo-500/30 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 dark:text-slate-100'
           }`}
         />
       </div>
@@ -41,7 +41,7 @@ export default function Translate({ question, answer, onAnswer }) {
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={handleCheck}
-          className="w-full max-w-sm mx-auto block py-3 rounded-lg bg-gradient-to-r from-primary to-primary-light text-white font-bold text-[15px] hover:shadow-lg transition-all"
+          className="w-full max-w-sm mx-auto block py-3.5 rounded-2xl btn-primary text-[15px]"
         >
           تحقق ✓
         </motion.button>

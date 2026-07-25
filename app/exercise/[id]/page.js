@@ -175,7 +175,17 @@ export default function ExercisePage({ params }) {
     }
   }
 
-  const label = exerciseLabels[exercise?.tp] || ['تمرين', 'bg-primary']
+  const labelColors = {
+    mcq: 'bg-gradient-to-r from-indigo-500 to-blue-500',
+    fill: 'bg-gradient-to-r from-purple-500 to-pink-500',
+    reorder: 'bg-gradient-to-r from-emerald-500 to-teal-500',
+    match: 'bg-gradient-to-r from-amber-500 to-orange-500',
+    listen: 'bg-gradient-to-r from-rose-500 to-red-500',
+    translate: 'bg-gradient-to-r from-blue-500 to-cyan-500',
+    egpt: 'bg-gradient-to-r from-pink-500 to-fuchsia-500',
+    usage: 'bg-gradient-to-r from-teal-500 to-emerald-500',
+  }
+  const label = exerciseLabels[exercise?.tp] || ['تمرين', 'mcq']
 
   return (
     <div className="flex min-h-screen">
@@ -187,19 +197,19 @@ export default function ExercisePage({ params }) {
         <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-3xl w-full mx-auto pb-24 lg:pb-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-4">
-            <div className="text-base font-bold">الحلقة {lesson.id}: {lesson.t}</div>
-            <div className="text-sm text-neutral-500 font-semibold">
+            <div className="text-base font-bold text-slate-800 dark:text-slate-100">الحلقة {lesson.id}: {lesson.t}</div>
+            <div className="text-sm text-slate-400 dark:text-slate-500 font-semibold">
               {currentEx + 1}/{exercises.length}
             </div>
           </div>
 
           {/* Progress bar */}
-          <div className="w-full h-1.5 bg-neutral-200 dark:bg-neutral-800 rounded-full mb-6 overflow-hidden">
+          <div className="w-full h-2 bg-slate-200/80 dark:bg-slate-700/50 rounded-full mb-6 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
+              className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full"
             />
           </div>
 
@@ -211,16 +221,16 @@ export default function ExercisePage({ params }) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 md:p-8 text-center"
+              className="card p-6 md:p-8 text-center"
             >
               <span
-                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-white mb-4 ${label[1]}`}
+                className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold text-white mb-5 shadow-md ${labelColors[exercise?.tp] || labelColors.mcq}`}
               >
                 {label[0]}
               </span>
 
               {exercise?.q && exercise.tp !== 'reorder' && (
-                <p className="text-lg font-bold mb-5 leading-relaxed">{exercise.q}</p>
+                <p className="text-lg md:text-xl font-bold mb-6 leading-relaxed text-slate-800 dark:text-slate-100">{exercise.q}</p>
               )}
 
               {renderExercise()}
@@ -232,20 +242,20 @@ export default function ExercisePage({ params }) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
-                    className={`mt-4 p-4 rounded-lg ${
+                    className={`mt-5 p-4 rounded-2xl ${
                       resultBanner.correct
-                        ? 'bg-success/10 border border-success/20'
-                        : 'bg-error/10 border border-error/20'
+                        ? 'bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20'
+                        : 'bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20'
                     }`}
                   >
                     <div
                       className={`text-base font-bold ${
-                        resultBanner.correct ? 'text-success' : 'text-error'
+                        resultBanner.correct ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'
                       }`}
                     >
                       {resultBanner.title}
                     </div>
-                    <div className="text-xs text-neutral-500 mt-1">{resultBanner.detail}</div>
+                    <div className="text-xs text-slate-500 mt-1">{resultBanner.detail}</div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -255,9 +265,12 @@ export default function ExercisePage({ params }) {
           {/* Back button */}
           <button
             onClick={() => router.push(`/lesson/${lesson.id}`)}
-            className="mt-4 text-sm text-primary font-semibold hover:underline"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm text-indigo-600 dark:text-indigo-400 font-semibold hover:underline"
           >
-            ← العودة للحلقة
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M10 4L6 8L10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            العودة للحلقة
           </button>
         </main>
       </div>

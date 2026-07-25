@@ -11,7 +11,7 @@ export default function Sidebar({ open, onClose }) {
   const dueCount = srs ? srs.filter((w) => w.nx <= Date.now()).length : 0
 
   const links = [
-    { href: '/', icon: '🏠', label: 'الدروس' },
+    { href: '/', icon: '📚', label: 'الدروس' },
     { href: '/achievements', icon: '🏆', label: 'إنجازات' },
     { href: '/stats', icon: '📊', label: 'إحصائيات' },
   ]
@@ -19,61 +19,74 @@ export default function Sidebar({ open, onClose }) {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex fixed top-0 right-0 bottom-0 w-[260px] bg-white border-l border-neutral-200 flex-col z-50 dark:bg-neutral-900 dark:border-neutral-800">
-        <div className="p-5 border-b border-neutral-200 dark:border-neutral-800 flex items-center gap-3">
-          <div className="w-9 h-9 bg-gradient-to-br from-primary to-secondary rounded-[10px] flex items-center justify-center text-white text-lg">
-            ✈️
-          </div>
-          <div>
-            <div className="text-[15px] font-bold">zAmericanEnglish</div>
-            <div className="text-[11px] text-neutral-500">كورس المحادثة المستوى الأول</div>
+      <aside className="hidden lg:flex fixed top-0 right-0 bottom-0 w-[260px] bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border-l border-white/40 dark:border-indigo-500/10 flex-col z-50">
+        {/* Header */}
+        <div className="p-5 border-b border-slate-200/50 dark:border-indigo-500/10">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white text-xl shadow-lg shadow-indigo-500/25">
+              ✈️
+            </div>
+            <div>
+              <div className="text-[15px] font-extrabold gradient-text">zAmericanEnglish</div>
+              <div className="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">كورس المحادثة</div>
+            </div>
           </div>
         </div>
 
+        {/* Navigation */}
         <nav className="flex-1 p-3 overflow-y-auto space-y-1">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                pathname === link.href
-                  ? 'bg-primary/10 text-primary font-semibold'
-                  : 'text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800'
-              }`}
-            >
-              <span className="text-lg w-6 text-center">{link.icon}</span>
-              {link.label}
-            </Link>
-          ))}
-          <div className="h-px bg-neutral-200 dark:bg-neutral-800 my-2" />
+          {links.map((link) => {
+            const active = pathname === link.href
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                  active
+                    ? 'bg-gradient-to-l from-indigo-500/10 to-purple-500/10 text-indigo-600 dark:text-indigo-400 shadow-sm'
+                    : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/50 hover:text-slate-700 dark:hover:text-slate-200'
+                }`}
+              >
+                <span className="text-lg w-7 text-center">{link.icon}</span>
+                {link.label}
+                {active && (
+                  <div className="mr-auto w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500" />
+                )}
+              </Link>
+            )
+          })}
+
+          <div className="h-px bg-gradient-to-l from-transparent via-slate-200 to-transparent dark:via-slate-700 my-3" />
+
           <Link
             href="/srs"
-            className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium text-secondary hover:bg-secondary/10 transition-all"
+            className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-500/10 transition-all duration-200"
           >
-            <span className="text-lg w-6 text-center">🧠</span>
+            <span className="text-lg w-7 text-center">🧠</span>
             مراجعة ذكية
             {dueCount > 0 && (
-              <span className="mr-auto bg-secondary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+              <span className="mr-auto bg-gradient-to-r from-purple-500 to-pink-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
                 {dueCount}
               </span>
             )}
           </Link>
         </nav>
 
-        <div className="p-3 border-t border-neutral-200 dark:border-neutral-800">
+        {/* Stats + Dark mode */}
+        <div className="p-3 border-t border-slate-200/50 dark:border-indigo-500/10">
           <div className="flex gap-2 mb-3">
-            <div className="flex-1 bg-neutral-100 dark:bg-neutral-800 rounded-lg p-2.5 text-center">
-              <div className="text-lg font-extrabold">{xp}</div>
-              <div className="text-[10px] text-neutral-500">⭐ النقاط</div>
+            <div className="flex-1 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-500/10 dark:to-orange-500/10 rounded-xl p-3 text-center border border-amber-100 dark:border-amber-500/15">
+              <div className="text-lg font-extrabold text-amber-600 dark:text-amber-400">{xp}</div>
+              <div className="text-[10px] font-semibold text-amber-500/70 dark:text-amber-400/60">⭐ النقاط</div>
             </div>
-            <div className="flex-1 bg-neutral-100 dark:bg-neutral-800 rounded-lg p-2.5 text-center">
-              <div className="text-lg font-extrabold">{tot}</div>
-              <div className="text-[10px] text-neutral-500">📝 تمارين</div>
+            <div className="flex-1 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-500/10 dark:to-cyan-500/10 rounded-xl p-3 text-center border border-blue-100 dark:border-blue-500/15">
+              <div className="text-lg font-extrabold text-blue-600 dark:text-blue-400">{tot}</div>
+              <div className="text-[10px] font-semibold text-blue-500/70 dark:text-blue-400/60">📝 تمارين</div>
             </div>
           </div>
           <button
             onClick={toggleDark}
-            className="w-full py-2.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-sm font-semibold hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all"
+            className="w-full py-2.5 rounded-xl bg-slate-100/80 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-700/50 transition-all duration-200"
           >
             {dk ? '☀️ الوضع الفاتح' : '🌙 الوضع الداكن'}
           </button>
@@ -88,62 +101,65 @@ export default function Sidebar({ open, onClose }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 lg:hidden"
               onClick={onClose}
             />
             <motion.aside
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-[300px] bg-white dark:bg-neutral-900 z-50 lg:hidden flex flex-col shadow-xl"
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="fixed top-0 right-0 bottom-0 w-full max-w-[300px] bg-white dark:bg-slate-900 z-50 lg:hidden flex flex-col shadow-2xl"
             >
-              <div className="p-5 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
+              <div className="p-5 border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-gradient-to-br from-primary to-secondary rounded-[10px] flex items-center justify-center text-white text-lg">
+                  <div className="w-11 h-11 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white text-xl shadow-lg shadow-indigo-500/25">
                     ✈️
                   </div>
                   <div>
-                    <div className="text-[15px] font-bold">zAmericanEnglish</div>
-                    <div className="text-[11px] text-neutral-500">كورس المحادثة</div>
+                    <div className="text-[15px] font-extrabold gradient-text">zAmericanEnglish</div>
+                    <div className="text-[11px] text-slate-400">كورس المحادثة</div>
                   </div>
                 </div>
-                <button onClick={onClose} className="text-2xl text-neutral-400 hover:text-neutral-600">
+                <button onClick={onClose} className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
                   ✕
                 </button>
               </div>
 
               <nav className="flex-1 p-3 space-y-1">
-                {links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={onClose}
-                    className={`flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                      pathname === link.href
-                        ? 'bg-primary/10 text-primary font-semibold'
-                        : 'text-neutral-500 hover:bg-neutral-100'
-                    }`}
-                  >
-                    <span className="text-lg w-6 text-center">{link.icon}</span>
-                    {link.label}
-                  </Link>
-                ))}
-                <div className="h-px bg-neutral-200 dark:bg-neutral-800 my-2" />
+                {links.map((link) => {
+                  const active = pathname === link.href
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={onClose}
+                      className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                        active
+                          ? 'bg-gradient-to-l from-indigo-500/10 to-purple-500/10 text-indigo-600 dark:text-indigo-400'
+                          : 'text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800'
+                      }`}
+                    >
+                      <span className="text-lg w-7 text-center">{link.icon}</span>
+                      {link.label}
+                    </Link>
+                  )
+                })}
+                <div className="h-px bg-slate-200 dark:bg-slate-700 my-3" />
                 <Link
                   href="/srs"
                   onClick={onClose}
-                  className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium text-secondary hover:bg-secondary/10 transition-all"
+                  className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-500/10 transition-all"
                 >
-                  <span className="text-lg w-6 text-center">🧠</span>
+                  <span className="text-lg w-7 text-center">🧠</span>
                   مراجعة ذكية
                 </Link>
               </nav>
 
-              <div className="p-3 border-t border-neutral-200 dark:border-neutral-800">
+              <div className="p-3 border-t border-slate-200/50 dark:border-slate-700/50">
                 <button
                   onClick={toggleDark}
-                  className="w-full py-2.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-sm font-semibold"
+                  className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-sm font-semibold"
                 >
                   {dk ? '☀️ الوضع الفاتح' : '🌙 الوضع الداكن'}
                 </button>

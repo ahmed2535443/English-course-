@@ -22,24 +22,24 @@ export default function SentenceReorder({ words, answer, onAnswer }) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="text-center">
-        <p className="text-lg font-bold mb-2">رتّب الكلمات</p>
-        <p className="text-sm text-neutral-500 mb-4">{answer}</p>
+        <p className="text-lg font-bold mb-2 text-slate-800 dark:text-slate-100">رتّب الكلمات</p>
+        <p className="text-sm text-slate-400 dark:text-slate-500 mb-4">{answer}</p>
       </div>
 
       <Reorder.Group
         axis="x"
         values={zone}
         onReorder={setZone}
-        className="min-h-[52px] bg-neutral-100 dark:bg-neutral-800 border-2 border-dashed border-neutral-300 dark:border-neutral-600 rounded-lg p-3 flex flex-wrap gap-2 justify-center items-center"
+        className="min-h-[56px] bg-slate-100/80 dark:bg-slate-800/50 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-2xl p-3 flex flex-wrap gap-2 justify-center items-center"
       >
         {zone.map((word) => (
           <Reorder.Item key={word} value={word}>
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => removeFromZone(word)}
-              className="bg-white dark:bg-neutral-700 border-2 border-primary/30 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer"
+              className="bg-white dark:bg-slate-700 border-2 border-indigo-200 dark:border-indigo-500/30 px-4 py-2 rounded-xl text-sm font-semibold cursor-pointer text-slate-700 dark:text-slate-200 shadow-sm"
             >
               {word}
             </motion.button>
@@ -47,14 +47,14 @@ export default function SentenceReorder({ words, answer, onAnswer }) {
         ))}
       </Reorder.Group>
 
-      <div className="flex flex-wrap gap-2 justify-center">
+      <div className="flex flex-wrap gap-2.5 justify-center">
         {bank.map((word, i) => (
           <motion.button
             key={`${word}-${i}`}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.05 }}
             onClick={() => addToZone(word)}
-            className="bg-white dark:bg-neutral-800 border-2 border-neutral-200 dark:border-neutral-700 px-4 py-2 rounded-full text-sm font-semibold hover:border-primary transition-colors"
+            className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 px-4 py-2 rounded-xl text-sm font-semibold hover:border-indigo-400 dark:hover:border-indigo-500/30 hover:shadow-md transition-all duration-200 text-slate-700 dark:text-slate-200"
           >
             {word}
           </motion.button>
@@ -65,7 +65,7 @@ export default function SentenceReorder({ words, answer, onAnswer }) {
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={handleCheck}
-          className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-primary-light text-white font-bold text-[15px] hover:shadow-lg transition-all"
+          className="w-full py-3.5 rounded-2xl btn-primary text-[15px]"
         >
           تحقق ✓
         </motion.button>

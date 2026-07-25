@@ -6,27 +6,33 @@ export default function BottomNav() {
   const pathname = usePathname()
 
   const links = [
-    { href: '/', icon: '🏠', label: 'الرئيسية' },
+    { href: '/', icon: '📚', label: 'الرئيسية' },
     { href: '/achievements', icon: '🏆', label: 'إنجازات' },
     { href: '/stats', icon: '📊', label: 'إحصائيات' },
   ]
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md border-t border-neutral-200 dark:border-neutral-800 flex lg:hidden z-30">
-      {links.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className={`flex-1 flex flex-col items-center py-2.5 gap-0.5 transition-all ${
-            pathname === link.href ? 'text-primary' : 'text-neutral-500'
-          }`}
-        >
-          <span className={`text-xl transition-transform ${pathname === link.href ? 'scale-110 -translate-y-0.5' : ''}`}>
-            {link.icon}
-          </span>
-          <span className="text-[10px] font-semibold">{link.label}</span>
-        </Link>
-      ))}
+    <nav className="fixed bottom-0 left-0 right-0 glass border-t border-white/30 dark:border-indigo-500/10 flex lg:hidden z-30 px-2 pb-safe">
+      {links.map((link) => {
+        const active = pathname === link.href
+        return (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={`flex-1 flex flex-col items-center py-2.5 gap-0.5 transition-all duration-200 ${
+              active ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500'
+            }`}
+          >
+            <span className={`text-xl transition-all duration-200 ${active ? 'scale-110 -translate-y-0.5' : ''}`}>
+              {link.icon}
+            </span>
+            <span className="text-[10px] font-bold">{link.label}</span>
+            {active && (
+              <div className="w-4 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 mt-0.5" />
+            )}
+          </Link>
+        )
+      })}
     </nav>
   )
 }

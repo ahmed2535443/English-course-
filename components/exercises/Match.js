@@ -40,38 +40,38 @@ export default function Match({ pairs, onAnswer }) {
 
   const getButtonClass = (side, value) => {
     if (matched.includes(value))
-      return 'bg-success/10 border-success text-success'
+      return 'bg-emerald-50 dark:bg-emerald-500/10 border-emerald-400 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
     if (selected?.value === value)
-      return 'bg-primary/10 border-primary text-primary'
+      return 'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-400 dark:border-indigo-500/30 text-indigo-600 dark:text-indigo-400'
     if (wrongPair && ((wrongPair.a === value) || (wrongPair.b === value)))
-      return 'bg-error/10 border-error text-error animate-shake'
-    return 'bg-white dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 hover:border-primary'
+      return 'bg-red-50 dark:bg-red-500/10 border-red-400 dark:border-red-500/30 text-red-600 dark:text-red-400 animate-shake'
+    return 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-500/30 text-slate-700 dark:text-slate-200'
   }
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3">
-        <div className="space-y-2">
-          <div className="text-[11px] font-bold text-neutral-500 text-center">English</div>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-2.5">
+          <div className="text-[11px] font-bold text-slate-400 dark:text-slate-500 text-center uppercase tracking-wider">English</div>
           {left.map((v) => (
             <motion.button
               key={v}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleSelect('left', v)}
-              className={`w-full border-2 rounded-lg p-3 text-sm font-semibold text-center transition-all ${getButtonClass('left', v)}`}
+              className={`w-full border-2 rounded-xl p-3.5 text-sm font-semibold text-center transition-all duration-200 ${getButtonClass('left', v)}`}
             >
               {v}
             </motion.button>
           ))}
         </div>
-        <div className="space-y-2">
-          <div className="text-[11px] font-bold text-neutral-500 text-center">العربية</div>
+        <div className="space-y-2.5">
+          <div className="text-[11px] font-bold text-slate-400 dark:text-slate-500 text-center uppercase tracking-wider">العربية</div>
           {right.map((v) => (
             <motion.button
               key={v}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleSelect('right', v)}
-              className={`w-full border-2 rounded-lg p-3 text-sm font-semibold text-center transition-all ${getButtonClass('right', v)}`}
+              className={`w-full border-2 rounded-xl p-3.5 text-sm font-semibold text-center transition-all duration-200 ${getButtonClass('right', v)}`}
             >
               {v}
             </motion.button>

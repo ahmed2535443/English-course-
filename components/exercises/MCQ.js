@@ -11,14 +11,14 @@ export default function MCQ({ question, options, correctIndex, onAnswer }) {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-2.5">
+    <div className="grid grid-cols-2 gap-3">
       {options.map((opt, i) => (
         <motion.button
           key={i}
           whileTap={{ scale: 0.95 }}
           whileHover={{ scale: 1.02 }}
           onClick={() => handleClick(i)}
-          className="bg-white dark:bg-neutral-800 border-2 border-neutral-200 dark:border-neutral-700 rounded-lg p-3.5 text-sm font-semibold text-center transition-colors hover:border-primary"
+          className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-4 text-sm font-semibold text-center transition-all duration-200 hover:border-indigo-400 dark:hover:border-indigo-500/30 hover:shadow-md text-slate-700 dark:text-slate-200"
         >
           {opt}
         </motion.button>

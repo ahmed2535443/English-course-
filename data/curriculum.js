@@ -55,6 +55,7 @@ export const LEVELS = [
     { id: 6, title: "السؤال عن العدد والأمتعة", titleEn: "Asking about Quantity & Luggage", order: 6, icon: "🧳" },
     { id: 7, title: "الطقس والسفر لتايلاند", titleEn: "Weather & Travel", order: 7, icon: "🌦️" },
     { id: 8, title: "بدء المحادثات والتعارف", titleEn: "Starting Conversations", order: 8, icon: "💬" },
+    { id: 9, title: "ملخص المحادثة والنطق", titleEn: "Conversation Summary & Pronunciation", order: 9, icon: "🎙️" },
   ]),
   createLevel(2, "المستوى الثاني", "Level 2", "تطوير مهارات المحادثة والاستماع", "A2", true),
   createLevel(3, "المستوى الثالث", "Level 3", "قريباً إن شاء الله", "B1", false),

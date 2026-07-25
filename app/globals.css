@@ -21,9 +21,9 @@
 
 :root {
   /* Layout */
-  --sidebar-w: 260px;
-  --topnav-h: 56px;
-  --page-px: 16px;
+  --sidebar-w: 280px;
+  --topnav-h: 60px;
+  --page-px: 20px;
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 20px;
@@ -322,13 +322,13 @@ body::before {
   background: rgba(239, 68, 68, 0.04);
 }
 
-/* Page Container */
+/* Page Container - Maximum Space */
 .page-container {
   padding-left: var(--page-px);
   padding-right: var(--page-px);
   padding-top: 20px;
   padding-bottom: 160px;
-  max-width: 960px;
+  max-width: 1280px;
   margin: 0 auto;
   width: 100%;
 }

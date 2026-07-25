@@ -32,6 +32,11 @@ function getDefaultState() {
     courseProgress: {},
     levelProgress: {},
     quizAttempts: [],
+    onboardingComplete: false,
+    userGoal: null,
+    dailyTime: 10,
+    activity: {},
+    speechSpeed: 1,
   }
 }
 
@@ -178,6 +183,14 @@ function reducer(state, action) {
       ]
       return { ...state, quizAttempts: newQuizAttempts }
     }
+    case 'SET_USER_GOAL':
+      return { ...state, userGoal: action.payload }
+    case 'SET_DAILY_TIME':
+      return { ...state, dailyTime: action.payload }
+    case 'COMPLETE_ONBOARDING':
+      return { ...state, onboardingComplete: true }
+    case 'SET_SPEECH_SPEED':
+      return { ...state, speechSpeed: action.payload }
     case 'RESET':
       return getDefaultState()
     default:
@@ -287,6 +300,11 @@ export function AppProvider({ children }) {
     setSRS(srs)
   }, [setSRS, state.srs.length])
 
+  const setUserGoal = useCallback((goal) => dispatch({ type: 'SET_USER_GOAL', payload: goal }), [])
+  const setDailyTime = useCallback((time) => dispatch({ type: 'SET_DAILY_TIME', payload: time }), [])
+  const completeOnboarding = useCallback(() => dispatch({ type: 'COMPLETE_ONBOARDING' }), [])
+  const setSpeechSpeed = useCallback((speed) => dispatch({ type: 'SET_SPEECH_SPEED', payload: speed }), [])
+
   const value = {
     ...state,
     addXP,
@@ -302,6 +320,10 @@ export function AppProvider({ children }) {
     setLastLesson,
     completeLesson,
     saveQuizAttempt,
+    setUserGoal,
+    setDailyTime,
+    completeOnboarding,
+    setSpeechSpeed,
     lessons: LESSONS,
   }
 

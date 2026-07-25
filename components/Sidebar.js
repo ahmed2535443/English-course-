@@ -7,6 +7,9 @@ import { useApp } from '@/context/AppContext'
 const NAV_LINKS = [
   { href: '/', icon: '🏠', label: 'الرئيسية' },
   { href: '/levels', icon: '📚', label: 'المستويات' },
+  { href: '/vocabulary', icon: '📖', label: 'المفردات' },
+  { href: '/stories', icon: '📚', label: 'القصص' },
+  { href: '/activity', icon: '📅', label: 'نشاطي' },
   { href: '/achievements', icon: '🏆', label: 'إنجازات' },
   { href: '/stats', icon: '📊', label: 'إحصائيات' },
 ]

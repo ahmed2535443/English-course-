@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 const NAV_LINKS = [
   { href: '/', icon: '🏠', label: 'الرئيسية' },
   { href: '/levels', icon: '📚', label: 'المستويات' },
+  { href: '/stories', icon: '📚', label: 'القصص' },
   { href: '/achievements', icon: '🏆', label: 'إنجازات' },
   { href: '/stats', icon: '📊', label: 'إحصائيات' },
 ]

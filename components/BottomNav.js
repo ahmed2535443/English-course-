@@ -12,7 +12,7 @@ export default function BottomNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 glass-surface border-t border-[var(--border-subtle)] flex lg:hidden z-30 px-1">
+    <nav className="fixed bottom-0 left-0 right-0 bg-[var(--bg-surface)] border-t border-[var(--border-subtle)] flex lg:hidden z-30 px-1">
       {NAV_LINKS.map((link) => {
         const active = pathname === link.href
         return (

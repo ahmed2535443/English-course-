@@ -210,7 +210,7 @@ export default function LessonPage({ params }) {
           )}
 
           {/* Start Exercise */}
-          <div className="mt-20 mb-4">
+          <div className="mt-8 mb-4">
             <button
               onClick={() => router.push(`/exercise/${lesson.id}`)}
               className="btn btn-primary block w-full max-w-xs mx-auto py-3.5 text-[15px]"

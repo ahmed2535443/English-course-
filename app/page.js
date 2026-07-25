@@ -26,29 +26,29 @@ export default function HomePage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="الدروس" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 p-4 md:p-6 max-w-[800px] w-full mx-auto pb-24 lg:pb-6">
+        <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-5xl w-full mx-auto pb-24 lg:pb-6">
           <StreakBanner />
 
-          <h2 className="text-xl font-extrabold mb-4">الدروس</h2>
-          <div className="space-y-2.5">
+          <h2 className="text-xl md:text-2xl font-extrabold mb-5">الدروس</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {lessons.map((lesson, i) => (
               <LessonCard key={lesson.id} lesson={lesson} index={i} />
             ))}
           </div>
 
-          <div className="mt-6">
-            <h2 className="text-xl font-extrabold mb-4">🧠 مراجعة ذكية</h2>
+          <div className="mt-8">
+            <h2 className="text-xl md:text-2xl font-extrabold mb-5">🧠 مراجعة ذكية</h2>
             <Link
               href="/srs"
-              className="block bg-white dark:bg-neutral-900 border border-secondary/30 rounded-xl p-5 hover:shadow-lg transition-all cursor-pointer"
+              className="block bg-white dark:bg-neutral-900 border border-secondary/30 rounded-xl p-5 md:p-6 hover:shadow-lg transition-all cursor-pointer"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-secondary to-secondary-light rounded-[10px] flex items-center justify-center text-lg text-white">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-secondary to-secondary-light rounded-[10px] flex items-center justify-center text-xl text-white">
                   🧠
                 </div>
                 <div>
-                  <div className="text-base font-bold">مراجعة الكلمات</div>
-                  <div className="text-xs text-neutral-500 mt-0.5">{dueCount} كلمات تحتاج مراجعة</div>
+                  <div className="text-base md:text-lg font-bold">مراجعة الكلمات</div>
+                  <div className="text-sm text-neutral-500 mt-0.5">{dueCount} كلمات تحتاج مراجعة</div>
                 </div>
               </div>
             </Link>

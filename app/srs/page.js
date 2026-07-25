@@ -80,7 +80,7 @@ export default function SRSPage() {
         <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
           <TopNav title="مراجعة ذكية" onMenuClick={() => setSidebarOpen(true)} />
 
-          <main className="flex-1 p-4 md:p-6 max-w-[800px] w-full mx-auto pb-24 lg:pb-6">
+          <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-3xl w-full mx-auto pb-24 lg:pb-6">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -132,7 +132,7 @@ export default function SRSPage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="مراجعة ذكية" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 p-4 md:p-6 max-w-[800px] w-full mx-auto pb-24 lg:pb-6">
+        <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-3xl w-full mx-auto pb-24 lg:pb-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-4">
             <button onClick={() => setStarted(false)} className="text-primary text-sm font-semibold">

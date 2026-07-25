@@ -18,7 +18,7 @@ export default function AchievementsPage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="إنجازات" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 p-4 md:p-6 max-w-[800px] w-full mx-auto pb-24 lg:pb-6">
+        <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-5xl w-full mx-auto pb-24 lg:pb-6">
           <h2 className="text-xl font-extrabold mb-6">🏆 الإنجازات</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">

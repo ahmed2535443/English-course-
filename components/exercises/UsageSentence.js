@@ -27,7 +27,7 @@ export default function UsageSentence({ word, onAnswer }) {
           onKeyDown={(e) => e.key === 'Enter' && handleCheck()}
           disabled={checked}
           placeholder={`اكتب جملة بـ ${word}...`}
-          className={`w-full max-w-xs px-4 py-3 border-2 rounded-lg text-center text-base font-semibold outline-none transition-all direction-ltr ${
+          className={`w-full max-w-sm px-4 py-3 border-2 rounded-lg text-center text-base font-semibold outline-none transition-all direction-ltr ${
             checked
               ? isCorrect
                 ? 'border-success bg-success/5'
@@ -40,7 +40,7 @@ export default function UsageSentence({ word, onAnswer }) {
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={handleCheck}
-          className="w-full max-w-xs mx-auto block py-3 rounded-lg bg-gradient-to-r from-primary to-primary-light text-white font-bold text-[15px] hover:shadow-lg transition-all"
+          className="w-full max-w-sm mx-auto block py-3 rounded-lg bg-gradient-to-r from-primary to-primary-light text-white font-bold text-[15px] hover:shadow-lg transition-all"
         >
           تحقق ✓
         </motion.button>

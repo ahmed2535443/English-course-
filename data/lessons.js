@@ -161,6 +161,108 @@ export const LESSONS = [
   },
   {
     id: 3,
+    t: "ضابط الهجرة والجمارك",
+    i: "🛂",
+    w: 6,
+    n: 8,
+    dlg: [
+      { s: "Officer", c: "#171717", e: "Passport and declaration form, please.", a: "جواز السفر واستمارة الإقرار، من فضلك." },
+      { s: "Traveler", c: "#0070f3", e: "Here you go.", a: "تفضل." },
+      { s: "Officer", c: "#171717", e: "What is the purpose of your visit?", a: "ما الغرض من زيارتك؟" },
+      { s: "Traveler", c: "#0070f3", e: "I am here for tourism and shopping.", a: "أنا هنا للسياحة والتسوق." },
+      { s: "Officer", c: "#171717", e: "How long will you be staying?", a: "كم المدة التي ستقيمها؟" },
+      { s: "Traveler", c: "#0070f3", e: "I will be staying for two weeks.", a: "سأقيم لمدة أسبوعين." },
+      { s: "Officer", c: "#171717", e: "Do you have anything to declare?", a: "هل لديك أي شيء تصرح عنه؟" },
+      { s: "Traveler", c: "#0070f3", e: "No, I do not have anything to declare.", a: "لا، ليس لدي شيء." }
+    ],
+    voc: [
+      { e: "Purpose of visit", a: "الغرض من الزيارة", d: "for + اسم أو to + فعل.", cl: ["What is the purpose?"], ms: [{ w: "purpose for visit", c: "purpose of visit", n: "نستخدم of" }], us: [{ t: "في السؤال", e: "What is the purpose of your visit?", a: "إيه الغرض من زيارتك؟" }, { t: "في الرد", e: "The purpose of my visit is tourism.", a: "الغرض من زيارتي السياحة." }] },
+      { e: "Declaration form", a: "استمارة الإقرار", d: "استمارة الجمارك.", cl: ["Fill out the form"], ms: [{ w: "customs form", c: "declaration form", n: "declaration أدق" }], us: [{ t: "في المطار", e: "Please fill out the declaration form.", a: "من فضلك عبّي استمارة الإقرار." }, { t: "في التسليم", e: "Here is my declaration form.", a: "تفضل استمارة الإقرار بتاعتي." }] },
+      { e: "Declare", a: "يصرح", d: "يعلن جمركياً.", cl: ["Anything to declare?"], ms: [{ w: "say", c: "declare", n: "declare رسمى" }], us: [{ t: "في السؤال", e: "Do you have anything to declare?", a: "عندك حاجة تصرح بيها؟" }, { t: "في الرد", e: "No, I don't have anything to declare.", a: "لا، مفيش حاجة أصرح بيها." }] },
+      { e: "Tourism", a: "السياحة", d: "لا تخلط مع tourist (سائح).", cl: ["For tourism"], ms: [{ w: "tourist", c: "tourism", n: "tourism = صناعة، tourist = شخص" }], us: [{ t: "في الغرض", e: "I am here for tourism.", a: "أنا هنا للسياحة." }, { t: "في الوصف", e: "Tourism is a big industry in Egypt.", a: "السياحة صناعة كبيرة في مصر." }] },
+      { e: "Here you go", a: "تفضل", d: "بديل عامي لـ Here it is.", cl: ["Here you go"], ms: [{ w: "here you are", c: "here you go", n: "كلمتين شائعتين" }], us: [{ t: "عند التسليم", e: "Here you go, your passport.", a: "تفضل، جوازك." }, { t: "في الإعطاء", e: "Here you go. Thank you!", a: "تفضل. شكراً!" }] },
+      { e: "Two weeks", a: "أسبوعان", d: "أسبوعان = two weeks.", cl: ["For two weeks"], ms: [{ w: "two week", c: "two weeks", n: "نضيف s" }], us: [{ t: "في المدة", e: "I will be staying for two weeks.", a: "هقعد لمدة أسبوعين." }, { t: "في السؤال", e: "How long? — Two weeks.", a: "لمدة إيه؟ — أسبوعين." }] }
+    ],
+    gram: [
+      { t: "Purpose: for + اسم / to +فعل", d: "نستخدم for مع الأسماء، to مع الأفعال.", ex: [{ e: "For tourism", a: "للسياحة" }, { e: "To visit friends", a: "لزيارة الأصدقاء" }], tp: "لا تقل for tourism" },
+      { t: "المستقبل المستمر", d: "will be + ing لحدث مستغرق.", ex: [{ e: "I will be staying", a: "سأقيم" }], tp: "للحدث المستمر في المستقبل" }
+    ],
+    pron: [
+      { w: "Declaration", t: "تنطق ديكلاريشن بالسكون" },
+      { w: "Purpose", t: "تنطق بيربس" }
+    ],
+    cul: [
+      { n: "في أمريكا، ضابط الهجرة يسألك: What is the purpose?" },
+      { n: "في بريطانيا: What's the nature of your visit?" }
+    ],
+    ex: [
+      { tp: "mcq", q: "كيف تسأل عن الغرض من الزيارة؟", a: "", o: ["What is the purpose of your visit?", "Why are you here?", "What do you want?", "Where are you going?"], c: 0 },
+      { tp: "fill", q: "I am here for ________ and shopping.", a: "للسياحة", an: "tourism" },
+      { tp: "mcq", q: "ماذا تعني Here you go؟", a: "", o: ["اذهب هنا", "تفضل", "هنا أنت", "رياح هنا"], c: 1 },
+      { tp: "reorder", q: "رتّب", a: "ما الغرض من زيارتك", w: ["what", "is", "the", "purpose", "of", "your", "visit"] },
+      { tp: "match", q: "طابق", p: [["Purpose", "الغرض"], ["Declare", "يصرح"], ["Tourism", "السياحة"], ["Declaration", "الإقرار"]] },
+      { tp: "fill", q: "I will be ________ for two weeks.", a: "سأقيم لمدة أسبوعين", an: "staying" },
+      { tp: "mcq", q: "ما الفرق بين for و to بعد purpose؟", a: "", o: ["for + اسم، to +فعل", "كلاهما متساوي", "to + اسم، for +فعل", "لا فرق"], c: 0 },
+      { tp: "listen", q: "استمع واختر الإجابة", en: "I do not have anything to declare.", o: ["ليس لدي جواز", "ليس لدي شيء أصرح عنه", "ليس لدي مال", "ليس لدي أمتعة"], c: 1 },
+      { tp: "translate", q: "ترجم: أنا هنا للسياحة", a: "", an: "I am here for tourism" },
+      { tp: "mcq", q: "كم تبقى في أسبوعين؟", a: "", o: ["10 أيام", "14 يوماً", "7 أيام", "21 يوماً"], c: 1 },
+      { tp: "egpt", q: "ازاي تسأل 'الغرض من زيارتك' بالإنجليزي؟", hint: "فكر في: What is the purpose of your visit", an: "what is the purpose of your visit", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة tourism", w: "tourism" }
+    ]
+  },
+  {
+    id: 4,
+    t: "التسوق والملابس في لندن",
+    i: "🛍️",
+    w: 6,
+    n: 8,
+    dlg: [
+      { s: "A", c: "#ff9100", e: "Do you need to buy anything today?", a: "هل تحتاج لشراء أي شيء اليوم؟" },
+      { s: "B", c: "#00c853", e: "Yes, I need to buy some clothes.", a: "نعم، أحتاج لشراء بعض الملابس." },
+      { s: "A", c: "#ff9100", e: "What kind of clothes do you want to buy?", a: "ما نوع الملابس؟" },
+      { s: "B", c: "#00c853", e: "I need to get some shirts, trousers, and a warm jacket.", a: "أحتاج قمصاناً وسراويل وجاكيت دافئ." },
+      { s: "A", c: "#ff9100", e: "Is there anything else you want to buy?", a: "هل هناك شيء آخر؟" },
+      { s: "B", c: "#00c853", e: "Oh yes. I need to buy a guidebook about London.", a: "أوه نعم. أحتاج كتاب إرشادي عن لندن." },
+      { s: "A", c: "#ff9100", e: "Can we go somewhere a little bit cheaper?", a: "هل يمكننا الذهاب إلى مكان أرخص؟" }
+    ],
+    voc: [
+      { e: "Clothes", a: "ملابس", d: "تنطق Close. كلمة جمع دائماً.", cl: ["Buy clothes", "A piece of clothes"], ms: [{ w: "a cloth", c: "a piece of clothes", n: "clothes جمع دائماً" }], us: [{ t: "في التسوق", e: "I need to buy some new clothes.", a: "محتاج أشتري هدوم جديدة." }, { t: "في الوصف", e: "These clothes are very nice.", a: "الهدوم دي حلوة جداً." }] },
+      { e: "Guidebook", a: "كتاب دليل", d: "كلمة واحدة في أمريكا.", cl: ["Buy a guidebook", "Read a guidebook"], ms: [{ w: "guide book", c: "guidebook", n: "في أمريكا كلمة واحدة" }], us: [{ t: "في الشراء", e: "I want to buy a guidebook about London.", a: "عايز أشتري كتاب دليل عن لندن." }, { t: "في القراءة", e: "The guidebook has a lot of useful information.", a: "كتاب الدليل فيه معلومات كتير مفيدة." }] },
+      { e: "Cheaper", a: "أرخص", d: "مقارنة من cheap.", cl: ["A little bit cheaper", "Much cheaper"], ms: [{ w: "more cheap", c: "cheaper", n: "مقارنة الأسماء القصيرة" }], us: [{ t: "في المقارنة", e: "This one is cheaper than that one.", a: "ده أرخص من ده." }, { t: "في التسوق", e: "Can we find something cheaper?", a: "ممكن نلاقي حاجة أرخص؟" }] },
+      { e: "A little bit", a: "قليلاً", d: "تخفيف المقارنة.", cl: ["A little bit cheaper"], ms: [{ w: "a bit of", c: "a little bit", n: "في المقارنة نقول a little bit" }], us: [{ t: "في التخفيف", e: "It's a little bit cold outside.", a: "الجو بارد قليلاً بره." }, { t: "في التسوق", e: "This is a little bit expensive.", a: "ده غالي قليلاً." }] },
+      { e: "Trousers", a: "سراويل", d: "كلمة جمع دائماً.", cl: ["A pair of trousers"], ms: [{ w: "a trouser", c: "a pair of trousers", n: "جمع دائماً" }], us: [{ t: "في الشراء", e: "I need a new pair of trousers.", a: "محتاج بنطلون جديد." }, { t: "في الوصف", e: "These trousers are very comfortable.", a: "البنطلون ده مريح جداً." }] },
+      { e: "Anything else", a: "شيء آخر", d: "في الأسئلة. Something else في الإثبات.", cl: ["Anything else?", "Nothing else"], ms: [{ w: "anything other", c: "anything else", n: "نستخدم else" }], us: [{ t: "في السؤال", e: "Do you need anything else?", a: "محتاج حاجة تانية؟" }, { t: "في الرد", e: "No, nothing else. Thank you.", a: "لا، مفيش حاجة تانية. شكراً." }] }
+    ],
+    gram: [
+      { t: "Clothes تنطق Close", d: "الكلمة جمع دائماً.", ex: [{ e: "I need to buy some clothes", a: "أحتاج لشراء بعض الملابس" }], tp: "لا نقول a clothes" },
+      { t: "مقارنة الصفات", d: "cheap → cheaper → cheapest.", ex: [{ e: "A little bit cheaper", a: "أرخص قليلاً" }], tp: "a little bit تخفف المقارنة" },
+      { t: "Anything vs Something", d: "Anything في الأسئلة، Something في الإثبات.", ex: [{ e: "Anything else?", a: "شيء آخر؟" }], tp: "لا تستخدم anything في الإثبات" }
+    ],
+    pron: [
+      { w: "Clothes", t: "تنطق كـ Close بدون مقطع إضافي" },
+      { w: "Especially", t: "تنطق Ex-pecially بالعامية" }
+    ],
+    cul: [
+      { n: "Kensington High Street مكان غالي في لندن" },
+      { n: "Guidebook كلمة واحدة في أمريكا، كلمتين في بريطانيا" }
+    ],
+    ex: [
+      { tp: "mcq", q: "كيف تنطق كلمة clothes؟", a: "", o: ["كلوذز", "كلوتس", "كلوز", "كلوثس"], c: 2 },
+      { tp: "fill", q: "I need to buy a ________ about London.", a: "كتاب إرشادي", an: "guidebook" },
+      { tp: "mcq", q: "كيف تسأل عن شيء آخر؟", a: "", o: ["Is there anything else?", "What else you need?", "Do you want more?", "Anything more?"], c: 0 },
+      { tp: "reorder", q: "رتّب", a: "أحتاج لشراء بعض الملابس", w: ["I", "need", "to", "buy", "some", "clothes"] },
+      { tp: "match", q: "طابق", p: [["Cheaper", "أرخص"], ["Trousers", "سراويل"], ["Guidebook", "كتاب دليل"], ["Anything else", "شيء آخر"]] },
+      { tp: "fill", q: "Can we go somewhere a ________ bit cheaper?", a: "مكان أرخص قليلاً", an: "little" },
+      { tp: "mcq", q: "ما كلمة المقارنة من cheap؟", a: "", o: ["cheaper", "cheapest", "more cheap", "cheaply"], c: 0 },
+      { tp: "listen", q: "استمع واختر الإجابة", en: "I need to buy a guidebook about London.", o: ["شراء قميص", "شراء كتاب عن لندن", "شراء سراويل", "شراء جاكيت"], c: 1 },
+      { tp: "translate", q: "ترجم: أحتاج لشراء بعض الملابس", a: "", an: "I need to buy some clothes" },
+      { tp: "mcq", q: "كم وحدة في a piece of clothes؟", a: "", o: ["واحدة", "اثنتان", "ثلاثة", "مجموعة"], c: 0 },
+      { tp: "egpt", q: "ازاي تقول 'محتاج أشتري هدوم' بالإنجليزي؟", hint: "فكر في: I need to buy + some clothes", an: "i need to buy some clothes", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة guidebook", w: "guidebook" }
+    ]
+  },
+  {
+    id: 5,
     t: "صالة الوصول والاستقبال",
     i: "🛬",
     w: 11,
@@ -258,108 +360,6 @@ export const LESSONS = [
       { tp: "mcq", q: "ماذا تعني كلمة over في 'flight over'؟", a: "دلالة over", o: ["تحديد الوصول إلى مكان المتحدث", "فوق السحاب", "انتهاء الرحلة", "الزيادة عن الحد"], c: 0 },
       { tp: "egpt", q: "ازاي تسأل صاحبك اللي جايلك من السفر 'الرحلة خدت كام ساعة؟' بالإنجليزي؟", hint: "فكر في: How many hours did it take?", an: "how many hours did it take", ph: "اكتب الإنجليزي..." },
       { tp: "usage", q: "اكتب جملة باستخدام كلمة traffic", w: "traffic" }
-    ]
-  },
-  {
-    id: 4,
-    t: "التسوق والملابس في لندن",
-    i: "🛍️",
-    w: 6,
-    n: 8,
-    dlg: [
-      { s: "A", c: "#ff9100", e: "Do you need to buy anything today?", a: "هل تحتاج لشراء أي شيء اليوم؟" },
-      { s: "B", c: "#00c853", e: "Yes, I need to buy some clothes.", a: "نعم، أحتاج لشراء بعض الملابس." },
-      { s: "A", c: "#ff9100", e: "What kind of clothes do you want to buy?", a: "ما نوع الملابس؟" },
-      { s: "B", c: "#00c853", e: "I need to get some shirts, trousers, and a warm jacket.", a: "أحتاج قمصاناً وسراويل وجاكيت دافئ." },
-      { s: "A", c: "#ff9100", e: "Is there anything else you want to buy?", a: "هل هناك شيء آخر؟" },
-      { s: "B", c: "#00c853", e: "Oh yes. I need to buy a guidebook about London.", a: "أوه نعم. أحتاج كتاب إرشادي عن لندن." },
-      { s: "A", c: "#ff9100", e: "Can we go somewhere a little bit cheaper?", a: "هل يمكننا الذهاب إلى مكان أرخص؟" }
-    ],
-    voc: [
-      { e: "Clothes", a: "ملابس", d: "تنطق Close. كلمة جمع دائماً.", cl: ["Buy clothes", "A piece of clothes"], ms: [{ w: "a cloth", c: "a piece of clothes", n: "clothes جمع دائماً" }], us: [{ t: "في التسوق", e: "I need to buy some new clothes.", a: "محتاج أشتري هدوم جديدة." }, { t: "في الوصف", e: "These clothes are very nice.", a: "الهدوم دي حلوة جداً." }] },
-      { e: "Guidebook", a: "كتاب دليل", d: "كلمة واحدة في أمريكا.", cl: ["Buy a guidebook", "Read a guidebook"], ms: [{ w: "guide book", c: "guidebook", n: "في أمريكا كلمة واحدة" }], us: [{ t: "في الشراء", e: "I want to buy a guidebook about London.", a: "عايز أشتري كتاب دليل عن لندن." }, { t: "في القراءة", e: "The guidebook has a lot of useful information.", a: "كتاب الدليل فيه معلومات كتير مفيدة." }] },
-      { e: "Cheaper", a: "أرخص", d: "مقارنة من cheap.", cl: ["A little bit cheaper", "Much cheaper"], ms: [{ w: "more cheap", c: "cheaper", n: "مقارنة الأسماء القصيرة" }], us: [{ t: "في المقارنة", e: "This one is cheaper than that one.", a: "ده أرخص من ده." }, { t: "في التسوق", e: "Can we find something cheaper?", a: "ممكن نلاقي حاجة أرخص؟" }] },
-      { e: "A little bit", a: "قليلاً", d: "تخفيف المقارنة.", cl: ["A little bit cheaper"], ms: [{ w: "a bit of", c: "a little bit", n: "في المقارنة نقول a little bit" }], us: [{ t: "في التخفيف", e: "It's a little bit cold outside.", a: "الجو بارد قليلاً بره." }, { t: "في التسوق", e: "This is a little bit expensive.", a: "ده غالي قليلاً." }] },
-      { e: "Trousers", a: "سراويل", d: "كلمة جمع دائماً.", cl: ["A pair of trousers"], ms: [{ w: "a trouser", c: "a pair of trousers", n: "جمع دائماً" }], us: [{ t: "في الشراء", e: "I need a new pair of trousers.", a: "محتاج بنطلون جديد." }, { t: "في الوصف", e: "These trousers are very comfortable.", a: "البنطلون ده مريح جداً." }] },
-      { e: "Anything else", a: "شيء آخر", d: "في الأسئلة. Something else في الإثبات.", cl: ["Anything else?", "Nothing else"], ms: [{ w: "anything other", c: "anything else", n: "نستخدم else" }], us: [{ t: "في السؤال", e: "Do you need anything else?", a: "محتاج حاجة تانية؟" }, { t: "في الرد", e: "No, nothing else. Thank you.", a: "لا، مفيش حاجة تانية. شكراً." }] }
-    ],
-    gram: [
-      { t: "Clothes تنطق Close", d: "الكلمة جمع دائماً.", ex: [{ e: "I need to buy some clothes", a: "أحتاج لشراء بعض الملابس" }], tp: "لا نقول a clothes" },
-      { t: "مقارنة الصفات", d: "cheap → cheaper → cheapest.", ex: [{ e: "A little bit cheaper", a: "أرخص قليلاً" }], tp: "a little bit تخفف المقارنة" },
-      { t: "Anything vs Something", d: "Anything في الأسئلة، Something في الإثبات.", ex: [{ e: "Anything else?", a: "شيء آخر؟" }], tp: "لا تستخدم anything في الإثبات" }
-    ],
-    pron: [
-      { w: "Clothes", t: "تنطق كـ Close بدون مقطع إضافي" },
-      { w: "Especially", t: "تنطق Ex-pecially بالعامية" }
-    ],
-    cul: [
-      { n: "Kensington High Street مكان غالي في لندن" },
-      { n: "Guidebook كلمة واحدة في أمريكا، كلمتين في بريطانيا" }
-    ],
-    ex: [
-      { tp: "mcq", q: "كيف تنطق كلمة clothes؟", a: "", o: ["كلوذز", "كلوتس", "كلوز", "كلوثس"], c: 2 },
-      { tp: "fill", q: "I need to buy a ________ about London.", a: "كتاب إرشادي", an: "guidebook" },
-      { tp: "mcq", q: "كيف تسأل عن شيء آخر؟", a: "", o: ["Is there anything else?", "What else you need?", "Do you want more?", "Anything more?"], c: 0 },
-      { tp: "reorder", q: "رتّب", a: "أحتاج لشراء بعض الملابس", w: ["I", "need", "to", "buy", "some", "clothes"] },
-      { tp: "match", q: "طابق", p: [["Cheaper", "أرخص"], ["Trousers", "سراويل"], ["Guidebook", "كتاب دليل"], ["Anything else", "شيء آخر"]] },
-      { tp: "fill", q: "Can we go somewhere a ________ bit cheaper?", a: "مكان أرخص قليلاً", an: "little" },
-      { tp: "mcq", q: "ما كلمة المقارنة من cheap؟", a: "", o: ["cheaper", "cheapest", "more cheap", "cheaply"], c: 0 },
-      { tp: "listen", q: "استمع واختر الإجابة", en: "I need to buy a guidebook about London.", o: ["شراء قميص", "شراء كتاب عن لندن", "شراء سراويل", "شراء جاكيت"], c: 1 },
-      { tp: "translate", q: "ترجم: أحتاج لشراء بعض الملابس", a: "", an: "I need to buy some clothes" },
-      { tp: "mcq", q: "كم وحدة في a piece of clothes؟", a: "", o: ["واحدة", "اثنتان", "ثلاثة", "مجموعة"], c: 0 },
-      { tp: "egpt", q: "ازاي تقول 'محتاج أشتري هدوم' بالإنجليزي؟", hint: "فكر في: I need to buy + some clothes", an: "i need to buy some clothes", ph: "اكتب الإنجليزي..." },
-      { tp: "usage", q: "اكتب جملة باستخدام كلمة guidebook", w: "guidebook" }
-    ]
-  },
-  {
-    id: 5,
-    t: "ضابط الهجرة والجمارك",
-    i: "🛂",
-    w: 6,
-    n: 8,
-    dlg: [
-      { s: "Officer", c: "#171717", e: "Passport and declaration form, please.", a: "جواز السفر واستمارة الإقرار، من فضلك." },
-      { s: "Traveler", c: "#0070f3", e: "Here you go.", a: "تفضل." },
-      { s: "Officer", c: "#171717", e: "What is the purpose of your visit?", a: "ما الغرض من زيارتك؟" },
-      { s: "Traveler", c: "#0070f3", e: "I am here for tourism and shopping.", a: "أنا هنا للسياحة والتسوق." },
-      { s: "Officer", c: "#171717", e: "How long will you be staying?", a: "كم المدة التي ستقيمها؟" },
-      { s: "Traveler", c: "#0070f3", e: "I will be staying for two weeks.", a: "سأقيم لمدة أسبوعين." },
-      { s: "Officer", c: "#171717", e: "Do you have anything to declare?", a: "هل لديك أي شيء تصرح عنه؟" },
-      { s: "Traveler", c: "#0070f3", e: "No, I do not have anything to declare.", a: "لا، ليس لدي شيء." }
-    ],
-    voc: [
-      { e: "Purpose of visit", a: "الغرض من الزيارة", d: "for + اسم أو to + فعل.", cl: ["What is the purpose?"], ms: [{ w: "purpose for visit", c: "purpose of visit", n: "نستخدم of" }], us: [{ t: "في السؤال", e: "What is the purpose of your visit?", a: "إيه الغرض من زيارتك؟" }, { t: "في الرد", e: "The purpose of my visit is tourism.", a: "الغرض من زيارتي السياحة." }] },
-      { e: "Declaration form", a: "استمارة الإقرار", d: "استمارة الجمارك.", cl: ["Fill out the form"], ms: [{ w: "customs form", c: "declaration form", n: "declaration أدق" }], us: [{ t: "في المطار", e: "Please fill out the declaration form.", a: "من فضلك عبّي استمارة الإقرار." }, { t: "في التسليم", e: "Here is my declaration form.", a: "تفضل استمارة الإقرار بتاعتي." }] },
-      { e: "Declare", a: "يصرح", d: "يعلن جمركياً.", cl: ["Anything to declare?"], ms: [{ w: "say", c: "declare", n: "declare رسمى" }], us: [{ t: "في السؤال", e: "Do you have anything to declare?", a: "عندك حاجة تصرح بيها؟" }, { t: "في الرد", e: "No, I don't have anything to declare.", a: "لا، مفيش حاجة أصرح بيها." }] },
-      { e: "Tourism", a: "السياحة", d: "لا تخلط مع tourist (سائح).", cl: ["For tourism"], ms: [{ w: "tourist", c: "tourism", n: "tourism = صناعة، tourist = شخص" }], us: [{ t: "في الغرض", e: "I am here for tourism.", a: "أنا هنا للسياحة." }, { t: "في الوصف", e: "Tourism is a big industry in Egypt.", a: "السياحة صناعة كبيرة في مصر." }] },
-      { e: "Here you go", a: "تفضل", d: "بديل عامي لـ Here it is.", cl: ["Here you go"], ms: [{ w: "here you are", c: "here you go", n: "كلمتين شائعتين" }], us: [{ t: "عند التسليم", e: "Here you go, your passport.", a: "تفضل، جوازك." }, { t: "في الإعطاء", e: "Here you go. Thank you!", a: "تفضل. شكراً!" }] },
-      { e: "Two weeks", a: "أسبوعان", d: "أسبوعان = two weeks.", cl: ["For two weeks"], ms: [{ w: "two week", c: "two weeks", n: "نضيف s" }], us: [{ t: "في المدة", e: "I will be staying for two weeks.", a: "هقعد لمدة أسبوعين." }, { t: "في السؤال", e: "How long? — Two weeks.", a: "لمدة إيه؟ — أسبوعين." }] }
-    ],
-    gram: [
-      { t: "Purpose: for + اسم / to +فعل", d: "نستخدم for مع الأسماء، to مع الأفعال.", ex: [{ e: "For tourism", a: "للسياحة" }, { e: "To visit friends", a: "لزيارة الأصدقاء" }], tp: "لا تقل for tourism" },
-      { t: "المستقبل المستمر", d: "will be + ing لحدث مستغرق.", ex: [{ e: "I will be staying", a: "سأقيم" }], tp: "للحدث المستمر في المستقبل" }
-    ],
-    pron: [
-      { w: "Declaration", t: "تنطق ديكلاريشن بالسكون" },
-      { w: "Purpose", t: "تنطق بيربس" }
-    ],
-    cul: [
-      { n: "في أمريكا، ضابط الهجرة يسألك: What is the purpose?" },
-      { n: "في بريطانيا: What's the nature of your visit?" }
-    ],
-    ex: [
-      { tp: "mcq", q: "كيف تسأل عن الغرض من الزيارة؟", a: "", o: ["What is the purpose of your visit?", "Why are you here?", "What do you want?", "Where are you going?"], c: 0 },
-      { tp: "fill", q: "I am here for ________ and shopping.", a: "للسياحة", an: "tourism" },
-      { tp: "mcq", q: "ماذا تعني Here you go؟", a: "", o: ["اذهب هنا", "تفضل", "هنا أنت", "رياح هنا"], c: 1 },
-      { tp: "reorder", q: "رتّب", a: "ما الغرض من زيارتك", w: ["what", "is", "the", "purpose", "of", "your", "visit"] },
-      { tp: "match", q: "طابق", p: [["Purpose", "الغرض"], ["Declare", "يصرح"], ["Tourism", "السياحة"], ["Declaration", "الإقرار"]] },
-      { tp: "fill", q: "I will be ________ for two weeks.", a: "سأقيم لمدة أسبوعين", an: "staying" },
-      { tp: "mcq", q: "ما الفرق بين for و to بعد purpose؟", a: "", o: ["for + اسم، to +فعل", "كلاهما متساوي", "to + اسم، for +فعل", "لا فرق"], c: 0 },
-      { tp: "listen", q: "استمع واختر الإجابة", en: "I do not have anything to declare.", o: ["ليس لدي جواز", "ليس لدي شيء أصرح عنه", "ليس لدي مال", "ليس لدي أمتعة"], c: 1 },
-      { tp: "translate", q: "ترجم: أنا هنا للسياحة", a: "", an: "I am here for tourism" },
-      { tp: "mcq", q: "كم تبقى في أسبوعين؟", a: "", o: ["10 أيام", "14 يوماً", "7 أيام", "21 يوماً"], c: 1 },
-      { tp: "egpt", q: "ازاي تسأل 'الغرض من زيارتك' بالإنجليزي؟", hint: "فكر في: What is the purpose of your visit", an: "what is the purpose of your visit", ph: "اكتب الإنجليزي..." },
-      { tp: "usage", q: "اكتب جملة باستخدام كلمة tourism", w: "tourism" }
     ]
   },
   {

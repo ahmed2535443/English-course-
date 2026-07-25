@@ -26,32 +26,29 @@ export default function HomePage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="الدروس" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-5xl w-full mx-auto pb-24 lg:pb-6">
+        <main className="flex-1 page-container">
           <StreakBanner />
 
-          {/* Section header */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mb-5"
+            className="section-gap"
           >
             <h2 className="text-xl md:text-2xl font-extrabold text-slate-800 dark:text-slate-100">الدروس</h2>
-            <p className="text-sm text-slate-400 dark:text-slate-500 mt-1">اختر حلقة وابدأ التعلم</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">اختر حلقة وابدأ التعلم</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 section-gap">
             {lessons.map((lesson, i) => (
               <LessonCard key={lesson.id} lesson={lesson} index={i} />
             ))}
           </div>
 
-          {/* SRS Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="mt-8"
           >
             <h2 className="text-xl md:text-2xl font-extrabold text-slate-800 dark:text-slate-100 mb-5">🧠 مراجعة ذكية</h2>
             <Link
@@ -66,7 +63,7 @@ export default function HomePage() {
                   <div className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                     مراجعة الكلمات
                   </div>
-                  <div className="text-sm text-slate-400 dark:text-slate-500 mt-0.5">
+                  <div className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">
                     {dueCount > 0 ? `${dueCount} كلمات تحتاج مراجعة` : 'كل الكلمات محفوظة!'}
                   </div>
                 </div>

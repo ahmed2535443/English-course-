@@ -1,6 +1,7 @@
 import { Inter, Cairo } from 'next/font/google'
 import './globals.css'
 import { AppProvider } from '@/context/AppProvider'
+import DarkModeProvider from '@/context/DarkModeProvider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -19,9 +20,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ar" dir="rtl" className={`${inter.variable} ${cairo.variable}`}>
+    <html lang="ar" dir="rtl" className={`${inter.variable} ${cairo.variable}`} suppressHydrationWarning>
       <body className="font-[var(--font-cairo),var(--font-inter),sans-serif]">
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <DarkModeProvider>{children}</DarkModeProvider>
+        </AppProvider>
       </body>
     </html>
   )

@@ -18,7 +18,7 @@ export default function AchievementsPage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="إنجازات" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-5xl w-full mx-auto pb-24 lg:pb-6">
+        <main className="flex-1 page-container">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

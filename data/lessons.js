@@ -601,5 +601,78 @@ export const LESSONS = [
       { tp: "egpt", q: "ازاي تسأل 'المتاحف فين موجودة' بالإنجليزي؟", hint: "فكر في: Where are the museums located?", an: "where are the museums located", ph: "اكتب الإنجليزي..." },
       { tp: "usage", q: "اكتب جملة باستخدام كلمة museum", w: "museum" }
     ]
+  },
+  {
+    id: 9,
+    t: "ملخص المحادثة والنطق",
+    i: "🎙️",
+    w: 14,
+    n: 5,
+    dlg: [
+      { s: "Officer", c: "#171717", e: "Good morning, sir. Could I see your passport and visa documentation?", a: "صباح الخير يا سيدي. هل يمكنني رؤية جواز سفرك ووثائق التأشيرة؟" },
+      { s: "Traveler", c: "#0070f3", e: "Here you go.", a: "تفضل." },
+      { s: "Officer", c: "#171717", e: "Do you have anything to declare?", a: "هل لديك أي شيء تصرح به؟" },
+      { s: "Traveler", c: "#0070f3", e: "No, I do not have anything to declare.", a: "لا، ليس لدي ما أصرح به." },
+      { s: "A", c: "#ff9100", e: "Where can we go?", a: "وين نقدر نروح؟" },
+      { s: "B", c: "#00c853", e: "We can go to the King's Road.", a: "نقدر نروح طريق الملك." },
+      { s: "A", c: "#ff9100", e: "Is it cheaper than Kensington High Street?", a: "هل هو أرخص من شارع كينغزتون العالي؟" },
+      { s: "B", c: "#00c853", e: "Yes, it is cheaper.", a: "نعم، هو أرخص." },
+      { s: "A", c: "#ff9100", e: "London is very expensive, isn't it?", a: "لندن غالية جداً، مش كده؟" },
+      { s: "B", c: "#00c853", e: "I think Bangkok is much better.", a: "أنا أعتقد أن بانكوك أحسن بكثير." },
+      { s: "C", c: "#7928ca", e: "Is it always cold in London?", a: "هل الجو بارد دائماً في لندن؟" },
+      { s: "D", c: "#0070f3", e: "Yes, it is cold, especially in the winter.", a: "نعم، بارد، خاصة في الشتاء." },
+      { s: "A", c: "#ff9100", e: "Which museum is your favorite?", a: "أي متحف هو المفضل لك؟" },
+      { s: "B", c: "#00c853", e: "My favorite is the Science Museum.", a: "المفضل لي هو متحف العلوم." }
+    ],
+    voc: [
+      { e: "Boarding pass", a: "بطاقة صعود الطائرة", d: "Noun. كلمة Boarding من الفعل board = يصード. pass هنا بمعنى تصريح.", cl: ["Here is my boarding pass"], ms: [{ w: "boarding card", c: "boarding pass", n: "card خطأ شائع" }], us: [{ t: "في المطار", e: "Here is my boarding pass.", a: "تفضل بطاقة الصعود." }] },
+      { e: "Straight ahead", a: "إلى الأمام مباشرة", d: "Phrase. صيغة أمر. لا نستخدم to مع straight.", cl: ["Go straight ahead and then take a left"], ms: [{ w: "go to straight", c: "go straight ahead", n: "لا نستخدم to" }], us: [{ t: "في الإرشاد", e: "Go straight ahead and then take a left.", a: "امشي طوالي ثم اتجه يساراً." }] },
+      { e: "Holiday", a: "عطلة / إجازة", d: "Noun. في بريطانيا نقول holiday بدلاً من vacation.", cl: ["Have you been on holiday in Bangkok?"], ms: [{ w: "vacation", c: "holiday", n: "holiday بريطاني، vacation أمريكي" }], us: [{ t: "في السؤال", e: "Have you been on holiday in Bangkok?", a: "هل كنتِ في عطلة في بانكوك؟" }] },
+      { e: "Visa documentation", a: "أوراق/وثائق التأشيرة", d: "Noun. وثائق التأشيرة الرسمية.", cl: ["Could I see your passport and visa documentation?"], ms: [{ w: "visa papers", c: "visa documentation", n: "documentation أدق" }], us: [{ t: "في المطار", e: "Could I see your passport and visa documentation?", a: "هل يمكنني رؤية جواز سفرك ووثائق التأشيرة؟" }] },
+      { e: "Declare", a: "يُصرّح", d: "Verb. تُستخدم عادة في الجمارك للإفصاح عن الأشياء المحمولة.", cl: ["Do you have anything to declare?"], ms: [{ w: "say", c: "declare", n: "declare رسمى وجماركي" }], us: [{ t: "في الجمارك", e: "Do you have anything to declare?", a: "هل لديك أي شيء تصرح به؟" }] },
+      { e: "Baggage claim", a: "مكان استلام الأمتعة", d: "Noun. المكان الذي تستلم فيه شنطك بعد الرحلة.", cl: ["Where is the baggage claim?"], ms: [{ w: "baggage take", c: "baggage claim", n: "المصطلح الصحيح baggage claim" }], us: [{ t: "في المطار", e: "Where is the baggage claim?", a: "أين مكان استلام الأمتعة؟" }] },
+      { e: "Direct flight", a: "رحلة طيران مباشرة", d: "Noun. رحلة بدون توقف ترانزيت في الطريق.", cl: ["It was quite a long flight... was it a direct flight?"], ms: [{ w: "straight flight", c: "direct flight", n: "المصطلح الصحيح direct flight" }], us: [{ t: "في السؤال", e: "Was it a direct flight?", a: "هل كانت رحلة مباشرة؟" }] },
+      { e: "Light traffic", a: "حركة مرور خفيفة", d: "Noun. حركة مرور غير مزدحمة.", cl: ["The traffic should be light."], ms: [{ w: "small traffic", c: "light traffic", n: "المرور الخفيف يسمى light traffic" }], us: [{ t: "في الوصف", e: "The traffic should be light.", a: "من المفترض أن يكون المرور خفيفاً." }] },
+      { e: "Trousers", a: "بنطال", d: "Noun. استخدام بريطاني. في أمريكا نقول pants.", cl: ["I need to get some shirts, trousers, and a warm jacket."], ms: [{ w: "pants", c: "trousers", n: "trousers بريطاني، pants أمريكي" }], us: [{ t: "في التسوق", e: "I need to get some trousers.", a: "محتاج أشتري بنطلون." }] },
+      { e: "Guidebook", a: "كتاب إرشادي", d: "Noun. كتاب للسياح. كلمة واحدة في أمريكا، كلمتين في بريطانيا.", cl: ["I need to buy a guidebook about London."], ms: [{ w: "guide book", c: "guidebook", n: "في أمريكا كلمة واحدة" }], us: [{ t: "في التسوق", e: "I need to buy a guidebook about London.", a: "محتاج أشتري كتاب إرشادي عن لندن." }] },
+      { e: "Expensive", a: "غالي الثمن", d: "Adjective. صفة لوصف الأسعار العالية.", cl: ["London is very expensive, isn't it?"], ms: [{ w: "expensify", c: "expensive", n: "expensive = غالي" }], us: [{ t: "في الوصف", e: "London is very expensive.", a: "لندن غالية جداً." }] },
+      { e: "Exhibition", a: "معرض", d: "Noun. مكان لعرض القطع الفنية أو العلمية.", cl: ["The road is called Exhibition Road."], ms: [{ w: "exhibition", c: "exhibition", n: "exhibition = معرض" }], us: [{ t: "في التسمية", e: "The road is called Exhibition Road.", a: "الشارع اسمه طريق المعرض." }] },
+      { e: "Natural History Museum", a: "متحف التاريخ الطبيعي", d: "Noun. أحد أشهر المتاحف في لندن.", cl: ["I think you would like the Natural History Museum more."], ms: [{ w: "history museum", c: "natural history museum", n: "natural history = تاريخ طبيعي" }], us: [{ t: "في التوصية", e: "I think you would like the Natural History Museum more.", a: "أعتقد أنك ستعجب بمتحف التاريخ الطبيعي أكثر." }] },
+      { e: "Public transport", a: "وسائل النقل العامة", d: "Noun. النقل العام أو الجماعي.", cl: ["Would you like me to show you the public transport system?"], ms: [{ w: "public transportation", c: "public transport", n: "transport و transportation صحيحتان" }], us: [{ t: "في العرض", e: "Would you like me to show you the public transport system?", a: "هل تحب أوريك نظام النقل العام؟" }] }
+    ],
+    gram: [
+      { t: "1. Present Continuous for Future", d: "استخدام (am/is/are + v.ing) للتعبير عن خطط مستقبلية تم الترتيب لها مسبقاً.", ex: [{ e: "I am going to visit my friend.", a: "أنا ذاهب لزيارة صديقي." }, { e: "I am going to stay with my friends.", a: "سأقيم مع أصدقائي." }], tp: "المضارع المستمر للخطط المستقبلية المؤكدة" },
+      { t: "2. Question Tags (الأسئلة المذيلة)", d: "سؤال قصير في نهاية الجملة للتوكيد. معناه (أليس كذلك؟) يُعكس فيه النفي والإثبات.", ex: [{ e: "London is very expensive, isn't it?", a: "لندن غالية جداً، مش كده؟" }], tp: "مثبت + نفي، نفي + إثبات" },
+      { t: "3. Comparatives (صيغة المقارنة)", d: "استخدام much و a little bit قبل صفة المقارنة لبيان مقدار الفارق.", ex: [{ e: "Is it cheaper than Kensington?", a: "هل هو أرخص من كينغزتون؟" }, { e: "Bangkok is much better.", a: "بانكوك أحسن بكثير." }], tp: "much + صفة مقارنة لتقوية الفارق" },
+      { t: "4. Present Perfect (المضارع التام)", d: "يستخدم للسؤال عن تجارب سابقة دون تحديد الوقت (Have + Past Participle).", ex: [{ e: "Have you been on holiday in Bangkok?", a: "هل كنت في عطلة في بانكوك؟" }, { e: "Have we forgotten to buy anything?", a: "هل نسينا نشتري أي حاجة؟" }], tp: "للتجارب بدون تحديد وقت" },
+      { t: "5. Polite Requests (الطلبات المهذبة)", d: "استخدام (Could I) لطلب شيء بأدب، و (Would you like) للعرض.", ex: [{ e: "Could I see your passport?", a: "هل يمكنني رؤية جوازك؟" }, { e: "Would you like me to show you the public transport?", a: "هل تحب أوريك النقل العام؟" }], tp: "Could I أرق من Can I" }
+    ],
+    pron: [
+      { w: "Boarding pass", t: "تنطق بوردنغ باس ب Stress على boarding" },
+      { w: "Baggage claim", t: "تنطق باغيج كليم متصلة" },
+      { w: "Trousers", t: "تنطق تراوزرز بالإنجليزية البريطانية" },
+      { w: "Exhibition", t: "تنطق ايكسهيبيشن ب Stress على the第三个音节" }
+    ],
+    cul: [
+      { n: "Kensington High Street شارع تسوق غالي في لندن" },
+      { n: "King's Road شارع تسوق شهير وأرخص من كينغزتون" },
+      { n: "في بريطانيا نقول Holiday بدلاً من Vacation" },
+      { n: "في بريطانيا نقول Trousers بدلاً من Pants" },
+      { n: "Natural History Museum في لندن مجاني وشائع جداً" }
+    ],
+    ex: [
+      { tp: "mcq", q: "ماذا تقول عند تسليم جواز سفرك؟", a: "تفضل", o: ["Here it is", "Go straight", "Take a left", "Enjoy it"], c: 0 },
+      { tp: "mcq", q: "ما معنى Straight ahead؟", a: "", o: ["إلى الأمام مباشرة", "اتجه يميناً", "ارجع للخلف", "افتح الباب"], c: 0 },
+      { tp: "fill", q: "Have you been on ________ in Bangkok?", a: "هل كنت في عطلة", an: "holiday" },
+      { tp: "reorder", q: "رتّب الجملة: هل يمكنك رؤية جواز سفرك؟", a: "could i see your passport", w: ["could", "i", "see", "your", "passport"] },
+      { tp: "match", q: "طابق الكلمة بالمعنى", p: [["Boarding pass", "بطاقة صعود"], ["Baggage claim", "مكان استلام الأمتعة"], ["Trousers", "بنطال"], ["Guidebook", "كتاب إرشادي"]] },
+      { tp: "mcq", q: "ما الفرق بين holiday و vacation؟", a: "", o: ["holiday بريطاني، vacation أمريكي", "vacation بريطاني، holiday أمريكي", "كلاهما متساويان", "لا فرق"], c: 0 },
+      { tp: "fill", q: "London is very expensive, ________ it?", a: "مش كده؟", an: "isn't" },
+      { tp: "listen", q: "استمع واختر المعنى الصحيح", en: "Do you have anything to declare?", o: ["هل لديك جواز سفر؟", "هل لديك أي شيء تصرح به؟", "هل أنت جاهز؟", "هل تريد شيء؟"], c: 1 },
+      { tp: "translate", q: "ترجم: هل يمكنك رؤية جواز سفرك ووثائق التأشيرة؟", a: "", an: "could i see your passport and visa documentation" },
+      { tp: "mcq", q: "الNatural History Museum في لندن:", a: "", o: ["مجاني وشائع", "غالي جداً", "مغلق", "صغير"], c: 0 },
+      { tp: "egpt", q: "ازاي تسأل 'هل لديك أي شيء تصرح به' بالإنجليزي؟", hint: "فكر في: Do you have anything to declare?", an: "do you have anything to declare", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة holiday", w: "holiday" }
+    ]
   }
 ];

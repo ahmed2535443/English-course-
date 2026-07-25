@@ -21,6 +21,9 @@ function getDefaultState() {
     srs: [],
     ach: [],
     dk: false,
+    cst: {},
+    lastUnit: 0,
+    lastStep: '',
   }
 }
 
@@ -127,6 +130,16 @@ function reducer(state, action) {
     }
     case 'CHECK_DAY':
       return checkStreak(state)
+    case 'COMPLETE_STEP': {
+      const { unitId, step } = action.payload
+      const unitSteps = state.cst[unitId] || []
+      if (unitSteps.includes(step)) return state
+      return { ...state, cst: { ...state.cst, [unitId]: [...unitSteps, step] } }
+    }
+    case 'SET_LAST_LOCATION': {
+      const { unitId, step } = action.payload
+      return { ...state, lastUnit: unitId, lastStep: step }
+    }
     case 'RESET':
       return getDefaultState()
     default:
@@ -197,6 +210,14 @@ export function AppProvider({ children }) {
     dispatch({ type: 'RESET' })
   }, [])
 
+  const completeStep = useCallback((unitId, step) => {
+    dispatch({ type: 'COMPLETE_STEP', payload: { unitId, step } })
+  }, [])
+
+  const setLastLocation = useCallback((unitId, step) => {
+    dispatch({ type: 'SET_LAST_LOCATION', payload: { unitId, step } })
+  }, [])
+
   const buildSRS = useCallback(() => {
     if (state.srs.length > 0) return
     const srs = []
@@ -226,6 +247,8 @@ export function AppProvider({ children }) {
     rateSRS,
     resetAll,
     buildSRS,
+    completeStep,
+    setLastLocation,
     lessons: LESSONS,
   }
 

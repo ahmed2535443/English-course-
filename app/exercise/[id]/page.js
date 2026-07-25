@@ -3,6 +3,7 @@ import { use, useState, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { LESSONS } from '@/data/lessons'
+import { getUnitByLessonId } from '@/data/course'
 import { useApp } from '@/context/AppContext'
 import Sidebar from '@/components/Sidebar'
 import TopNav from '@/components/TopNav'
@@ -36,6 +37,7 @@ export default function ExercisePage({ params }) {
   const { id } = use(params)
   const router = useRouter()
   const lesson = LESSONS.find((l) => l.id === Number(id))
+  const unit = getUnitByLessonId(Number(id))
   const { addXP, completeExercise, unlockAchievement, don, ach } = useApp()
 
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -204,10 +206,10 @@ export default function ExercisePage({ params }) {
           </AnimatePresence>
 
           <button
-            onClick={() => router.push(`/lesson/${lesson.id}`)}
+            onClick={() => router.push(unit ? `/unit/${unit.id}` : `/lesson/${lesson.id}`)}
             className="mt-3 text-sm text-primary font-semibold hover:underline"
           >
-            ← العودة للحلقة
+            ← العودة للوحدة
           </button>
         </main>
       </div>
@@ -219,7 +221,7 @@ export default function ExercisePage({ params }) {
         emoji={modalData.emoji}
         title={modalData.title}
         description={modalData.desc}
-        onClose={() => { setShowModal(false); router.push('/') }}
+        onClose={() => { setShowModal(false); router.push(unit ? `/unit/${unit.id}` : '/') }}
       />
 
       <Confetti show={showConfetti} />

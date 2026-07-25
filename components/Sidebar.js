@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
 
 const NAV_LINKS = [
-  { href: '/', icon: '📚', label: 'الدروس' },
+  { href: '/', icon: '🏠', label: 'الرئيسية' },
+  { href: '/levels', icon: '📚', label: 'المستويات' },
   { href: '/achievements', icon: '🏆', label: 'إنجازات' },
   { href: '/stats', icon: '📊', label: 'إحصائيات' },
 ]

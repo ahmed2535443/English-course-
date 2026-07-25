@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const NAV_LINKS = [
-  { href: '/', icon: '📚', label: 'الرئيسية' },
+  { href: '/', icon: '🏠', label: 'الرئيسية' },
+  { href: '/levels', icon: '📚', label: 'المستويات' },
   { href: '/achievements', icon: '🏆', label: 'إنجازات' },
   { href: '/stats', icon: '📊', label: 'إحصائيات' },
 ]

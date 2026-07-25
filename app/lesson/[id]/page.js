@@ -3,6 +3,7 @@ import { use, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { LESSONS } from '@/data/lessons'
+import { getUnitByLessonId } from '@/data/course'
 import { useApp } from '@/context/AppContext'
 import { useSpeech } from '@/hooks/useSpeech'
 import Sidebar from '@/components/Sidebar'
@@ -43,6 +44,7 @@ export default function LessonPage({ params }) {
   const { id } = use(params)
   const router = useRouter()
   const lesson = LESSONS.find((l) => l.id === Number(id))
+  const unit = getUnitByLessonId(Number(id))
   const { speak } = useSpeech()
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -63,10 +65,10 @@ export default function LessonPage({ params }) {
 
         <main className="flex-1 page-container pb-32">
           <Link
-            href="/"
+            href={unit ? `/unit/${unit.id}` : '/'}
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mb-4 hover:underline"
           >
-            <span>←</span> العودة للدروس
+            <span>←</span> العودة للوحدة
           </Link>
 
           <motion.h1

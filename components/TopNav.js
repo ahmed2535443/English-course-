@@ -1,9 +1,13 @@
 'use client'
 import { useApp } from '@/context/AppContext'
+import { useUser } from '@clerk/nextjs'
+
+const UNLIMITED_HEARTS_EMAIL = 'hany99633@gmail.com'
 
 export default function TopNav({ title, onMenuClick }) {
-  const { xp, str, cst } = useApp()
-  const hearts = cst?.hearts ?? 5
+  const { xp, str } = useApp()
+  const { user } = useUser()
+  const isUnlimited = user?.emailAddresses?.[0]?.emailAddress === UNLIMITED_HEARTS_EMAIL
 
   return (
     <header className="h-[var(--topnav-h)] bg-white dark:bg-[#1a2a32] px-4 md:px-6 flex items-center justify-between sticky top-0 z-30 border-b-2 border-gray-100 dark:border-[#233640]">
@@ -37,7 +41,9 @@ export default function TopNav({ title, onMenuClick }) {
         {/* Hearts */}
         <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800">
           <span className="text-base">❤️</span>
-          <span className="text-sm font-extrabold text-red-500">{hearts}</span>
+          <span className="text-sm font-extrabold text-red-500">
+            {isUnlimited ? '∞' : '5'}
+          </span>
         </div>
       </div>
     </header>

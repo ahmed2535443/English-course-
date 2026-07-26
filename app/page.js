@@ -3,6 +3,7 @@ import { useEffect, useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
 import { useSounds } from '@/hooks/useSounds'
+import { useUser } from '@clerk/nextjs'
 import { LESSONS } from '@/data/lessons'
 import { LEVELS, getPublishedLevels } from '@/data/course'
 import Sidebar from '@/components/Sidebar'
@@ -19,6 +20,8 @@ const MOTIVATIONAL = [
   'يلا نكمل! مافيش حاجة توقفك!',
   'برافو عليك! إنت بتبني مستقبلك!'
 ]
+
+const UNLIMITED_HEARTS_EMAIL = 'hany99633@gmail.com'
 
 const CONVERSATION_LESSONS = LESSONS.filter(l => l.id >= 1 && l.id <= 9)
 
@@ -37,7 +40,10 @@ const LESSON_COLORS = [
 export default function HomePage() {
   const { don, xp, str, cst, srs, buildSRS } = useApp()
   const { play } = useSounds()
+  const { user } = useUser()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const isUnlimited = user?.emailAddresses?.[0]?.emailAddress === UNLIMITED_HEARTS_EMAIL
 
   const randomMascot = useMemo(() => MASCOTS[Math.floor(Math.random() * MASCOTS.length)], [])
   const randomMotivation = useMemo(() => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)], [])
@@ -126,7 +132,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
                   <span className="text-xl">❤️</span>
-                  <span className="text-white font-bold">{hearts}</span>
+                  <span className="text-white font-bold">{isUnlimited ? '∞' : hearts}</span>
                   <span className="text-white/80 text-sm">قلب</span>
                 </div>
               </motion.div>

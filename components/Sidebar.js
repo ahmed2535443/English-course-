@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
 import { useUser, useClerk, UserButton } from '@clerk/nextjs'
 
+const UNLIMITED_HEARTS_EMAIL = 'hany99633@gmail.com'
+
 const NAV_LINKS = [
   { href: '/', icon: '🏠', label: 'الرئيسية' },
   { href: '/levels', icon: '📚', label: 'المستويات' },
@@ -45,6 +47,7 @@ export default function Sidebar({ open, onClose }) {
   const { signOut } = useClerk()
   const dueCount = srs ? srs.filter((w) => w.nx <= Date.now()).length : 0
   const hearts = cst?.hearts ?? 5
+  const isUnlimited = user?.emailAddresses?.[0]?.emailAddress === UNLIMITED_HEARTS_EMAIL
 
   return (
     <>
@@ -107,7 +110,7 @@ export default function Sidebar({ open, onClose }) {
               <div className="text-[10px] font-bold text-amber-400">XP</div>
             </div>
             <div className="rounded-xl p-3 text-center bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800">
-              <div className="text-lg font-extrabold text-red-500">❤️ {hearts}</div>
+              <div className="text-lg font-extrabold text-red-500">❤️ {isUnlimited ? '∞' : hearts}</div>
               <div className="text-[10px] font-bold text-red-400">قلب</div>
             </div>
           </div>

@@ -3,20 +3,20 @@
 @custom-variant dark selector(.dk);
 
 @theme inline {
-  --color-primary: #7c3aed;
-  --color-primary-dark: #6d28d9;
-  --color-primary-light: #a78bfa;
-  --color-secondary: #06b6d4;
-  --color-secondary-light: #22d3ee;
-  --color-accent: #ec4899;
-  --color-success: #10b981;
-  --color-success-light: #34d399;
-  --color-error: #ef4444;
-  --color-warning: #f59e0b;
+  --color-primary: #58CC02;
+  --color-primary-dark: #46A302;
+  --color-primary-light: #89E219;
+  --color-secondary: #1CB0F6;
+  --color-secondary-light: #49C0F8;
+  --color-accent: #FF9600;
+  --color-success: #58CC02;
+  --color-success-light: #89E219;
+  --color-error: #FF4B4B;
+  --color-warning: #FF9600;
 }
 
 /* ═══════════════════════════════════════════
-   DESIGN TOKENS - Modern 2026 Palette
+   DESIGN TOKENS - Duolingo Style
    ═══════════════════════════════════════════ */
 
 :root {
@@ -29,47 +29,47 @@
   --radius-lg: 20px;
   --radius-xl: 24px;
 
-  /* Light Mode - Warm & Vibrant */
-  --bg-base: #f8fafc;
+  /* Light Mode - Duolingo Style */
+  --bg-base: #f7f7f7;
   --bg-surface: #ffffff;
-  --bg-surface-hover: #f1f5f9;
-  --bg-glass: rgba(255, 255, 255, 0.7);
-  --bg-glass-strong: rgba(255, 255, 255, 0.85);
+  --bg-surface-hover: #f0f0f0;
+  --bg-glass: rgba(255, 255, 255, 0.9);
+  --bg-glass-strong: rgba(255, 255, 255, 0.95);
   --border-subtle: rgba(0, 0, 0, 0.05);
-  --border-default: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.12);
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
-  --text-faint: #94a3b8;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
-  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
-  --shadow-glow: 0 0 32px rgba(124, 58, 237, 0.15);
-  --shadow-glow-cyan: 0 0 32px rgba(6, 182, 212, 0.15);
+  --border-default: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --text-primary: #3c3c3c;
+  --text-secondary: #4b4b4b;
+  --text-muted: #777777;
+  --text-faint: #afafaf;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 20px rgba(88, 204, 2, 0.3);
+  --shadow-glow-cyan: 0 0 20px rgba(28, 176, 246, 0.3);
 }
 
 .dk {
-  /* Dark Mode - AMOLED + Vibrant Accents */
-  --bg-base: #030712;
-  --bg-surface: #0f172a;
-  --bg-surface-hover: #1e293b;
-  --bg-glass: rgba(15, 23, 42, 0.8);
-  --bg-glass-strong: rgba(15, 23, 42, 0.92);
+  /* Dark Mode - Duolingo Dark */
+  --bg-base: #131f24;
+  --bg-surface: #1a2a32;
+  --bg-surface-hover: #233640;
+  --bg-glass: rgba(26, 42, 50, 0.9);
+  --bg-glass-strong: rgba(26, 42, 50, 0.95);
   --border-subtle: rgba(255, 255, 255, 0.05);
-  --border-default: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.1);
   --border-strong: rgba(255, 255, 255, 0.15);
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-faint: #64748b;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.25);
-  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.25);
-  --shadow-glow-cyan: 0 0 40px rgba(6, 182, 212, 0.25);
+  --text-primary: #f7f7f7;
+  --text-secondary: #d0d0d0;
+  --text-muted: #a0a0a0;
+  --text-faint: #707070;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 24px rgba(88, 204, 2, 0.4);
+  --shadow-glow-cyan: 0 0 24px rgba(28, 176, 246, 0.4);
 }
 
 @media (min-width: 768px) {
@@ -95,7 +95,7 @@ html {
 }
 
 body {
-  font-family: 'Cairo', 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Nunito', 'Cairo', system-ui, -apple-system, sans-serif;
   background: var(--bg-base);
   color: var(--text-primary);
   min-height: 100vh;
@@ -105,82 +105,64 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Ambient Background Gradient */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  background: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 58, 237, 0.08), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 0%, rgba(6, 182, 212, 0.06), transparent),
-    radial-gradient(ellipse 50% 30% at 20% 0%, rgba(236, 72, 153, 0.05), transparent);
-  pointer-events: none;
-  z-index: -1;
-}
-
-.dk body::before {
-  background: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 58, 237, 0.12), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 0%, rgba(6, 182, 212, 0.08), transparent),
-    radial-gradient(ellipse 50% 30% at 20% 0%, rgba(236, 72, 153, 0.06), transparent);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
+/* Scrollbar - Duolingo Style */
+::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #a78bfa, #06b6d4);
+  background: #e0e0e0;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #7c3aed, #0891b2);
+  background: #c0c0c0;
+}
+
+.dk ::-webkit-scrollbar-thumb {
+  background: #3a4a52;
+}
+.dk ::-webkit-scrollbar-thumb:hover {
+  background: #4a5a62;
 }
 
 /* ═══════════════════════════════════════════
    DESIGN SYSTEM CLASSES
    ═══════════════════════════════════════════ */
 
-/* Glass Card - Modern Glassmorphism */
+/* Solid Card - Duolingo Style */
+.solid-card {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.solid-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-default);
+}
+
+/* Glass Card - Duolingo Style */
 .glass-card {
   background: var(--bg-glass);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--border-subtle);
+  border: 2px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
 }
 
 .glass-card:hover {
   box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
 }
 
 .glass-card-strong {
   background: var(--bg-glass-strong);
   backdrop-filter: blur(24px) saturate(200%);
   -webkit-backdrop-filter: blur(24px) saturate(200%);
-  border: 1px solid var(--border-default);
+  border: 2px solid var(--border-default);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-}
-
-/* Solid Card - Clean & Modern */
-.solid-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.solid-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-  border-color: var(--border-default);
 }
 
 /* Glass Surface (Navbar, Sidebar) */
@@ -191,61 +173,61 @@ body::before {
   border: 1px solid var(--border-subtle);
 }
 
-/* Gradient Text - Vibrant */
-.gradient-text {
-  background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 50%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Buttons - Modern & Vibrant */
+/* Buttons - Duolingo Style */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
   border: none;
   outline: none;
   white-space: nowrap;
   position: relative;
   overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .btn:focus-visible {
-  outline: 2px solid #7c3aed;
+  outline: 2px solid #58CC02;
   outline-offset: 2px;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+  background: #58CC02;
   color: white;
-  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 0 #46A302;
+  border-bottom: none;
 }
 .btn-primary:hover {
-  box-shadow: 0 6px 24px rgba(124, 58, 237, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
+  background: #46A302;
+  box-shadow: 0 4px 0 #3A8A02;
+  transform: translateY(1px);
 }
 .btn-primary:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #46A302;
 }
 
 .btn-secondary {
   background: var(--bg-surface);
   color: var(--text-primary);
-  border: 1.5px solid var(--border-default);
-  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--border-default);
+  box-shadow: 0 4px 0 var(--border-subtle);
 }
 .btn-secondary:hover {
   background: var(--bg-surface-hover);
   border-color: var(--border-strong);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
+  transform: translateY(1px);
+  box-shadow: 0 3px 0 var(--border-subtle);
+}
+.btn-secondary:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--border-subtle);
 }
 
 .btn-ghost {
@@ -258,23 +240,33 @@ body::before {
 }
 
 .btn-success {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: #58CC02;
   color: white;
-  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 0 #46A302;
 }
 .btn-success:hover {
-  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.4);
-  transform: translateY(-2px);
+  background: #46A302;
+  transform: translateY(1px);
+  box-shadow: 0 3px 0 #3A8A02;
+}
+.btn-success:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #46A302;
 }
 
 .btn-danger {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  background: #FF4B4B;
   color: white;
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 4px 0 #E03E3E;
 }
 .btn-danger:hover {
-  box-shadow: 0 6px 24px rgba(239, 68, 68, 0.4);
-  transform: translateY(-2px);
+  background: #E03E3E;
+  transform: translateY(1px);
+  box-shadow: 0 3px 0 #C03232;
+}
+.btn-danger:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #E03E3E;
 }
 
 .btn-icon {
@@ -284,42 +276,49 @@ body::before {
   border-radius: var(--radius-md);
   background: var(--bg-surface);
   color: var(--text-muted);
-  border: 1.5px solid var(--border-subtle);
+  border: 2px solid var(--border-subtle);
+  box-shadow: 0 3px 0 var(--border-subtle);
 }
 .btn-icon:hover {
   background: var(--bg-surface-hover);
   color: var(--text-primary);
   border-color: var(--border-default);
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 var(--border-subtle);
+}
+.btn-icon:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 var(--border-subtle);
 }
 
-/* Input - Modern */
+/* Input - Duolingo Style */
 .input {
   width: 100%;
   padding: 14px 18px;
-  border: 1.5px solid var(--border-default);
+  border: 2px solid var(--border-default);
   border-radius: var(--radius-md);
   background: var(--bg-surface);
   color: var(--text-primary);
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   outline: none;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 .input:focus {
-  border-color: #7c3aed;
-  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+  border-color: #58CC02;
+  box-shadow: 0 0 0 4px rgba(88, 204, 2, 0.15);
 }
 .input::placeholder {
   color: var(--text-faint);
 }
 
 .input-success {
-  border-color: #10b981;
-  background: rgba(16, 185, 129, 0.04);
+  border-color: #58CC02;
+  background: rgba(88, 204, 2, 0.04);
 }
 .input-error {
-  border-color: #ef4444;
-  background: rgba(239, 68, 68, 0.04);
+  border-color: #FF4B4B;
+  background: rgba(255, 75, 75, 0.04);
 }
 
 /* Page Container */
@@ -339,11 +338,6 @@ body::before {
   }
 }
 
-/* Section */
-.section-gap {
-  margin-bottom: 24px;
-}
-
 /* Badge */
 .badge {
   display: inline-flex;
@@ -352,46 +346,37 @@ body::before {
   padding: 4px 12px;
   border-radius: 100px;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.02em;
 }
 
-/* Progress Bar - Vibrant Gradient */
+/* Progress Bar - Duolingo Style */
 .progress-track {
   width: 100%;
-  height: 8px;
-  background: var(--border-subtle);
+  height: 16px;
+  background: #e5e5e5;
   border-radius: 100px;
   overflow: hidden;
+}
+
+.dk .progress-track {
+  background: #2a3a42;
 }
 
 .progress-fill {
   height: 100%;
   border-radius: 100px;
-  background: linear-gradient(90deg, #7c3aed, #06b6d4, #ec4899);
-  background-size: 200% 100%;
-  animation: gradient-shift 3s ease infinite;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Direction LTR for English text */
-.direction-ltr {
-  direction: ltr;
-  text-align: left;
+  background: linear-gradient(90deg, #58CC02, #89E219);
+  transition: width 0.5s ease;
 }
 
 /* ═══════════════════════════════════════════
-   ANIMATIONS
+   ANIMATIONS - Duolingo Style
    ═══════════════════════════════════════════ */
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
-  50% { box-shadow: 0 0 24px 6px rgba(124, 58, 237, 0.15); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(88, 204, 2, 0.4); }
+  50% { box-shadow: 0 0 20px 4px rgba(88, 204, 2, 0.2); }
 }
 
 @keyframes shake {
@@ -410,28 +395,33 @@ body::before {
   50% { transform: translateY(-8px); }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+@keyframes bounce-in {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+@keyframes slide-up {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
 .animate-shake { animation: shake 0.3s ease-in-out; }
 .animate-confetti { animation: confetti-fall 3s ease-out forwards; }
 .animate-float { animation: float 2.5s ease-in-out infinite; }
-.animate-shimmer { 
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
+.animate-bounce-in { animation: bounce-in 0.5s ease; }
+.animate-slide-up { animation: slide-up 0.3s ease; }
+.animate-pop { animation: pop 0.3s ease; }
 
 /* ═══════════════════════════════════════════
-   DESKTOP - BIGGER & MORE COMFORTABLE
+   DESKTOP - DUOLINGO STYLE
    ═══════════════════════════════════════════ */
 
 @media (min-width: 1024px) {
@@ -467,91 +457,501 @@ body::before {
 }
 
 /* ═══════════════════════════════════════════
-   EXTRA MODERN UTILITIES
+   DUOLINGO-SPECIFIC STYLES
    ═══════════════════════════════════════════ */
 
-/* Gradient Border */
-.gradient-border {
+/* Learning Path Node */
+.path-node {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
   position: relative;
-  background: var(--bg-surface);
-  border-radius: var(--radius-lg);
 }
-.gradient-border::before {
+
+.path-node::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  border-radius: calc(var(--radius-lg) + 2px);
-  background: linear-gradient(135deg, #7c3aed, #06b6d4, #ec4899);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.gradient-border:hover::before {
-  opacity: 1;
+  inset: -4px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  transition: all 0.2s ease;
 }
 
-/* Neon Glow Effect */
-.neon-glow {
-  box-shadow: 
-    0 0 5px rgba(124, 58, 237, 0.3),
-    0 0 10px rgba(124, 58, 237, 0.2),
-    0 0 20px rgba(124, 58, 237, 0.1);
+.path-node.completed {
+  background: #58CC02;
+  color: white;
+  box-shadow: 0 4px 0 #46A302;
 }
 
-/* Card with Gradient Accent */
-.card-accent {
+.path-node.completed::before {
+  border-color: #89E219;
+}
+
+.path-node.current {
+  background: #1CB0F6;
+  color: white;
+  box-shadow: 0 4px 0 #1899D6;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.path-node.locked {
+  background: #e5e5e5;
+  color: #afafaf;
+  box-shadow: 0 4px 0 #d0d0d0;
+  cursor: not-allowed;
+}
+
+.dk .path-node.locked {
+  background: #2a3a42;
+  color: #707070;
+  box-shadow: 0 4px 0 #1a2a32;
+}
+
+/* XP Badge - Duolingo Style */
+.xp-badge {
+  background: linear-gradient(135deg, #FF9600, #FFC800);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 14px;
+  box-shadow: 0 3px 0 #E08600;
+}
+
+/* Streak Badge - Duolingo Style */
+.streak-badge {
+  background: linear-gradient(135deg, #FF9600, #FF4B4B);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 14px;
+  box-shadow: 0 3px 0 #E03E3E;
+}
+
+/* Hearts Badge - Duolingo Style */
+.hearts-badge {
+  background: linear-gradient(135deg, #FF4B4B, #FF6B6B);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 14px;
+  box-shadow: 0 3px 0 #E03E3E;
+}
+
+/* Level Card - Duolingo Style */
+.level-card {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.level-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.level-card.active {
+  border-color: #58CC02;
+  box-shadow: 0 4px 0 #46A302;
+}
+
+.level-card.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Category Card - Duolingo Style */
+.category-card {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-default);
+}
+
+.category-card.completed {
+  border-color: #58CC02;
+  background: rgba(88, 204, 2, 0.05);
+}
+
+.category-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Exercise Card - Duolingo Style */
+.exercise-card {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: all 0.2s ease;
+}
+
+.exercise-card.correct {
+  border-color: #58CC02;
+  background: rgba(88, 204, 2, 0.05);
+}
+
+.exercise-card.incorrect {
+  border-color: #FF4B4B;
+  background: rgba(255, 75, 75, 0.05);
+  animation: shake 0.3s ease;
+}
+
+/* Option Button - Duolingo Style */
+.option-btn {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: right;
+  width: 100%;
+}
+
+.option-btn:hover {
+  border-color: #1CB0F6;
+  background: rgba(28, 176, 246, 0.05);
+}
+
+.option-btn.selected {
+  border-color: #1CB0F6;
+  background: rgba(28, 176, 246, 0.1);
+  box-shadow: 0 3px 0 #1899D6;
+}
+
+.option-btn.correct {
+  border-color: #58CC02;
+  background: rgba(88, 204, 2, 0.1);
+  box-shadow: 0 3px 0 #46A302;
+}
+
+.option-btn.incorrect {
+  border-color: #FF4B4B;
+  background: rgba(255, 75, 75, 0.1);
+  box-shadow: 0 3px 0 #E03E3E;
+}
+
+/* Match Card - Duolingo Style */
+.match-card {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.match-card:hover {
+  border-color: #1CB0F6;
+}
+
+.match-card.selected {
+  border-color: #1CB0F6;
+  background: rgba(28, 176, 246, 0.1);
+}
+
+.match-card.matched {
+  border-color: #58CC02;
+  background: rgba(88, 204, 2, 0.1);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Sentence Builder - Duolingo Style */
+.word-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-default);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.word-chip:hover {
+  border-color: #1CB0F6;
+  transform: translateY(-2px);
+}
+
+.word-chip.placed {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Answer Zone - Duolingo Style */
+.answer-zone {
+  min-height: 60px;
+  background: var(--bg-surface);
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.answer-zone.filled {
+  border-style: solid;
+  border-color: #58CC02;
+}
+
+/* Feedback Bar - Duolingo Style */
+.feedback-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom));
+  z-index: 50;
+  animation: slide-up 0.3s ease;
+}
+
+.feedback-bar.correct {
+  background: #58CC02;
+  color: white;
+}
+
+.feedback-bar.incorrect {
+  background: #FF4B4B;
+  color: white;
+}
+
+/* Character Mascot - Duolingo Style */
+.mascot {
+  font-size: 64px;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+/* Daily Quest Card - Duolingo Style */
+.quest-card {
+  background: linear-gradient(135deg, #FF9600, #FFC800);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  color: white;
   position: relative;
   overflow: hidden;
 }
-.card-accent::after {
+
+.quest-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.1), transparent 70%);
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
   pointer-events: none;
 }
 
-/* Level Card Gradient */
-.level-gradient-1 {
-  background: linear-gradient(135deg, #7c3aed, #06b6d4);
-}
-.level-gradient-2 {
-  background: linear-gradient(135deg, #ec4899, #f59e0b);
-}
-.level-gradient-3 {
-  background: linear-gradient(135deg, #10b981, #06b6d4);
-}
-.level-gradient-4 {
-  background: linear-gradient(135deg, #f59e0b, #ef4444);
+/* Leaderboard Row - Duolingo Style */
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
 }
 
-/* XP Badge Gradient */
-.xp-badge {
-  background: linear-gradient(135deg, #f59e0b, #f97316);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 100px;
+.leaderboard-row:hover {
+  border-color: var(--border-default);
+  transform: translateX(-4px);
+}
+
+.leaderboard-row.current {
+  border-color: #FF9600;
+  background: rgba(255, 150, 0, 0.05);
+}
+
+/* Achievement Badge - Duolingo Style */
+.achievement-badge {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  box-shadow: 0 4px 0 #CC8400;
+  transition: all 0.2s ease;
+}
+
+.achievement-badge:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.achievement-badge.locked {
+  background: linear-gradient(135deg, #e0e0e0, #c0c0c0);
+  box-shadow: 0 4px 0 #a0a0a0;
+  filter: grayscale(100%);
+}
+
+/* Tab Bar - Duolingo Style */
+.tab-bar {
+  display: flex;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab-item {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  color: var(--text-muted);
 }
 
-/* Streak Fire Effect */
-.streak-fire {
-  position: relative;
-  display: inline-block;
+.tab-item:hover {
+  color: var(--text-primary);
+  background: var(--bg-surface-hover);
 }
-.streak-fire::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
+
+.tab-item.active {
+  background: #58CC02;
+  color: white;
+  box-shadow: 0 2px 0 #46A302;
+}
+
+/* Toast - Duolingo Style */
+.toast {
+  position: fixed;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
-  height: 4px;
-  background: linear-gradient(90deg, #f59e0b, #ef4444);
-  border-radius: 2px;
-  animation: glow-pulse 1.5s ease-in-out infinite;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  z-index: 100;
+  animation: slide-up 0.3s ease;
+  box-shadow: var(--shadow-lg);
 }
+
+.toast.success {
+  background: #58CC02;
+  color: white;
+}
+
+.toast.error {
+  background: #FF4B4B;
+  color: white;
+}
+
+.toast.info {
+  background: #1CB0F6;
+  color: white;
+}
+
+/* Tooltip - Duolingo Style */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  background: #3c3c3c;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════ */
+
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Direction LTR for English text */
+.direction-ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Text truncation */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Flex utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Gap utilities */
+.gap-xs { gap: 4px; }
+.gap-sm { gap: 8px; }
+.gap-md { gap: 16px; }
+.gap-lg { gap: 24px; }
+.gap-xl { gap: 32px; }

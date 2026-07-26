@@ -1,7 +1,6 @@
 'use client'
-import { createContext, useContext, useReducer, useEffect, useCallback } from 'react'
+import { createContext, useContext, useReducer, useEffect, useCallback, useMemo } from 'react'
 import { LESSONS } from '@/data/lessons'
-import { getAllCourseLessons } from '@/data/curriculum'
 
 const AppContext = createContext()
 
@@ -305,7 +304,7 @@ export function AppProvider({ children }) {
   const completeOnboarding = useCallback(() => dispatch({ type: 'COMPLETE_ONBOARDING' }), [])
   const setSpeechSpeed = useCallback((speed) => dispatch({ type: 'SET_SPEECH_SPEED', payload: speed }), [])
 
-  const value = {
+  const value = useMemo(() => ({
     ...state,
     addXP,
     completeExercise,
@@ -325,7 +324,7 @@ export function AppProvider({ children }) {
     completeOnboarding,
     setSpeechSpeed,
     lessons: LESSONS,
-  }
+  }), [state, addXP, completeExercise, unlockAchievement, toggleDark, setSRS, rateSRS, resetAll, buildSRS, completeStep, setLastLocation, setLastLesson, completeLesson, saveQuizAttempt, setUserGoal, setDailyTime, completeOnboarding, setSpeechSpeed])
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

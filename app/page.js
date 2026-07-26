@@ -1,10 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
 import { useSounds } from '@/hooks/useSounds'
 import { COURSE, LEVELS, getUnitsForLevel, getPublishedLevels } from '@/data/course'
-import { getCourseForLesson } from '@/data/curriculum'
 import Sidebar from '@/components/Sidebar'
 import TopNav from '@/components/TopNav'
 import BottomNav from '@/components/BottomNav'
@@ -25,6 +24,9 @@ export default function HomePage() {
   const { play } = useSounds()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [showMascot, setShowMascot] = useState(true)
+
+  const randomMascot = useMemo(() => MASCOTS[Math.floor(Math.random() * MASCOTS.length)], [])
+  const randomMotivation = useMemo(() => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)], [])
 
   useEffect(() => {
     buildSRS()
@@ -63,9 +65,6 @@ export default function HomePage() {
 
   const next = getNextLesson()
 
-  const getRandomMascot = () => MASCOTS[Math.floor(Math.random() * MASCOTS.length)]
-  const getRandomMotivation = () => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)]
-
   return (
     <div className="flex min-h-screen">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -86,7 +85,7 @@ export default function HomePage() {
                 transition={{ type: 'spring', stiffness: 200, damping: 10 }}
                 className="text-7xl mb-4"
               >
-                {getRandomMascot()}
+                {randomMascot}
               </motion.div>
 
               {/* Welcome Text */}
@@ -105,7 +104,7 @@ export default function HomePage() {
                 transition={{ delay: 0.1 }}
                 className="text-lg text-white/90 font-medium"
               >
-                {getRandomMotivation()}
+                {randomMotivation}
               </motion.p>
 
               {/* Stats Bar */}

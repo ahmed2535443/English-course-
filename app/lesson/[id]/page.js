@@ -9,7 +9,6 @@ import { useSpeech } from '@/hooks/useSpeech'
 import Sidebar from '@/components/Sidebar'
 import TopNav from '@/components/TopNav'
 import BottomNav from '@/components/BottomNav'
-import Link from 'next/link'
 
 export default function LessonPage({ params }) {
   const { id } = use(params)
@@ -40,6 +39,9 @@ export default function LessonPage({ params }) {
     { id: 'cul', label: 'الثقافة', icon: '🌍' },
   ]
 
+  const activeTabIndex = tabs.findIndex(t => t.id === activeTab)
+  const progress = ((activeTabIndex + 1) / tabs.length) * 100
+
   return (
     <div className="flex min-h-screen">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -67,7 +69,7 @@ export default function LessonPage({ params }) {
 
         {/* Progress Bar */}
         <div className="h-2 bg-gray-100 dark:bg-[#233640]">
-          <div className="h-full bg-[#58CC02] transition-all duration-500" style={{ width: '0%' }} />
+          <div className="h-full bg-[#58CC02] transition-all duration-500" style={{ width: `${progress}%` }} />
         </div>
 
         <main className="flex-1 pb-32">

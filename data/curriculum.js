@@ -53,9 +53,9 @@ export const LEVELS = [
       { id: 3, title: "ضابط الهجرة والجمارك", titleEn: "Immigration & Customs Officer", order: 3, icon: "🛂" },
       { id: 4, title: "التسوق والملابس في لندن", titleEn: "Shopping & Clothing", order: 4, icon: "🛍️" },
       { id: 5, title: "صالة الوصول والاستقبال", titleEn: "Arrival Hall & Reception", order: 5, icon: "🛬" },
-      { id: 6, title: "السؤال عن العدد والأمتعة", titleEn: "Asking about Quantity & Luggage", order: 6, icon: "🧳" },
+      { id: 6, title: "مقارنة التسوق بين لندن وبانكوك", titleEn: "Shopping Comparison London vs Bangkok", order: 6, icon: "🛍️" },
       { id: 7, title: "الطقس والسفر لتايلاند", titleEn: "Weather & Travel", order: 7, icon: "🌦️" },
-      { id: 8, title: "بدء المحادثات والتعارف", titleEn: "Starting Conversations", order: 8, icon: "💬" },
+      { id: 8, title: "النقاط السياحية والنقل العام", titleEn: "Tourist Spots & Public Transport", order: 8, icon: "🚌" },
       { id: 9, title: "ملخص المحادثة والنطق", titleEn: "Conversation Summary & Pronunciation", order: 9, icon: "🎙️" },
     ],
     reading: [
@@ -65,7 +65,7 @@ export const LEVELS = [
       { id: 104, title: "التسوق في السوبر ماركت", titleEn: "Supermarket Shopping", order: 4, icon: "🛒" },
     ],
   }),
-  createLevel(2, "المستوى الثاني", "Level 2", "تطوير مهارات المحادثة والاستماع", "A2", true),
+  createLevel(2, "المستوى الثاني", "Level 2", "تطوير مهارات المحادثة والاستماع", "A2", false),
   createLevel(3, "المستوى الثالث", "Level 3", "قريباً إن شاء الله", "B1", false),
   createLevel(4, "المستوى الرابع", "Level 4", "قريباً إن شاء الله", "B2", false),
 ];

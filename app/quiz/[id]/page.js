@@ -374,14 +374,10 @@ export default function QuizPage({ params }) {
         setSelectedAnswer(null)
       } else {
         const finalScore = score + (isCorrect ? 1 : 0)
-        saveQuizAttempt({
-          lessonId,
-          score: finalScore,
-          total: questions.length,
-          date: new Date().toISOString()
-        })
+        const passed = finalScore >= Math.ceil(questions.length * 0.7)
+        saveQuizAttempt(lessonId, finalScore, passed)
         if (!don.includes(lessonId)) {
-          completeLesson(lessonId)
+          completeLesson(lessonId, course?.id, level?.id, finalScore)
         }
         setShowResults(true)
         play(finalScore === questions.length ? 'complete' : 'end')
@@ -495,7 +491,7 @@ export default function QuizPage({ params }) {
           ) : (
             <div className="text-center py-10">
               <div className="text-4xl mb-4">📝</div>
-              <p className="text-[var(--text-muted)]">لا توجد أسئلة在这个 الدرس</p>
+              <p className="text-[var(--text-muted)]">لا توجد أسئلة في هذا الدرس</p>
             </div>
           )}
         </main>

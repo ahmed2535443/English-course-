@@ -470,7 +470,7 @@ export const LESSONS = [
       { tp: "match", q: "طابق الكلمة بالمعنى", p: [["Cheaper", "أرخص"], ["Far from", "بعيد عن"], ["Quite near", "قريب نوعاً ما"], ["Because", "لأن"]] },
       { tp: "mcq", q: "ما الفرق بين many و much؟", a: "", o: ["many للعد، much للسعر", "much للعد، many للسعر", "كلاهما متساويان", "لا فرق"], c: 0 },
       { tp: "fill", q: "London is very expensive, ________ it?", a: "مش كده؟", an: "isn't" },
-      { tp: "listen", q: "استمع واختر الإجابة", en: "Because the shops are much cheaper.", o: "لأن المحلات أرخص بكثير", o2: ["لأن المحلات غالية", "لأن المحلات قريبة", "لأن المحلات كتير"], c: 0 },
+      { tp: "listen", q: "استمع واختر الإجابة", en: "Because the shops are much cheaper.", o: ["لأن المحلات أرخص بكثير", "لأن المحلات غالية", "لأن المحلات قريبة", "لأن المحلات كتير"], c: 0 },
       { tp: "translate", q: "ترجم: أنا أعتقد أن بانكوك أحسن", a: "", an: "i think bangkok is better" },
       { tp: "mcq", q: "ماذا تعني isn't it؟", a: "", o: ["مش كده؟", "أليس كذلك؟", "هل هو؟", "لا يوجد"], c: 0 },
       { tp: "egpt", q: "ازاي تسأل 'هل هي بعيدة من هنا' بالإنجليزي؟", hint: "فكر في: Is it far from here?", an: "is it far from here", ph: "اكتب الإنجليزي..." },
@@ -575,10 +575,10 @@ export const LESSONS = [
       { t: "7. Named / Called للتسمية", d: "يُستخدم لتسمية الأماكن والأسماء. The road is called... = الشارع اسمه...", ex: [{ e: "The road is called Exhibition Road.", a: "الشارع اسمه طريق المعرض." }], tp: "called أكثر شيوعاً من named" }
     ],
     pron: [
-      { w: "Public transport", t: "تنطق بابليك ترانسبورت ب Stress على第一个音节" },
-      { w: "Exhibition", t: "تنطق ايكسهيبيشن ب Stress على the第三个音节" },
+      { w: "Public transport", t: "تنطق بابليك ترانسبورت ب Stress على المقطع الأول" },
+      { w: "Exhibition", t: "تنطق ايكسهيبيشن ب Stress على the المقطع الثالث" },
       { w: "Would you like", t: "تنطق وود يو لايك بسرعة كجملة واحدة" },
-      { w: "Museum", t: "تنطق ميوزيام ب Stress على the第二个音节" }
+      { w: "Museum", t: "تنطق ميوزيام ب Stress على the المقطع الثاني" }
     ],
     cul: [
       { n: "النقل العام في لندن: Undergound (المترو)، Bus (الحافلات)، Overground (القطار السطحي)" },
@@ -651,7 +651,7 @@ export const LESSONS = [
       { w: "Boarding pass", t: "تنطق بوردنغ باس ب Stress على boarding" },
       { w: "Baggage claim", t: "تنطق باغيج كليم متصلة" },
       { w: "Trousers", t: "تنطق تراوزرز بالإنجليزية البريطانية" },
-      { w: "Exhibition", t: "تنطق ايكسهيبيشن ب Stress على the第三个音节" }
+      { w: "Exhibition", t: "تنطق ايكسهيبيشن ب Stress على the المقطع الثالث" }
     ],
     cul: [
       { n: "Kensington High Street شارع تسوق غالي في لندن" },

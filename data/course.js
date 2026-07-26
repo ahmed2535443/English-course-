@@ -6,7 +6,7 @@ export const COURSE = {
   subtitle: "تعلم الإنجليزية من الصفر إلى الاحتراف",
   description: "كورس شامل لتعلم اللغة الإنجليزية بالطريقة الأمريكية",
   totalLevels: 4,
-  totalLessons: 8,
+  totalLessons: 13,
 };
 
 export const LEVELS = CURRICULUM_LEVELS;

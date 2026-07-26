@@ -373,7 +373,8 @@ export default function QuizPage({ params }) {
         setAnswered(false)
         setSelectedAnswer(null)
       } else {
-        const finalScore = score + (isCorrect ? 1 : 0)
+        const correctAnswers = answers.filter(a => a.isCorrect).length
+        const finalScore = correctAnswers + (isCorrect ? 1 : 0)
         const passed = finalScore >= Math.ceil(questions.length * 0.7)
         saveQuizAttempt(lessonId, finalScore, passed)
         if (!don.includes(lessonId)) {
@@ -397,13 +398,11 @@ export default function QuizPage({ params }) {
   }
 
   const handleNextLesson = () => {
-    const allLessons = LESSONS.filter(l => don.includes(l.id) || l.id === lessonId)
-    const currentIndex = allLessons.findIndex(l => l.id === lessonId)
-    if (currentIndex < allLessons.length - 1) {
-      router.push(`/lesson/${allLessons[currentIndex + 1].id}`)
+    const currentIndex = LESSONS.findIndex(l => l.id === lessonId)
+    if (currentIndex >= 0 && currentIndex < LESSONS.length - 1) {
+      router.push(`/lesson/${LESSONS[currentIndex + 1].id}`)
     } else {
-      if (course) router.push(`/course/${course.id}`)
-      else router.push('/')
+      router.push('/')
     }
   }
 

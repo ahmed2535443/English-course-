@@ -23,6 +23,9 @@ function LeaderboardRow({ rank, user, isCurrentUser }) {
     return `#${rank}`
   }
 
+  const displayName = user.name || user.user_id?.slice(0, 8) || 'مستخدم'
+  const lessonsCount = user.completed_lessons || user.lessons || 0
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -39,19 +42,19 @@ function LeaderboardRow({ rank, user, isCurrentUser }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <span className="text-sm font-bold text-[var(--text-primary)] truncate">
-              {user.name || 'مستخدم'}
+              {displayName}
             </span>
             {isCurrentUser && (
               <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">أنت</span>
             )}
           </div>
           <div className="flex items-center gap-3 mt-1">
-            <span className="text-xs text-[var(--text-muted)]">🔥 {user.streak}</span>
-            <span className="text-xs text-[var(--text-muted)]">📚 {user.lessons || 0} دروس</span>
+            <span className="text-xs text-[var(--text-muted)]">🔥 {user.streak || 0}</span>
+            <span className="text-xs text-[var(--text-muted)]">📚 {lessonsCount} دروس</span>
           </div>
         </div>
         <div className="text-left">
-          <div className="text-lg font-extrabold text-primary">{user.xp}</div>
+          <div className="text-lg font-extrabold text-primary">{user.xp || 0}</div>
           <div className="text-xs text-[var(--text-muted)]">XP</div>
         </div>
       </div>

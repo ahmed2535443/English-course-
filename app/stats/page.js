@@ -12,7 +12,7 @@ const STATS = (xp, tot, wrd, accuracy, bst, don) => [
   { icon: '📖', value: wrd, label: 'كلمة', accent: 'text-success' },
   { icon: '🎯', value: `${accuracy}%`, label: 'النجاح', accent: 'text-secondary' },
   { icon: '🔥', value: bst, label: 'أفضل سلسلة', accent: 'text-error' },
-  { icon: '📚', value: `${don.length}/8`, label: 'دروس', accent: 'text-primary' },
+  { icon: '📚', value: `${don.length}/13`, label: 'دروس', accent: 'text-primary' },
 ]
 
 export default function StatsPage() {

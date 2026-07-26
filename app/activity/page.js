@@ -9,14 +9,14 @@ import ActivityCalendar from '@/components/ActivityCalendar'
 
 export default function ActivityPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const { don, xp, str, bst, act } = useApp()
+  const { don, xp, str, bst, activity } = useApp()
 
   const totalExercises = don.length
   const totalXP = xp
   const currentStreak = str
   const bestStreak = bst
 
-  const weeklyStats = Object.entries(act || {}).reduce((acc, [date, data]) => {
+  const weeklyStats = Object.entries(activity || {}).reduce((acc, [date, data]) => {
     const d = new Date(date)
     const now = new Date()
     const diffDays = Math.floor((now - d) / (1000 * 60 * 60 * 24))
@@ -102,7 +102,7 @@ export default function ActivityPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <ActivityCalendar activity={act} streak={currentStreak} />
+            <ActivityCalendar activity={activity} streak={currentStreak} />
           </motion.div>
 
           {/* Tips */}
@@ -116,7 +116,7 @@ export default function ActivityPage() {
             <div className="space-y-2">
               <div className="flex items-start gap-2">
                 <span className="text-sm">🎯</span>
-                <p className="text-xs text-[var(--text-muted)]">حاول ت完成 5 تمارين يومياً على الأقل</p>
+                <p className="text-xs text-[var(--text-muted)]">حاول أكمل 5 تمارين يومياً على الأقل</p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-sm">⏰</span>

@@ -161,7 +161,7 @@ export default function FriendsPage() {
           {sentRequests.length > 0 && (
             <div className="mb-5">
               <h3 className="text-sm font-bold text-[var(--text-primary)] mb-3">
-                طلبات صداقة صادة ({sentRequests.length})
+                طلبات صداقة صادرة ({sentRequests.length})
               </h3>
               <div className="space-y-3">
                 {sentRequests.map((friend) => (

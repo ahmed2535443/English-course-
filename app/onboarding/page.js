@@ -21,7 +21,7 @@ const STEPS = [
     description: "اختر هدفك لتقديم تجربة تعلم مخصصة",
     options: [
       { id: "travel", icon: "✈️", label: "سفر وسياحة", labelEn: "Travel & Tourism" },
-      { id: "work", icon: "💼", label: "عمل وwer", labelEn: "Work & Business" },
+      { id: "work", icon: "💼", label: "عمل وأعمال", labelEn: "Work & Business" },
       { id: "study", icon: "📚", label: "دراسة", labelEn: "Study" },
       { id: "hobby", icon: "🎮", label: "هواية", labelEn: "Hobby" },
     ],

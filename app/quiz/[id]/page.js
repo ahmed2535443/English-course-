@@ -3,6 +3,7 @@ import { use, useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
+import { useSounds } from '@/hooks/useSounds'
 import { LESSONS } from '@/data/lessons'
 import { getCourseForLesson, getLevelForCourse } from '@/data/curriculum'
 import Sidebar from '@/components/Sidebar'
@@ -310,6 +311,7 @@ export default function QuizPage({ params }) {
   const router = useRouter()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { saveQuizAttempt, completeLesson, don } = useApp()
+  const { play } = useSounds()
 
   const lessonId = parseInt(id)
   const lesson = LESSONS.find(l => l.id === lessonId)
@@ -356,6 +358,7 @@ export default function QuizPage({ params }) {
       return true
     })()
 
+    play(isCorrect ? 'correct' : 'incorrect')
     if (isCorrect) setScore(s => s + 1)
 
     setAnswers(prev => [...prev, {
@@ -381,9 +384,10 @@ export default function QuizPage({ params }) {
           completeLesson(lessonId)
         }
         setShowResults(true)
+        play(finalScore === questions.length ? 'complete' : 'end')
       }
     }, 1500)
-  }, [answered, currentQ, questions, score, lessonId, don, completeLesson, saveQuizAttempt])
+  }, [answered, currentQ, questions, score, lessonId, don, completeLesson, saveQuizAttempt, play])
 
   const handleRetry = () => {
     const shuffled = shuffleArray(lesson.ex)

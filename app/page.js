@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
+import { useSounds } from '@/hooks/useSounds'
 import { COURSE, LEVELS, getUnitsForLevel, getPublishedLevels } from '@/data/course'
 import { getCourseForLesson } from '@/data/curriculum'
 import Sidebar from '@/components/Sidebar'
@@ -21,6 +22,7 @@ const MOTIVATIONAL = [
 
 export default function HomePage() {
   const { don, cst, srs, buildSRS, lastLesson, lastCourse, lastLevel, lessonProgress } = useApp()
+  const { play } = useSounds()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [showMascot, setShowMascot] = useState(true)
 
@@ -148,6 +150,7 @@ export default function HomePage() {
               >
                 <Link
                   href={`/lesson/${next.lesson.id}`}
+                  onClick={() => play('start')}
                   className="block bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-xl border-2 border-primary/20 hover:shadow-2xl transition-all group"
                 >
                   <div className="flex items-center gap-4">
@@ -323,19 +326,19 @@ export default function HomePage() {
               </h2>
 
               <div className="grid grid-cols-2 gap-3">
-                <Link href="/stories" className="group bg-white dark:bg-gray-800 rounded-2xl p-4 border-2 border-gray-100 dark:border-gray-700 hover:border-primary/30 transition-all hover:shadow-lg">
+                <Link href="/stories" onClick={() => play('click')} className="group bg-white dark:bg-gray-800 rounded-2xl p-4 border-2 border-gray-100 dark:border-gray-700 hover:border-primary/30 transition-all hover:shadow-lg">
                   <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">📚</div>
                   <div className="text-sm font-bold text-gray-900 dark:text-white">القصص</div>
                   <div className="text-xs text-gray-500 dark:text-gray-400">قصص تفاعلية</div>
                 </Link>
 
-                <Link href="/vocabulary" className="group bg-white dark:bg-gray-800 rounded-2xl p-4 border-2 border-gray-100 dark:border-gray-700 hover:border-primary/30 transition-all hover:shadow-lg">
+                <Link href="/vocabulary" onClick={() => play('click')} className="group bg-white dark:bg-gray-800 rounded-2xl p-4 border-2 border-gray-100 dark:border-gray-700 hover:border-primary/30 transition-all hover:shadow-lg">
                   <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">📖</div>
                   <div className="text-sm font-bold text-gray-900 dark:text-white">المفردات</div>
                   <div className="text-xs text-gray-500 dark:text-gray-400">قائمة الكلمات</div>
                 </Link>
 
-                <Link href="/srs" className="group bg-white dark:bg-gray-800 rounded-2xl p-4 border-2 border-gray-100 dark:border-gray-700 hover:border-secondary/30 transition-all hover:shadow-lg relative">
+                <Link href="/srs" onClick={() => play('click')} className="group bg-white dark:bg-gray-800 rounded-2xl p-4 border-2 border-gray-100 dark:border-gray-700 hover:border-secondary/30 transition-all hover:shadow-lg relative">
                   <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">🧠</div>
                   <div className="text-sm font-bold text-gray-900 dark:text-white">المراجعة الذكية</div>
                   <div className="text-xs text-gray-500 dark:text-gray-400">
@@ -348,7 +351,7 @@ export default function HomePage() {
                   )}
                 </Link>
 
-                <Link href="/leaderboard" className="group bg-white dark:bg-gray-800 rounded-2xl p-4 border-2 border-gray-100 dark:border-gray-700 hover:border-amber-300 transition-all hover:shadow-lg">
+                <Link href="/leaderboard" onClick={() => play('click')} className="group bg-white dark:bg-gray-800 rounded-2xl p-4 border-2 border-gray-100 dark:border-gray-700 hover:border-amber-300 transition-all hover:shadow-lg">
                   <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">🏆</div>
                   <div className="text-sm font-bold text-gray-900 dark:text-white">التصنيف</div>
                   <div className="text-xs text-gray-500 dark:text-gray-400">لوحة الصدارة</div>

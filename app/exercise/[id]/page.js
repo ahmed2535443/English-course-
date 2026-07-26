@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { LESSONS } from '@/data/lessons'
 import { getUnitByLessonId } from '@/data/course'
 import { useApp } from '@/context/AppContext'
+import { useSounds } from '@/hooks/useSounds'
 import Sidebar from '@/components/Sidebar'
 import TopNav from '@/components/TopNav'
 import BottomNav from '@/components/BottomNav'
@@ -39,6 +40,7 @@ export default function ExercisePage({ params }) {
   const lesson = LESSONS.find((l) => l.id === Number(id))
   const unit = getUnitByLessonId(Number(id))
   const { addXP, completeExercise, unlockAchievement, don, ach } = useApp()
+  const { play } = useSounds()
 
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [currentEx, setCurrentEx] = useState(0)
@@ -65,6 +67,7 @@ export default function ExercisePage({ params }) {
 
   const showResult = (correct, detail) => {
     setResultBanner({ correct, title: correct ? 'ممتاز! 🎉' : 'خاطئ ❌', detail })
+    play(correct ? 'correct' : 'incorrect')
     setTimeout(() => setResultBanner(null), 1200)
   }
 
@@ -72,6 +75,7 @@ export default function ExercisePage({ params }) {
     addXP(amount)
     setXpAmount(amount)
     setShowXP(true)
+    play('xpGain')
     setTimeout(() => setShowXP(false), 1200)
   }
 
@@ -100,7 +104,8 @@ export default function ExercisePage({ params }) {
       desc: `لقد أكملت الحلقة ${lesson.id} بنتيجة ${rate}% (${correct}/${total})`,
     })
     setShowModal(true)
-  }, [lesson, don, ach, completeExercise, unlockAchievement])
+    play(rate === 100 ? 'complete' : 'end')
+  }, [lesson, don, ach, completeExercise, unlockAchievement, play])
 
   const handleAnswer = useCallback((correct, detail) => {
     if (correct) awardXP(XP_MAP[exercise?.tp] || 10)

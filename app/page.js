@@ -81,7 +81,7 @@ export default function HomePage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="الرئيسية" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 pb-32" style={{ background: 'var(--bg)' }}>
+        <main className="flex-1 page-container">
           <StreakBanner />
 
           {/* Hero Section */}
@@ -139,7 +139,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="max-w-2xl mx-auto px-5">
+          <div className="max-w-2xl  mx-auto px-5">
             {/* Continue Learning */}
             {next && (
               <motion.div

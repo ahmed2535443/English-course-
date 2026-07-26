@@ -69,7 +69,7 @@ export default function StoriesPage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="القصص" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container pb-32">
+        <main className="flex-1 page-container">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}

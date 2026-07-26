@@ -152,7 +152,7 @@ export default function ExercisePage({ params }) {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title={`الحلقة ${lesson.id}: تمرين`} onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container max-w-2xl mx-auto pb-32">
+        <main className="flex-1 page-container max-w-2xl">
           {/* Header */}
           <div className="flex items-center justify-between mb-3">
             <div className="text-sm font-bold text-[var(--text-primary)]">الحلقة {lesson.id}: {lesson.t}</div>

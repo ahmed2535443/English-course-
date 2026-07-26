@@ -24,7 +24,7 @@ export default function LevelDetailPage() {
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
           <TopNav title="المستوى" onMenuClick={() => setSidebarOpen(true)} />
-          <main className="flex-1 page-container pb-32 flex items-center justify-center">
+          <main className="flex-1 page-container flex items-center justify-center">
             <div className="text-center">
               <div className="text-4xl mb-4">❌</div>
               <h2 className="text-xl font-bold text-[var(--text-primary)]">المستوى غير موجود</h2>
@@ -74,7 +74,7 @@ export default function LevelDetailPage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title={level.name} onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container pb-32">
+        <main className="flex-1 page-container">
           {/* Level Header */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}

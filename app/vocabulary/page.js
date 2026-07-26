@@ -68,7 +68,7 @@ export default function VocabularyPage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="قائمة المفردات" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container pb-32">
+        <main className="flex-1 page-container">
           {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}

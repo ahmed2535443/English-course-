@@ -183,7 +183,7 @@ export default function UnitDetailPage({ params }) {
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
           <TopNav title="الكورس" onMenuClick={() => setSidebarOpen(true)} />
-          <main className="flex-1 page-container pb-32 flex items-center justify-center">
+          <main className="flex-1 page-container flex items-center justify-center">
             <div className="text-center">
               <div className="text-4xl mb-4">🔒</div>
               <h2 className="text-xl font-bold text-[var(--text-primary)]">الكورس غير متاح</h2>
@@ -212,7 +212,7 @@ export default function UnitDetailPage({ params }) {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title={course.name} onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container pb-32">
+        <main className="flex-1 page-container">
           {level && (
             <Link
               href={`/level/${level.id}`}

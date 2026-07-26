@@ -412,7 +412,7 @@ export default function QuizPage({ params }) {
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
           <TopNav title="كويز" onMenuClick={() => setSidebarOpen(true)} />
-          <main className="flex-1 page-container pb-32 flex items-center justify-center">
+          <main className="flex-1 page-container flex items-center justify-center">
             <div className="text-center">
               <div className="text-4xl mb-4">❓</div>
               <h2 className="text-xl font-bold text-[var(--text-primary)]">الدرس غير موجود</h2>
@@ -432,7 +432,7 @@ export default function QuizPage({ params }) {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title={`كويز: ${lesson.t}`} onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container pb-32">
+        <main className="flex-1 page-container">
           {level && course && (
             <div className="flex items-center gap-2 text-xs text-[var(--text-muted)] mb-4">
               <Link href={`/level/${level.id}`} className="hover:text-primary">{level.name}</Link>

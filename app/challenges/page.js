@@ -147,7 +147,7 @@ export default function ChallengesPage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="تحديات" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container pb-32">
+        <main className="flex-1 page-container">
           {/* Create Challenge Button */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}

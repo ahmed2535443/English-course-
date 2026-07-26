@@ -92,7 +92,7 @@ export default function LeaderboardPage() {
       <div className="flex-1 lg:mr-[260px] flex flex-col min-h-screen">
         <TopNav title="لوحة الصدارة" onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="flex-1 page-container pb-32">
+        <main className="flex-1 page-container">
           {/* My Rank Card */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}

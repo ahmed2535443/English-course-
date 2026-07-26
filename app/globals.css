@@ -23,7 +23,7 @@
   /* Layout */
   --sidebar-w: 260px;
   --topnav-h: 56px;
-  --page-px: 16px;
+  --page-px: 50px;
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 20px;
@@ -73,10 +73,10 @@
 }
 
 @media (min-width: 768px) {
-  :root { --page-px: 24px; }
+  :root { --page-px: 50px; }
 }
 @media (min-width: 1024px) {
-  :root { --page-px: 32px; }
+  :root { --page-px: 50px; }
 }
 
 /* ═══════════════════════════════════════════
@@ -325,7 +325,7 @@ body {
 .page-container {
   padding-left: var(--page-px);
   padding-right: var(--page-px);
-  padding-top: 24px;
+  padding-top: 50px;
   padding-bottom: 160px;
   max-width: 1280px;
   margin: 0 auto;
@@ -334,14 +334,14 @@ body {
 
 @media (min-width: 768px) {
   .page-container {
-    padding-top: 32px;
+    padding-top: 50px;
   }
 }
 
 @media (min-width: 1024px) {
   .page-container {
     padding-bottom: 48px;
-    padding-top: 40px;
+    padding-top: 50px;
   }
 }
 
@@ -433,7 +433,7 @@ body {
 
 @media (min-width: 1024px) {
   :root {
-    --page-px: 40px;
+    --page-px: 50px;
     --sidebar-w: 280px;
   }
 

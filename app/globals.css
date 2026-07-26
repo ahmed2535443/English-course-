@@ -23,7 +23,7 @@
   /* Layout */
   --sidebar-w: 260px;
   --topnav-h: 56px;
-  --page-px: 50px;
+  --page-px: 0px;
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 20px;
@@ -73,10 +73,10 @@
 }
 
 @media (min-width: 768px) {
-  :root { --page-px: 50px; }
+  :root { --page-px: 0px; }
 }
 @media (min-width: 1024px) {
-  :root { --page-px: 50px; }
+  :root { --page-px: 0px; }
 }
 
 /* ═══════════════════════════════════════════
@@ -327,8 +327,6 @@ body {
   padding-right: var(--page-px);
   padding-top: 50px;
   padding-bottom: 160px;
-  max-width: 1280px;
-  margin: 0 auto;
   width: 100%;
 }
 
@@ -433,7 +431,7 @@ body {
 
 @media (min-width: 1024px) {
   :root {
-    --page-px: 50px;
+    --page-px: 0px;
     --sidebar-w: 280px;
   }
 

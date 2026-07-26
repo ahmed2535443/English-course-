@@ -674,5 +674,258 @@ export const LESSONS = [
       { tp: "egpt", q: "ازاي تسأل 'هل لديك أي شيء تصرح به' بالإنجليزي؟", hint: "فكر في: Do you have anything to declare?", an: "do you have anything to declare", ph: "اكتب الإنجليزي..." },
       { tp: "usage", q: "اكتب جملة باستخدام كلمة holiday", w: "holiday" }
     ]
+  },
+  {
+    id: 101,
+    t: "وصفة الأومليت",
+    i: "🍳",
+    w: 11,
+    n: 3,
+    dlg: [
+      { s: "Narrator", c: "#171717", e: "Mike likes omelets.", a: "مايك يحب الأومليت." },
+      { s: "Narrator", c: "#171717", e: "They are easy and fun to prepare.", a: "هي سهلة وممتعة في التحضير." },
+      { s: "Narrator", c: "#171717", e: "He heats butter in a pan on the stove.", a: "يسخن الزبدة في طاسة على البوتاجاز." },
+      { s: "Narrator", c: "#171717", e: "He mixes milk, 3 eggs, salt, and pepper in a bowl.", a: "يخلط اللبن و3 بيضات وملح وفلفل في وعاء." },
+      { s: "Narrator", c: "#171717", e: "He cooks the mix in the pan for 2 minutes.", a: "يطبخ المزيج في الطاسة لمدة دقيقتين." },
+      { s: "Narrator", c: "#171717", e: "Then he adds cheese.", a: "ثم يضيف الجبن." },
+      { s: "Narrator", c: "#171717", e: "He turns off the stove.", a: "يطفئ البوتاجاز." },
+      { s: "Narrator", c: "#171717", e: "He folds the omelet in half.", a: "يطوي الأومليت إلى نصفين." },
+      { s: "Narrator", c: "#171717", e: "Enjoy, yum!", a: "بالهناء والشفاء، لذيذ!" }
+    ],
+    voc: [
+      { e: "Omelet / Omelette", a: "أومليت / عجة بيض", d: "تُكتب أحياناً بـ 2 t في الإنجليزية البريطانية (Omelettes).", cl: ["Mike likes omelets", "The omelet is ready"], ms: [{ w: "omelette", c: "omelet", n: "omelet أمريكي، omelette بريطاني" }], us: [{ t: "في الطبخ", e: "I love making omelets for breakfast.", a: "بحب أعمل أومليت على الفطار." }] },
+      { e: "Prepare", a: "يجهز / يحضر", d: "تُستخدم للتعبير عن الاستعداد لعمل شيء ما.", cl: ["Easy to prepare", "How do you prepare it?"], ms: [{ w: "cooking", c: "prepare", n: "prepare أعم من cooking" }], us: [{ t: "في الوصف", e: "They are easy and fun to prepare.", a: "هي سهلة وممتعة في التحضير." }] },
+      { e: "Stove", a: "موقد / بوتاجاز", d: "الجهاز المستخدم للطهي وتسخين الأواني.", cl: ["On the stove", "Turn off the stove"], ms: [{ w: "cooker", c: "stove", n: "stove = الموقد فقط" }], us: [{ t: "في المطبخ", e: "He heats butter in a pan on the stove.", a: "يسخن الزبدة في طاسة على البوتاجاز." }] },
+      { e: "Pan", a: "طاسة / مقلاة", d: "الإناء المسطح المستخدم للقلي والطهي السريع.", cl: ["In a pan", "Frying pan"], ms: [{ w: "pot", c: "pan", n: "pot = قدر، pan = طاسة مسطحة" }], us: [{ t: "في الطبخ", e: "He cooks the mix in the pan.", a: "يطبخ المزيج في الطاسة." }] },
+      { e: "Stir", a: "يقلب / يخلط", d: "حركة تقليب المكونات معاً.", cl: ["Stir the mixture", "Stir well"], ms: [{ w: "mix", c: "stir", n: "stir = تحريك، mix = دمج" }], us: [{ t: "في الطبخ", e: "Stir the eggs in a bowl.", a: "قلب البيض في وعاء." }] },
+      { e: "Butter", a: "زبدة / يدهن بالزبدة", d: "مادة دهنية تستخدم في الطبخ وإعطاء نكهة.", cl: ["Heat butter", "Add butter"], ms: [{ w: "oil", c: "butter", n: "butter = زبدة، oil = زيت" }], us: [{ t: "في الطبخ", e: "He heats butter in a pan.", a: "يسخن الزبدة في طاسة." }] },
+      { e: "Mix", a: "يخلط / مزيج", d: "دمج عدة عناصر معاً.", cl: ["The mix", "Mix well"], ms: [{ w: "mixing", c: "mix", n: "mix = يخلط، mixture = مزيج" }], us: [{ t: "في الطبخ", e: "He mixes milk and eggs.", a: "يخلط اللبن والبيض." }] },
+      { e: "Salt", a: "ملح", d: "منكه أساسي للطعام.", cl: ["Add salt", "Salt and pepper"], ms: [{ w: "salty", c: "salt", n: "salt = ملح، salty = مملح" }], us: [{ t: "في الطبخ", e: "Add salt and pepper.", a: "أضف ملح وفلفل." }] },
+      { e: "Bowl", a: "وعاء / سلطانية", d: "إناء عميق لخلط المكونات (مثل وعاء خفق البيض).", cl: ["In a bowl", "Mixing bowl"], ms: [{ w: "plate", c: "bowl", n: "plate = طبق، bowl = وعاء عميق" }], us: [{ t: "في المطبخ", e: "Mix in a bowl.", a: "اخلط في وعاء." }] },
+      { e: "Ingredients", a: "مكونات", d: "العناصر أو المواد الداخلة في وصفة طهي. كلمة جمع دائماً.", cl: ["The ingredients", "Fresh ingredients"], ms: [{ w: "ingredient", c: "ingredients", n: "ingredient = مكون واحد" }], us: [{ t: "في الطبخ", e: "What ingredients do we need?", a: "إيه المكونات اللي محتاجينها؟" }] },
+      { e: "Recipe", a: "وصفة طهي", d: "الخطوات والمقادير اللازمة لتحضير طعام معين.", cl: ["A recipe", "Follow the recipe"], ms: [{ w: "receipt", c: "recipe", n: "receipt = فاتورة، recipe = وصفة" }], us: [{ t: "في الطبخ", e: "This is an easy recipe.", a: "دي وصفة سهلة." }] }
+    ],
+    gram: [
+      { t: "1. المضارع البسيط مع الفاعل المفرد", d: "يُستخدم للتعبير عن الحقائق والعادات اليومية. مع الفاعل المفرد (He, She, It، أو اسم مفرد مثل Mike)، نضيف حرف s أو es لنهاية الفعل.", ex: [{ e: "Mike likes omelets.", a: "مايك يحب الأومليت." }, { e: "He heats butter.", a: "يسخن الزبدة." }, { e: "He mixes milk.", a: "يخلط اللبن." }], tp: "لا يضاف حرف s إذا كان الفاعل جمعاً أو (I, We, They, You)" },
+      { t: "2. نطق أداة التعريف The", d: "أداة التعريف The تنطق بشكل طبيعي (ذا) إذا جاء بعدها حرف ساكن، ولكن إذا جاء بعدها كلمة تبدأ بصوت متحرك (مثل A, E, I, O, U) فإنها تُنطق (ذي).", ex: [{ e: "the omelet (تُنطق: ذي أومليت)", a: "لأن كلمة omelet تبدأ بحرف متحرك (o)." }], tp: "قاعدة صوتية ممتازة لتبدو متحدثاً طبيعياً" },
+      { t: "3. الأفعال المركبة (Phrasal Verbs)", d: "تكون الفعل من جزأين (فعل + حرف جر أو ظرف) ليعطي معنى جديداً مستقلاً تماماً.", ex: [{ e: "turn off (يطفئ جهاز أو نور)", a: "He turns off the stove." }], tp: "تتكرر كثيراً في الإنجليزية ويجب حفظها كوحدة واحدة" }
+    ],
+    pron: [
+      { w: "Omelet", t: "تنطق أومليت بال Stress على المقطع الأول" },
+      { w: "Stove", t: "تنطق ستوف بحرف o مفتوح" },
+      { w: "Ingredients", t: "تنطق إنغريدينتس بال Stress على the الثاني" }
+    ],
+    cul: [
+      { n: "الأومليت (Omelet) طبق فرنسي شهير يُحضر بالبيض والخضار والجبنة" },
+      { n: "في أمريكا يقولين turn off البوتاجاز، وفي بريطانيا say switch off" },
+      { n: "البيض مع الجبن من أكثر الوجبات السريعة شيوعاً في الغرب" }
+    ],
+    ex: [
+      { tp: "mcq", q: "ماذا يفعل مايك؟", a: "", o: ["يحب الأومليت", "يكره الطبخ", "يعمل شاي", "يأكل خبز"], c: 0 },
+      { tp: "mcq", q: "ماذا يسخن مايك في الطاسة؟", a: "", o: ["زيت", "زبدة", "حليب", "ماء"], c: 1 },
+      { tp: "fill", q: "He ________ milk, 3 eggs, salt, and pepper.", a: "يخلط", an: "mixes" },
+      { tp: "reorder", q: "رتّب: يطبخ المزيج في الطاسة", a: "he cooks the mix in the pan", w: ["he", "cooks", "the", "mix", "in", "the", "pan"] },
+      { tp: "match", q: "طابق الكلمة بالمعنى", p: [["Omelet", "أومليت"], ["Stove", "بوتاجاز"], ["Butter", "زبدة"], ["Bowl", "وعاء"]] },
+      { tp: "fill", q: "He turns ________ the stove.", a: "يطفئ", an: "off" },
+      { tp: "mcq", q: "ما هي المكونات؟", a: "", o: ["البيض والحليب والملح", "الخبز والزبدة", "الأرز واللحم", "الفاكهة"], c: 0 },
+      { tp: "listen", q: "استمع واختر الإجابة", en: "Mike likes omelets.", o: ["مايك يكره الأومليت", "مايك يحب الأومليت", "مايك يطبخ الأومليت", "مايك يشتري الأومليت"], c: 1 },
+      { tp: "translate", q: "ترجم: يسخن الزبدة في طاسة على البوتاجاز", a: "", an: "he heats butter in a pan on the stove" },
+      { tp: "mcq", q: "ماذا يعني turn off؟", a: "", o: ["يشغّل", "يطفئ", "يفتح", "يغلق"], c: 1 },
+      { tp: "egpt", q: "ازاي تقول 'مايك يحب الأومليت' بالإنجليزي؟", hint: "فكر في: Mike likes omelets", an: "mike likes omelets", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة prepare", w: "prepare" }
+    ]
+  },
+  {
+    id: 102,
+    t: "يوم عادي في لندن",
+    i: "🇬🇧",
+    w: 14,
+    n: 5,
+    dlg: [
+      { s: "Narrator", c: "#171717", e: "Tom lives in London.", a: "توم يعيش في لندن." },
+      { s: "Narrator", c: "#171717", e: "He wakes up at 7 o'clock every morning.", a: "يستيقظ الساعة 7 كل صباح." },
+      { s: "Narrator", c: "#171717", e: "He has breakfast with his family.", a: "يأكل فطور مع عائلته." },
+      { s: "Narrator", c: "#171717", e: "Then he takes the underground to work.", a: "ثم يأخذ المترو للعمل." },
+      { s: "Narrator", c: "#171717", e: "The underground is very busy at 8 o'clock.", a: "المترو مزدحم جداً الساعة 8." },
+      { s: "Narrator", c: "#171717", e: "Tom works in an office near Oxford Street.", a: "توم يعمل في مكتب قريب من شارع أكسفورد." },
+      { s: "Narrator", c: "#171717", e: "He likes his job because it is interesting.", a: "يحب وظيفته لأنها مثيرة للاهتمام." },
+      { s: "Narrator", c: "#171717", e: "For lunch, he usually eats a sandwich.", a: "للغداء، عادةً يأكل ساندويتش." },
+      { s: "Narrator", c: "#171717", e: "After work, he goes to the gym.", a: "بعد العمل، يذهب إلى الجيم." },
+      { s: "Narrator", c: "#171717", e: "In the evening, he watches TV or reads a book.", a: "بالمساء، يشاهد التلفاز أو يقرأ كتاباً." },
+      { s: "Narrator", c: "#171717", e: "He goes to bed at 11 o'clock.", a: "يذهب للنوم الساعة 11." },
+      { s: "Narrator", c: "#171717", e: "Tom has a happy life in London.", a: "توم يعيش حياة سعيدة في لندن." }
+    ],
+    voc: [
+      { e: "Wake up", a: "يستيقظ", d: "فعل مركب (Phrasal Verb). يستيقظ من النوم.", cl: ["He wakes up at 7"], ms: [{ w: "get up", c: "wake up", n: "wake up = يستيقظ، get up = ينهض" }], us: [{ t: "في الصباح", e: "I wake up at 6 o'clock.", a: "أستيقظ الساعة 6." }] },
+      { e: "Underground", a: "مترو أنفاق", d: "المترو في لندن. يُسمى also Tube.", cl: ["Take the underground"], ms: [{ w: "subway", c: "underground", n: "underground بريطاني، subway أمريكي" }], us: [{ t: "في النقل", e: "He takes the underground to work.", a: "يأخذ المترو للعمل." }] },
+      { e: "Busy", a: "مزدحم / مشغول", d: "صفة تصف المكان المكتظ أو الشخص المشغول.", cl: ["The underground is very busy"], ms: [{ w: "crowded", c: "busy", n: "busy = مشغول، crowded = مكتظ" }], us: [{ t: "في الوصف", e: "The underground is very busy at 8.", a: "المترو مزدحم جداً الساعة 8." }] },
+      { e: "Office", a: "مكتب", d: "مكان العمل الداخلي.", cl: ["He works in an office"], ms: [{ w: "work", c: "office", n: "work = عمل، office = مبنى المكتب" }], us: [{ t: "في العمل", e: "He works in an office near Oxford Street.", a: "يعمل في مكتب قريب من شارع أكسفورد." }] },
+      { e: "Interesting", a: "مثير للاهتمام", d: "صفة لوصف الشيء المشوق والممتع.", cl: ["It is interesting"], ms: [{ w: "interested", c: "interesting", n: "interested = مهتم، interesting = مثير" }], us: [{ t: "في الوصف", e: "He likes his job because it is interesting.", a: "يحب وظيفتها لأنها مثيرة للاهتمام." }] },
+      { e: "Sandwich", a: "ساندويتش", d: "وجبة خفيفة من الخبز والحشوة.", cl: ["Eats a sandwich"], ms: [{ w: "burger", c: "sandwich", n: "sandwich أوسع من burger" }], us: [{ t: "في الطعام", e: "He usually eats a sandwich for lunch.", a: "عادةً يأكل ساندويتش للغداء." }] },
+      { e: "Gym", a: "جيم / صالة رياضية", d: "مكان لممارسة الرياضة.", cl: ["Goes to the gym"], ms: [{ w: "sport", c: "gym", n: "gym = المبنى، sport = النشاط" }], us: [{ t: "في الرياضة", e: "After work, he goes to the gym.", a: "بعد العمل، يذهب إلى الجيم." }] },
+      { e: "Evening", a: "مساء", d: "الفترة من العصر إلى النوم.", cl: ["In the evening"], ms: [{ w: "night", c: "evening", n: "evening = مساء مبكر، night = ليل" }], us: [{ t: "في الوقت", e: "In the evening, he watches TV.", a: "بالمساء، يشاهد التلفاز." }] },
+      { e: "Watch TV", a: "يشاهد التلفاز", d: "تعبير للترفيه.", cl: ["He watches TV"], ms: [{ w: "see TV", c: "watch TV", n: "نستخدم watch مع التلفاز" }], us: [{ t: "في الترفيه", e: "He watches TV or reads a book.", a: "يشاهد التلفاز أو يقرأ كتاباً." }] },
+      { e: "Go to bed", a: "يذهب للنوم", d: "تعبير شائع للنوم.", cl: ["He goes to bed at 11"], ms: [{ w: "sleep", c: "go to bed", n: "go to bed = يذهب للنوم" }], us: [{ t: "في النوم", e: "He goes to bed at 11 o'clock.", a: "يذهب للنوم الساعة 11." }] }
+    ],
+    gram: [
+      { t: "1. المضارع البسيط مع He", d: "نضيف s لنهاية الفعل مع He/She/It. wake → wakes, take → takes, work → works.", ex: [{ e: "He wakes up at 7.", a: "يستيقظ الساعة 7." }, { e: "He takes the underground.", a: "يأخذ المترو." }], tp: "لا تنس s مع الفاعل المفرد" },
+      { t: "2. عادات اليوم (Daily Routines)", d: "نستخدم المضارع البسيط للعادات اليومية مع كلمات waktu مثل every day, usually, always.", ex: [{ e: "He usually eats a sandwich.", a: "عادةً يأكل ساندويتش." }, { e: "He goes to the gym after work.", a: "يذهب للجيم بعد العمل." }], tp: "usually = عادةً، always = دائماً، sometimes = أحياناً" },
+      { t: "3. حروف الجر للوقت", d: "at + وقت محدد، in + فترة (morning, evening)، on + يوم.", ex: [{ e: "At 7 o'clock", a: "الساعة 7" }, { e: "In the evening", a: "بالمساء" }], tp: "at 7, in the morning, on Monday" }
+    ],
+    pron: [
+      { w: "Underground", t: "تنطق أندِرغراوند بال Stress على المقطع الثاني" },
+      { w: "Sandwich", t: "تنطق ساندويتش مش ساندويتش" },
+      { w: "Usually", t: "تنطق يوزويلي بال Stress على المقطع الأول" }
+    ],
+    cul: [
+      { n: "المترو في لندن (The Underground) أقدم مترو في العالم (1863)" },
+      { n: "شارع أكسفورد أشهر شارع تسوق في لندن" },
+      { n: "ال brits يأكلون sandwich للغداء بشكل يومي" },
+      { n: "الجيم (Gym) شائع جداً في بريطانيا وأمريكا" }
+    ],
+    ex: [
+      { tp: "mcq", q: "أين يعيش توم؟", a: "", o: ["في لندن", "في باريس", "في نيويورك", "في القاهرة"], c: 0 },
+      { tp: "mcq", q: "متى يستيقظ توم؟", a: "", o: ["الساعة 6", "الساعة 7", "الساعة 8", "الساعة 9"], c: 1 },
+      { tp: "fill", q: "He ________ the underground to work.", a: "يأخذ", an: "takes" },
+      { tp: "reorder", q: "رتّب: يذهب للجيم بعد العمل", a: "he goes to the gym after work", w: ["he", "goes", "to", "the", "gym", "after", "work"] },
+      { tp: "match", q: "طابق الكلمة بالمعنى", p: [["Underground", "مترو أنفاق"], ["Busy", "مزدحم"], ["Gym", "جيم رياضي"], ["Sandwich", "ساندويتش"]] },
+      { tp: "fill", q: "He ________ up at 7 o'clock.", a: "يستيقظ", an: "wakes" },
+      { tp: "mcq", q: "لماذا يحب توم وظيفته؟", a: "", o: ["لأنها سهلة", "لأنها مثيرة للاهتمام", "لأنها قريبة", "لأنها غالية"], c: 1 },
+      { tp: "listen", q: "استمع واختر الإجابة", en: "He goes to bed at 11 o'clock.", o: ["يستيقظ الساعة 11", "يذهب للنوم الساعة 11", "يأكل العشاء الساعة 11", "يذهب للعمل الساعة 11"], c: 1 },
+      { tp: "translate", q: "ترجم: يستيقظ الساعة 7 كل صباح", a: "", an: "he wakes up at 7 o'clock every morning" },
+      { tp: "mcq", q: "ماذا يأكل توم للغداء عادةً؟", a: "", o: ["أومليت", "ساندويتش", "pizza", "سلطة"], c: 1 },
+      { tp: "egpt", q: "ازاي تقول 'يذهب للنوم الساعة 11' بالإنجليزي؟", hint: "فكر في: He goes to bed at 11", an: "he goes to bed at 11", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة underground", w: "underground" }
+    ]
+  },
+  {
+    id: 103,
+    t: "عائلتي وأصدقائي",
+    i: "👨‍👩‍👧‍👦",
+    w: 16,
+    n: 5,
+    dlg: [
+      { s: "Narrator", c: "#171717", e: "This is my family.", a: "هذه عائلتي." },
+      { s: "Narrator", c: "#171717", e: "My father is a doctor.", a: "أبي طبيب." },
+      { s: "Narrator", c: "#171717", e: "My mother is a teacher.", a: "أمي معلمة." },
+      { s: "Narrator", c: "#171717", e: "I have two brothers and one sister.", a: "لدي أخوان وأخت واحدة." },
+      { s: "Narrator", c: "#171717", e: "My brothers are older than me.", a: "أخواني أكبر مني." },
+      { s: "Narrator", c: "#171717", e: "My sister is younger than me.", a: "أختي أصغر مني." },
+      { s: "Narrator", c: "#171717", e: "We live in a big house.", a: "نعيش في بيت كبير." },
+      { s: "Narrator", c: "#171717", e: "We have a garden with many flowers.", a: "لدينا حديقة بالورود." },
+      { s: "Narrator", c: "#171717", e: "My best friend is Ahmed.", a: "صديقي المفضل أحمد." },
+      { s: "Narrator", c: "#171717", e: "He lives next to my house.", a: "يسكن بجانب بيتي." },
+      { s: "Narrator", c: "#171717", e: "We go to school together every day.", a: "نذهب للمدرسة معاً كل يوم." },
+      { s: "Narrator", c: "#171717", e: "Ahmed likes football and I like basketball.", a: "أحمد يحب الكورة وأنا أحب كرة السلة." },
+      { s: "Narrator", c: "#171717", e: "After school, we play in the park.", a: "بعد المدرسة، نلعب في الحديقة." },
+      { s: "Narrator", c: "#171717", e: "We always have a great time together.", a: "دائماً نقضي وقتاً رائعاً معاً." }
+    ],
+    voc: [
+      { e: "Father", a: "أب", d: "بديل رسمي لـ Dad.", cl: ["My father is a doctor"], ms: [{ w: "dad", c: "father", n: "father رسمي، dad عامي" }], us: [{ t: "في التعريف", e: "My father is a doctor.", a: "أبي طبيب." }] },
+      { e: "Mother", a: "أم", d: "بديل رسمي لـ Mum/Mom.", cl: ["My mother is a teacher"], ms: [{ w: "mom", c: "mother", n: "mother رسمي، mom أميريكي، mum بريطاني" }], us: [{ t: "في التعريف", e: "My mother is a teacher.", a: "أمي معلمة." }] },
+      { e: "Brother", a: "أخ", d: "ذكر من نفس الأبوين.", cl: ["I have two brothers"], ms: [{ w: "bro", c: "brother", n: "bro عامي لـ brother" }], us: [{ t: "في العائلة", e: "I have two brothers.", a: "لدي أخوان." }] },
+      { e: "Sister", a: "أخت", d: "أنثى من نفس الأبوين.", cl: ["My sister is younger"], ms: [{ w: "sis", c: "sister", n: "sis عامي لـ sister" }], us: [{ t: "في العائلة", e: "My sister is younger than me.", a: "أختي أصغر مني." }] },
+      { e: "Older", a: "أكبر (سناً)", d: "مقارنة من old. أكبر من = older than.", cl: ["My brothers are older than me"], ms: [{ w: "bigger", c: "older", n: "older للعمر، bigger للحجم" }], us: [{ t: "في المقارنة", e: "My brothers are older than me.", a: "أخواني أكبر مني." }] },
+      { e: "Younger", a: "أصغر (سناً)", d: "مقارنة من young. أصغر من = younger than.", cl: ["My sister is younger than me"], ms: [{ w: "smaller", c: "younger", n: "younger للعمر، smaller للحجم" }], us: [{ t: "في المقارنة", e: "My sister is younger than me.", a: "أختي أصغر مني." }] },
+      { e: "House", a: "بيت / منزل", d: "مكان الإقامة الدائم.", cl: ["We live in a big house"], ms: [{ w: "home", c: "house", n: "house = المبنى، home = المكان" }], us: [{ t: "في السكن", e: "We live in a big house.", a: "نعيش في بيت كبير." }] },
+      { e: "Garden", a: "حديقة", d: "مساحة خضراء أمام البيت.", cl: ["We have a garden"], ms: [{ w: "yard", c: "garden", n: "garden = حديقة، yard = فناء" }], us: [{ t: "في المنزل", e: "We have a garden with many flowers.", a: "لدينا حديقة بالورود." }] },
+      { e: "Best friend", a: "صديق مفضل / صديق حميم", d: "أقرب الأصدقاء.", cl: ["My best friend is Ahmed"], ms: [{ w: "friend", c: "best friend", n: "best friend = صديق مقرب جداً" }], us: [{ t: "في الصداقة", e: "My best friend is Ahmed.", a: "صديقي المفضل أحمد." }] },
+      { e: "Next to", a: "بجانب / إلى جانب", d: "حرف جر للximity.", cl: ["He lives next to my house"], ms: [{ w: "near", c: "next to", n: "next to = بجانب مباشرة، near = قريب" }], us: [{ t: "في الموقع", e: "He lives next to my house.", a: "يسكن بجانب بيتي." }] },
+      { e: "Together", a: "معاً", d: "في مكان واحد.", cl: ["We play together"], ms: [{ w: "with each other", c: "together", n: "together أقصر" }], us: [{ t: "في الصحبة", e: "We go to school together.", a: "نذهب للمدرسة معاً." }] }
+    ],
+    gram: [
+      { t: "1. المقارنة بالصفات (Comparatives)", d: "مع الصفات القصيرة نضيف er + than. old → older than, young → younger than.", ex: [{ e: "My brothers are older than me.", a: "أخواني أكبر مني." }, { e: "My sister is younger than me.", a: "أختي أصغر مني." }], tp: "short adjective + er + than" },
+      { t: "2. have / has للملكية", d: "I/We/You/They + have، He/She/It + has. للتعبير عن الشيء الذي تملكه.", ex: [{ e: "I have two brothers.", a: "لدي أخوان." }, { e: "We have a garden.", a: "لدينا حديقة." }], tp: "have للجمع، has للمفرد" },
+      { t: "3. we للجمع", d: "نستخدم We للتعبير عن المجموعة التي نحن فيها (أنا + آخرون).", ex: [{ e: "We live in a big house.", a: "نعيش في بيت كبير." }, { e: "We go to school together.", a: "نذهب للمدرسة معاً." }], tp: "We = نحن (أنا + غيري)" }
+    ],
+    pron: [
+      { w: "Father", t: "تنطق فازر بحرف th صامت" },
+      { w: "Brother", t: "تنطق برازر بحرف th صامت" },
+      { w: "Garden", t: "تنطق غاردن بحرف d صامت" }
+    ],
+    cul: [
+      { n: "في بريطانيا Mum وليس Mom" },
+      { n: "العائلة في الغرب عادةً أصغر من في مصر (يعيشون لوحدهم)" },
+      { n: "Best friend تعني صديق مقرّب جداً" },
+      { n: "الحديقة (Garden) جزء أساسي من البيت في بريطانيا" }
+    ],
+    ex: [
+      { tp: "mcq", q: "ما وظيفة أبي؟", a: "", o: ["معلم", "طبيب", "مهندس", "محامي"], c: 1 },
+      { tp: "mcq", q: "كم أخوة لدى الراوي؟", a: "", o: ["واحد", "اثنان", "ثلاثة", "أربعة"], c: 1 },
+      { tp: "fill", q: "My sister is ________ than me.", a: "أصغر من", an: "younger" },
+      { tp: "reorder", q: "رتّب: نذهب للمدرسة معاً كل يوم", a: "we go to school together every day", w: ["we", "go", "to", "school", "together", "every", "day"] },
+      { tp: "match", q: "طابق الكلمة بالمعنى", p: [["Father", "أب"], ["Sister", "أخت"], ["Garden", "حديقة"], ["Best friend", "صديق مفضل"]] },
+      { tp: "fill", q: "I ________ two brothers.", a: "لدي", an: "have" },
+      { tp: "mcq", q: "أين يسكن أحمد؟", a: "", o: ["بعيد", "بجانب بيت الراوي", "في مبنى آخر", "في نفس البيت"], c: 1 },
+      { tp: "listen", q: "استمع واختر الإجابة", en: "We live in a big house.", o: ["نعيش في شقة صغيرة", "نعيش في بيت كبير", "نعيش في فيلا", "نعيش في كوخ"], c: 1 },
+      { tp: "translate", q: "ترجم: أبي طبيب", a: "", an: "my father is a doctor" },
+      { tp: "mcq", q: "ماذا يحب أحمد؟", a: "", o: ["كرة السلة", "كرة القدم", "السباحة", "الملاكمة"], c: 1 },
+      { tp: "egpt", q: "ازاي تقول 'لدي أخوان' بالإنجليزي؟", hint: "فكر في: I have two brothers", an: "i have two brothers", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة garden", w: "garden" }
+    ]
+  },
+  {
+    id: 104,
+    t: "التسوق في السوبر ماركت",
+    i: "🛒",
+    w: 15,
+    n: 5,
+    dlg: [
+      { s: "Narrator", c: "#171717", e: "Sarah goes to the supermarket every Saturday.", a: "سارة تذهب للسوبر ماركت كل سبت." },
+      { s: "Narrator", c: "#171717", e: "She takes a shopping list with her.", a: "تأخذ قائمة تسوق معها." },
+      { s: "Narrator", c: "#171717", e: "First, she buys fresh vegetables.", a: "أولاً، تشتري خضروات طازجة." },
+      { s: "Narrator", c: "#171717", e: "She needs tomatoes, onions, and cucumbers.", a: "تحتاج طماطم وخيار وبصل." },
+      { s: "Narrator", c: "#171717", e: "Then she goes to the fruit section.", a: "ثم تذهب لقسم الفاكهة." },
+      { s: "Narrator", c: "#171717", e: "She buys apples, bananas, and oranges.", a: "تشتري تفاح وموز وبرتقال." },
+      { s: "Narrator", c: "#171717", e: "Next, she gets some milk and eggs.", a: "بعدها، تأخذ بعض اللبن والبيض." },
+      { s: "Narrator", c: "#171717", e: "She also needs bread and butter.", a: "تحتاج أيضاً خبزاً وزبدة." },
+      { s: "Narrator", c: "#171717", e: "Sarah checks her list carefully.", a: "سارة تفحص قائمتها بعناية." },
+      { s: "Narrator", c: "#171717", e: "She doesn't forget anything.", a: "لا تنسى أي شيء." },
+      { s: "Narrator", c: "#171717", e: "At the checkout, she pays with her card.", a: "عند الصندوق، تدفع بالبطاقة." },
+      { s: "Narrator", c: "#171717", e: "The total is 35 pounds.", a: "المجموع 35 جنيهاً." },
+      { s: "Narrator", c: "#171717", e: "Sarah takes her bags and goes home.", a: "سارة تأخذ أغراضها وتعود للبيت." }
+    ],
+    voc: [
+      { e: "Supermarket", a: "سوبر ماركت", d: "متجر كبير للطعام والمشروبات.", cl: ["Go to the supermarket"], ms: [{ w: "market", c: "supermarket", n: "supermarket أكبر من market" }], us: [{ t: "في التسوق", e: "Sarah goes to the supermarket.", a: "سارة تذهب للسوبر ماركت." }] },
+      { e: "Shopping list", a: "قائمة تسوق", d: "قائمة بالأشياء التي نحتاج شراءها.", cl: ["Takes a shopping list"], ms: [{ w: "list", c: "shopping list", n: "shopping list أدق" }], us: [{ t: "في التسوق", e: "She takes a shopping list with her.", a: "تأخذ قائمة تسوق معها." }] },
+      { e: "Fresh", a: "طازج", d: "صفة للطعام الجديد غير المجمد.", cl: ["Fresh vegetables"], ms: [{ w: "new", c: "fresh", n: "fresh = طازج، new = جديد" }], us: [{ t: "في التسوق", e: "She buys fresh vegetables.", a: "تشتري خضروات طازجة." }] },
+      { e: "Vegetables", a: "خضروات", d: "نباتات تؤكل. كلمة جمع دائماً.", cl: ["Fresh vegetables"], ms: [{ w: "veggies", c: "vegetables", n: "veggies عامي" }], us: [{ t: "في الطعام", e: "She buys fresh vegetables.", a: "تشتري خضروات طازجة." }] },
+      { e: "Section", a: "قسم", d: "جزء من المتجر.", cl: ["The fruit section"], ms: [{ w: "part", c: "section", n: "section = قسم، part = جزء" }], us: [{ t: "في المتجر", e: "She goes to the fruit section.", a: "تذهب لقسم الفاكهة." }] },
+      { e: "Checkout", a: "صندوق الدفع", d: "مكان الدفع في المتجر.", cl: ["At the checkout"], ms: [{ w: "cashier", c: "checkout", n: "checkout = المكان، cashier = الشخص" }], us: [{ t: "في الدفع", e: "At the checkout, she pays with her card.", a: "عند الصندوق، تدفع بالبطاقة." }] },
+      { e: "Card", a: "بطاقة (دفع)", d: "بطاقة ائتمان أو مدين.", cl: ["Pays with her card"], ms: [{ w: "cash", c: "card", n: "card = بطاقة، cash = كاش" }], us: [{ t: "في الدفع", e: "She pays with her card.", a: "تدفع بالبطاقة." }] },
+      { e: "Pounds", a: "جنيهات", d: "عملة بريطانيا. رمزها £.", cl: ["The total is 35 pounds"], ms: [{ w: "dollars", c: "pounds", n: "pounds بريطاني، dollars أمريكي" }], us: [{ t: "في السعر", e: "The total is 35 pounds.", a: "المجموع 35 جنيهاً." }] },
+      { e: "Carefully", a: "بعناية", d: "ظرف من careful.", cl: ["She checks carefully"], ms: [{ w: "careful", c: "carefully", n: "careful = صفة، carefully = ظرف" }], us: [{ t: "في الفحص", e: "Sarah checks her list carefully.", a: "سارة تفحص قائمتها بعناية." }] },
+      { e: "Forget", a: "ينسى", d: "عكس remember.", cl: ["She doesn't forget anything"], ms: [{ w: "leave", c: "forget", n: "forget = ينسى، leave = يترك" }], us: [{ t: "في النسيان", e: "She doesn't forget anything.", a: "لا تنسى أي شيء." }] }
+    ],
+    gram: [
+      { t: "1. ترتيب الخطوات (Sequence Words)", d: "نستخدم كلمات ترتيب أولاً، ثم، بعدها: First, Then, Next, After that, Finally.", ex: [{ e: "First, she buys fresh vegetables.", a: "أولاً، تشتري خضروات طازجة." }, { e: "Then she goes to the fruit section.", a: "ثم تذهب لقسم الفاكهة." }], tp: "First → Then → Next → After that → Finally" },
+      { t: "2. النفي مع doesn't", d: "مع He/She/It نستخدم doesn't + الفعل الأساسي (بدون s).", ex: [{ e: "She doesn't forget anything.", a: "لا تنسى أي شيء." }], tp: "doesn't + verb base form" },
+      { t: "3. كل + يوم", d: "نستخدم every + يوم للتعبير عن التكرار الأسبوعي.", ex: [{ e: "Every Saturday", a: "كل سبت" }, { e: "Every day", a: "كل يوم" }], tp: "every = كل (للتكرار)" }
+    ],
+    pron: [
+      { w: "Supermarket", t: "تنطق سوبر ماركيت ب Stress على المقطع الأول" },
+      { w: "Vegetables", t: "تنطق فيجتبلز بحرف j صامت" },
+      { w: "Checkout", t: "تنطق تشاوت كلمة واحدة" }
+    ],
+    cul: [
+      { n: "في بريطانيا الجنيه (Pound) وليس الدولار" },
+      { n: "التسوق الأسبوعي (Weekly shop) عادةً يوم سبت" },
+      { n: "الدفع بالبطاقة (Card) هو الأكثر شيوعاً في بريطانيا" },
+      { n: "قائمة التسوق (Shopping list) ت helped تقلل الهدر" }
+    ],
+    ex: [
+      { tp: "mcq", q: "متى تذهب سارة للسوبر ماركت؟", a: "", o: ["كل أحد", "كل سبت", "كل يوم", "كل شهر"], c: 1 },
+      { tp: "mcq", q: "ماذا تشتر أولاً؟", a: "", o: ["فاكهة", "خبز", "خضروات", "حليب"], c: 2 },
+      { tp: "fill", q: "She ________ a shopping list with her.", a: "تأخذ", an: "takes" },
+      { tp: "reorder", q: "رتّب: تذهب للسوبر ماركت كل سبت", a: "she goes to the supermarket every saturday", w: ["she", "goes", "to", "the", "supermarket", "every", "saturday"] },
+      { tp: "match", q: "طابق الكلمة بالمعنى", p: [["Fresh", "طازج"], ["Vegetables", "خضروات"], ["Checkout", "صندوق الدفع"], ["Pounds", "جنيهات"]] },
+      { tp: "fill", q: "She pays ________ her card.", a: "تدفع بالبطاقة", an: "with" },
+      { tp: "mcq", q: "كم المجموع؟", a: "", o: ["25 جنيهاً", "35 جنيهاً", "45 جنيهاً", "55 جنيهاً"], c: 1 },
+      { tp: "listen", q: "استمع واختر الإجابة", en: "She doesn't forget anything.", o: ["تنسى بعض الأشياء", "لا تنسى أي شيء", "تنسى القائمة", "تشتري كل شيء"], c: 1 },
+      { tp: "translate", q: "ترجم: تشتري تفاح وموز وبرتقال", a: "", an: "she buys apples bananas and oranges" },
+      { tp: "mcq", q: "ماذا تعني checkout؟", a: "", o: ["مدخل المتجر", "صندوق الدفع", "قسم الخضروات", "المخزن"], c: 1 },
+      { tp: "egpt", q: "ازاي تقول 'تشتري خضروات طازجة' بالإنجليزي؟", hint: "فكر في: She buys fresh vegetables", an: "she buys fresh vegetables", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة supermarket", w: "supermarket" }
+    ]
   }
 ];

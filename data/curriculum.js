@@ -19,7 +19,7 @@ const LEVEL_CATEGORIES = [
   { id: "movies", name: "مقاطع أفلام", nameEn: "Movie Clips", icon: "🎬", order: 9 },
 ];
 
-function createLevel(id, name, nameEn, description, cefr, isPublished, conversationLessons = []) {
+function createLevel(id, name, nameEn, description, cefr, isPublished, categoryLessons = {}) {
   const categories = LEVEL_CATEGORIES.map(cat => ({
     id: `L${id}-${cat.id}`,
     categoryId: cat.id,
@@ -28,8 +28,8 @@ function createLevel(id, name, nameEn, description, cefr, isPublished, conversat
     icon: cat.icon,
     order: cat.order,
     levelId: id,
-    lessons: cat.id === "conversation" ? conversationLessons : [],
-    isPublished: cat.id === "conversation" ? isPublished : false,
+    lessons: categoryLessons[cat.id] || [],
+    isPublished: isPublished && (cat.id === "conversation" || cat.id === "reading"),
   }));
 
   return {
@@ -46,17 +46,25 @@ function createLevel(id, name, nameEn, description, cefr, isPublished, conversat
 }
 
 export const LEVELS = [
-  createLevel(1, "المستوى الأول", "Level 1", "تأسيس شامل للمبتدئين", "A1", true, [
-    { id: 1, title: "إجراءات المطار والوحات", titleEn: "Airport Procedures", order: 1, icon: "🎫" },
-    { id: 2, title: "التعارف ومحادثة الطائرة", titleEn: "Meeting & In-flight Conversation", order: 2, icon: "✈️" },
-    { id: 3, title: "ضابط الهجرة والجمارك", titleEn: "Immigration & Customs Officer", order: 3, icon: "🛂" },
-    { id: 4, title: "التسوق والملابس في لندن", titleEn: "Shopping & Clothing", order: 4, icon: "🛍️" },
-    { id: 5, title: "صالة الوصول والاستقبال", titleEn: "Arrival Hall & Reception", order: 5, icon: "🛬" },
-    { id: 6, title: "السؤال عن العدد والأمتعة", titleEn: "Asking about Quantity & Luggage", order: 6, icon: "🧳" },
-    { id: 7, title: "الطقس والسفر لتايلاند", titleEn: "Weather & Travel", order: 7, icon: "🌦️" },
-    { id: 8, title: "بدء المحادثات والتعارف", titleEn: "Starting Conversations", order: 8, icon: "💬" },
-    { id: 9, title: "ملخص المحادثة والنطق", titleEn: "Conversation Summary & Pronunciation", order: 9, icon: "🎙️" },
-  ]),
+  createLevel(1, "المستوى الأول", "Level 1", "تأسيس شامل للمبتدئين", "A1", true, {
+    conversation: [
+      { id: 1, title: "إجراءات المطار والوحات", titleEn: "Airport Procedures", order: 1, icon: "🎫" },
+      { id: 2, title: "التعارف ومحادثة الطائرة", titleEn: "Meeting & In-flight Conversation", order: 2, icon: "✈️" },
+      { id: 3, title: "ضابط الهجرة والجمارك", titleEn: "Immigration & Customs Officer", order: 3, icon: "🛂" },
+      { id: 4, title: "التسوق والملابس في لندن", titleEn: "Shopping & Clothing", order: 4, icon: "🛍️" },
+      { id: 5, title: "صالة الوصول والاستقبال", titleEn: "Arrival Hall & Reception", order: 5, icon: "🛬" },
+      { id: 6, title: "السؤال عن العدد والأمتعة", titleEn: "Asking about Quantity & Luggage", order: 6, icon: "🧳" },
+      { id: 7, title: "الطقس والسفر لتايلاند", titleEn: "Weather & Travel", order: 7, icon: "🌦️" },
+      { id: 8, title: "بدء المحادثات والتعارف", titleEn: "Starting Conversations", order: 8, icon: "💬" },
+      { id: 9, title: "ملخص المحادثة والنطق", titleEn: "Conversation Summary & Pronunciation", order: 9, icon: "🎙️" },
+    ],
+    reading: [
+      { id: 101, title: "وصفة الأومليت", titleEn: "The Omelet Recipe", order: 1, icon: "🍳" },
+      { id: 102, title: "يوم عادي في لندن", titleEn: "A Normal Day in London", order: 2, icon: "🇬🇧" },
+      { id: 103, title: "عائلتي وأصدقائي", titleEn: "My Family & Friends", order: 3, icon: "👨‍👩‍👧‍👦" },
+      { id: 104, title: "التسوق في السوبر ماركت", titleEn: "Supermarket Shopping", order: 4, icon: "🛒" },
+    ],
+  }),
   createLevel(2, "المستوى الثاني", "Level 2", "تطوير مهارات المحادثة والاستماع", "A2", true),
   createLevel(3, "المستوى الثالث", "Level 3", "قريباً إن شاء الله", "B1", false),
   createLevel(4, "المستوى الرابع", "Level 4", "قريباً إن شاء الله", "B2", false),

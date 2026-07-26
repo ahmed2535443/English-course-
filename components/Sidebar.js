@@ -79,8 +79,13 @@ export default function Sidebar({ open, onClose }) {
                 }}
               />
               <div className="flex-1 min-w-0">
-                <div className="text-sm font-bold text-gray-900 dark:text-white truncate">
+                <div className="text-sm font-bold text-gray-900 dark:text-white truncate flex items-center gap-2">
                   {user.firstName || user.emailAddresses[0]?.emailAddress}
+                  {isUnlimited && (
+                    <span className="text-[10px] font-bold bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-1.5 py-0.5 rounded-full">
+                      ADMIN
+                    </span>
+                  )}
                 </div>
                 <div className="text-xs text-gray-500 dark:text-gray-400 truncate">
                   {user.emailAddresses[0]?.emailAddress}
@@ -199,8 +204,13 @@ export default function Sidebar({ open, onClose }) {
                       }}
                     />
                     <div className="flex-1 min-w-0">
-                      <div className="text-sm font-bold text-gray-900 dark:text-white truncate">
+                      <div className="text-sm font-bold text-gray-900 dark:text-white truncate flex items-center gap-2">
                         {user.firstName || user.emailAddresses[0]?.emailAddress}
+                        {isUnlimited && (
+                          <span className="text-[10px] font-bold bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-1.5 py-0.5 rounded-full">
+                            ADMIN
+                          </span>
+                        )}
                       </div>
                       <div className="text-xs text-gray-500 dark:text-gray-400 truncate">
                         {user.emailAddresses[0]?.emailAddress}

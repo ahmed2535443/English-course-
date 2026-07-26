@@ -1,8 +1,11 @@
 'use client'
 import { createContext, useContext, useReducer, useEffect, useCallback, useMemo } from 'react'
 import { LESSONS } from '@/data/lessons'
+import { useUser } from '@clerk/nextjs'
 
 const AppContext = createContext()
+
+const ADMIN_EMAIL = 'hany99633@gmail.com'
 
 const STORAGE_KEY = 'zAE_v6'
 
@@ -199,6 +202,9 @@ function reducer(state, action) {
 
 export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, null, () => getDefaultState())
+  const { user } = useUser()
+  
+  const isAdmin = user?.emailAddresses?.[0]?.emailAddress === ADMIN_EMAIL
 
   useEffect(() => {
     const loaded = loadState()
@@ -306,6 +312,7 @@ export function AppProvider({ children }) {
 
   const value = useMemo(() => ({
     ...state,
+    isAdmin,
     addXP,
     completeExercise,
     unlockAchievement,
@@ -324,7 +331,7 @@ export function AppProvider({ children }) {
     completeOnboarding,
     setSpeechSpeed,
     lessons: LESSONS,
-  }), [state, addXP, completeExercise, unlockAchievement, toggleDark, setSRS, rateSRS, resetAll, buildSRS, completeStep, setLastLocation, setLastLesson, completeLesson, saveQuizAttempt, setUserGoal, setDailyTime, completeOnboarding, setSpeechSpeed])
+  }), [state, isAdmin, addXP, completeExercise, unlockAchievement, toggleDark, setSRS, rateSRS, resetAll, buildSRS, completeStep, setLastLocation, setLastLesson, completeLesson, saveQuizAttempt, setUserGoal, setDailyTime, completeOnboarding, setSpeechSpeed])
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

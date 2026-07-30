@@ -927,5 +927,75 @@ export const LESSONS = [
       { tp: "egpt", q: "ازاي تقول 'تشتري خضروات طازجة' بالإنجليزي؟", hint: "فكر في: She buys fresh vegetables", an: "she buys fresh vegetables", ph: "اكتب الإنجليزي..." },
       { tp: "usage", q: "اكتب جملة باستخدام كلمة supermarket", w: "supermarket" }
     ]
+  },
+  {
+    id: 105,
+    t: "جوزي والقمر",
+    i: "🌙",
+    w: 8,
+    n: 6,
+    dlg: [
+      { s: "Narrator", c: "#6366f1", e: "Josie and her dad look at the moon.", a: "جوزي ووالدها ينظران إلى القمر." },
+      { s: "Narrator", c: "#6366f1", e: "The moon isn't very far.", a: "القمر ليس بعيداً جداً." },
+      { s: "Josie", c: "#7928ca", e: "Why can't people live there?", a: "لماذا لا يستطيع الناس العيش هناك؟" },
+      { s: "Narrator", c: "#6366f1", e: "It is hard for people to live on the moon.", a: "من الصعب على الناس العيش على القمر." },
+      { s: "Dad", c: "#171717", e: "It has no air or water.", a: "ليس به هواء أو ماء." },
+      { s: "Narrator", c: "#6366f1", e: "Some scientists plan to make special buildings there.", a: "بعض العلماء يخططون لبناء مبانٍ خاصة هناك." },
+      { s: "Narrator", c: "#6366f1", e: "Then people can live on the moon.", a: "عندئذٍ يمكن للناس العيش على القمر." },
+      { s: "Josie", c: "#7928ca", e: "Cool!", a: "رائع!" },
+      { s: "Josie", c: "#7928ca", e: "I want to live there someday.", a: "أريد العيش هناك في يوم ما." }
+    ],
+    voc: [
+      { e: "Moon", a: "القمر", d: "الجرم السماوي الذي يدور حول الأرض.", cl: ["the moon", "moon light", "moon surface"], ms: [{ w: "the moon", c: "moon", n: "نستخدم the مع moon" }], us: [{ t: "في الفضاء", e: "The moon is very bright tonight.", a: "القمر لامع جداً الليلة." }, { t: "في العلم", e: "Scientists study the moon.", a: "يدرس العلماء القمر." }] },
+      { e: "Far", a: "بعيد", d: "形容 المسافة أو البعد.", cl: ["very far", "too far", "how far"], ms: [{ w: "far away", c: "far", n: "far و away معاً اختياري" }], us: [{ t: "المسافة", e: "The moon isn't very far.", a: "القمر ليس بعيداً جداً." }, { t: "في السؤال", e: "How far is the moon?", a: "كم يبعد القمر؟" }] },
+      { e: "Live", a: "يعيش / تعيش", d: "السكن أو العيش في مكان.", cl: ["live on the moon", "live there", "live in London"], ms: [{ w: "live at", c: "live on/in", n: "نستخدم on للقمر أو in للمدن" }], us: [{ t: "على القمر", e: "People can't live on the moon yet.", a: "لا يمكن للناس العيش على القمر بعد." }, { t: "في المدينة", e: "I live in Cairo.", a: "أعيش في القاهرة." }] },
+      { e: "Hard", a: "صعب", d: "بديل لـ difficult.", cl: ["it is hard", "very hard", "hard to do"], ms: [{ w: "hard for people", c: "hard for people to", n: "البنية: hard for someone to do" }], us: [{ t: "في الوصف", e: "It is hard for people to live on the moon.", a: "من الصعب على الناس العيش على القمر." }, { t: "في الحياة", e: "English is hard but fun.", a: "الإنجليزية صعبة لكن ممتعة." }] },
+      { e: "Air", a: "هواء", d: "الغاز الذي نتنفسه.", cl: ["no air", "fresh air", "breathing air"], ms: [{ w: "an air", c: "air", n: "air غير معدود" }], us: [{ t: "في الفضاء", e: "The moon has no air.", a: "القمر ليس به هواء." }, { t: "في الطبيعة", e: "The air is fresh today.", a: "الهواء طازج اليوم." }] },
+      { e: "Scientists", a: "علماء", d: "جمع scientist = عالم.", cl: ["some scientists", "scientists plan", "scientists study"], ms: [{ w: "sciences", c: "scientists", n: "scientists = علماء، sciences = علوم" }], us: [{ t: "في الفضاء", e: "Some scientists plan to make special buildings.", a: "بعض العلماء يخططون لبناء مبانٍ خاصة." }, { t: "في المعامل", e: "Scientists work in laboratories.", a: "يعمل العلماء في المعامل." }] },
+      { e: "Plan to", a: "يخطط لـ", d: "التخطيط لعمل شيء مستقبلاً.", cl: ["plan to make", "plan to live", "plan to go"], ms: [{ w: "plan doing", c: "plan to do", n: "نستخدم to + فعل أساسي" }], us: [{ t: "في التخطيط", e: "Scientists plan to make special buildings.", a: "يخطط العلماء لبناء مبانٍ خاصة." }, { t: "في الحياة", e: "I plan to study English every day.", a: "أخطط لدراسة الإنجليزية كل يوم." }] },
+      { e: "Buildings", a: "مبانٍ / مباني", d: "جمع building = مبنى.", cl: ["special buildings", "make buildings", "tall buildings"], ms: [{ w: "buildings", c: "buildings", n: "تنطق: بيلدنغز" }], us: [{ t: "في الفضاء", e: "Scientists plan to make special buildings there.", a: "يخطط العلماء لبناء مبانٍ خاصة هناك." }, { t: "في المدينة", e: "There are many tall buildings in London.", a: "هناك许多 مبانٍ شاهقة في لندن." }] },
+      { e: "Someday", a: "في يوم ما", d: "شيوعاً في المستقبل.", cl: ["someday", "one day", "some day"], ms: [{ w: "sometime", c: "someday", n: "someday = في يوم ما، sometime = في وقت ما" }], us: [{ t: "في الحلم", e: "I want to live there someday.", a: "أريد العيش هناك في يوم ما." }, { t: "في الأمل", e: "Someday I will visit London.", a: "في يوم ما سأزور لندن." }] }
+    ],
+    gram: [
+      { t: "1. صيغة المقارنة مع very", d: "نستخدم isn't very + صفة للنفي اللطيف.", ex: [{ e: "The moon isn't very far.", a: "القمر ليس بعيداً جداً." }, { e: "It isn't very big.", a: "ليس كبيراً جداً." }], tp: "isn't very = ليس ... جداً" },
+      { t: "2. صعبة لـ (Hard for someone to)", d: "البنية: It is + صفة + for someone + to do.", ex: [{ e: "It is hard for people to live on the moon.", a: "من الصعب على الناس العيش على القمر." }, { e: "It is easy for me to learn English.", a: "سهل عليّ تعلم الإنجليزية." }], tp: "It is + adj + for + someone + to + verb" },
+      { t: "3. No + اسم (النفي)", d: "نستخدم no قبل الاسم للنفي بدون فعل.", ex: [{ e: "It has no air or water.", a: "ليس به هواء أو ماء." }, { e: "There is no problem.", a: "لا توجد مشكلة." }], tp: "no + noun = لا يوجد/لا توجد" },
+      { t: "4. يمكن لـ (Can + someone + verb)", d: "نستخدم can للتعبير عن الإمكانية.", ex: [{ e: "People can live on the moon.", a: "يمكن للناس العيش على القمر." }, { e: "I can speak English.", a: "أستطيع التحدث بالإنجليزية." }], tp: "can + verb base form" }
+    ],
+    pron: [
+      { w: "Moon", t: "تنطق: مون ب LONG vowel" },
+      { w: "Scientists", t: "تنطق: سايِنتسٹس بحرف T صامت" },
+      { w: "Buildings", t: "تنطق: بيلدنغز بـ NG خفيفة" },
+      { w: "Someday", t: "تنطق: سامداي كلمة واحدة" }
+    ],
+    cul: [
+      { n: "القمر يبعد حوالي 384,400 كم عن الأرض" },
+      { n: "NASA تخطط لإنشاء قاعدة قمرية بحلول 2030" },
+      { n: "القمر ليس له غلاف جوي (لا هواء ولا ماء سائل)" },
+      { n: "ال scientists يخططون لبناء مبانٍ باستخدام طباعة ثلاثية الأبعاد" }
+    ],
+    ex: [
+      { tp: "mcq", q: "عن ماذا يتحدث النص؟", a: "", o: ["القمر", "العلماء", "الهواء", "الماء"], c: 0 },
+      { tp: "mcq", q: "القمر ليس ____ جداً", a: "", o: ["كبير", "بعيد", "مظلم", "ممل"], c: 1 },
+      { tp: "mcq", q: "لماذا لا يستطيع ____ العيش على القمر؟", a: "", o: ["الماء", "مختلف", "الناس", "الهواء"], c: 2 },
+      { tp: "reorder", q: "رتّب Dialogue: الخطوات بالترتيب", a: "Josie and her dad look at the moon. It has no air or water. Scientists plan to make special buildings. I want to live there someday.", w: ["Josie", "and", "her", "dad", "look", "at", "the", "moon", "It", "has", "no", "air", "or", "water", "Scientists", "plan", "to", "make", "special", "buildings", "I", "want", "to", "live", "there", "someday"] },
+      { tp: "fill", q: "It is h____d for people to live on the moon.", a: "hard", an: "hard" },
+      { tp: "fill", q: "The moon has no a____ or water.", a: "air", an: "air" },
+      { tp: "fill", q: "Scientists plan to make special b____ldi____gs there.", a: "buildings", an: "buildings" },
+      { tp: "mcq", q: "لماذا لا يستطيع الناس العيش على القمر؟", a: "", o: ["لأنه لا يوجد هواء", "لأنه بعيد جداً", "لأنه مظلم", "لأنه صغير"], c: 0 },
+      { tp: "mcq", q: "لماذا لا يستطيع الناس العيش على الشمس؟", a: "", o: ["لأنه لا يوجد ماء", "لأنه قريب جداً", "لأنه ساخن", "لأنه كبير"], c: 0 },
+      { tp: "reorder", q: "رتّب: very far / isn't / The moon", a: "The moon isn't very far.", w: ["The", "moon", "isn't", "very", "far"] },
+      { tp: "reorder", q: "رتّب: or water / It has / no air", a: "It has no air or water.", w: ["It", "has", "no", "air", "or", "water"] },
+      { tp: "reorder", q: "رتّب: to live there / I want / someday", a: "I want to live there someday.", w: ["I", "want", "to", "live", "there", "someday"] },
+      { tp: "listen", q: "استمع واختر الترجمة", en: "I want to live there someday.", o: ["أريد العيش هناك في يوم ما", "أريد أن أعيش هنا اليوم", "هل تريد العيش هناك؟", "سأعيش هناك غداً"], c: 0 },
+      { tp: "translate", q: "ترجم: بعض العلماء يخططون لبناء مبانٍ خاصة هناك", a: "", an: "some scientists plan to make special buildings there" },
+      { tp: "mcq", q: "ما معنى 'It has no air or water'؟", a: "", o: ["ليس به هواء أو ماء", "ليس به هواء وماء", "ليس به غاز أو سائل", "الكلمات صحيحة"], c: 0 },
+      { tp: "mcq", q: "ماذا تريد Josie أن تفعل؟", a: "", o: ["تذهب إلى المدرسة", "تعيش على القمر", "تصبح عالمة", "تسافر إلى إنجلترا"], c: 1 },
+      { tp: "egpt", q: "ازاي تقول 'القمر ليس بعيداً جداً' بالإنجليزي؟", hint: "فكر في: The moon + isn't + very + far", an: "the moon isn't very far", ph: "اكتب الإنجليزي..." },
+      { tp: "usage", q: "اكتب جملة باستخدام كلمة scientist", w: "scientist" },
+      { tp: "conv", q: "أكمل الجملة من المحادثة", s: "Josie: Why can't people live there?", a: "Dad: It has no air or water.", an: "it has no air or water", o: ["it has no air or water", "the moon is very far", "scientists plan to build", "I want to live there"], c: 0 },
+      { tp: "conv", q: "أكمل الجملة من المحادثة", s: "Narrator: Some scientists plan to...", a: "make special buildings there.", an: "make special buildings there", o: ["make special buildings there", "live on the moon", "look at the moon", "go to the sun"], c: 0 },
+      { tp: "conv", q: "أكمل رد Josie", s: "Dad: Then people can live on the moon.", a: "Josie: Cool! I want to live there someday.", an: "cool i want to live there someday", o: ["cool i want to live there someday", "no i don't want to go", "the moon is too far", "scientists are smart"], c: 0 }
+    ]
   }
 ];

@@ -17,6 +17,7 @@ import Listen from '@/components/exercises/Listen'
 import Translate from '@/components/exercises/Translate'
 import EgyptianQA from '@/components/exercises/EgyptianQA'
 import UsageSentence from '@/components/exercises/UsageSentence'
+import Conversation from '@/components/exercises/Conversation'
 import Modal from '@/components/Modal'
 import Confetti from '@/components/Confetti'
 import XPPopup from '@/components/XPPopup'
@@ -30,9 +31,10 @@ const LABELS = {
   translate: { text: 'ترجمة', color: 'bg-error' },
   egpt: { text: 'سؤال مصري', color: 'bg-accent' },
   usage: { text: 'استخدام الكلمة', color: 'bg-warning' },
+  conv: { text: 'إكمال المحادثة', color: 'bg-success' },
 }
 
-const XP_MAP = { mcq: 10, fill: 15, egpt: 15, translate: 20, reorder: 20, usage: 20, listen: 10, match: 10 }
+const XP_MAP = { mcq: 10, fill: 15, egpt: 15, translate: 20, reorder: 20, usage: 20, listen: 10, match: 10, conv: 15 }
 
 export default function ExercisePage({ params }) {
   const { id } = use(params)
@@ -140,6 +142,8 @@ export default function ExercisePage({ params }) {
         return <EgyptianQA question={exercise.q} hint={exercise.hint} answer={exercise.an} placeholder={exercise.ph} onAnswer={handleAnswer} />
       case 'usage':
         return <UsageSentence word={exercise.w} onAnswer={handleAnswer} />
+      case 'conv':
+        return <Conversation speaker={exercise.s?.split(':')[0]?.trim() || 'Speaker'} line={exercise.s} answer={exercise.a} options={exercise.o} correctIndex={exercise.c} onAnswer={handleAnswer} />
       default:
         return null
     }

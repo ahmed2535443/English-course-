@@ -63,6 +63,7 @@ export const LEVELS = [
       { id: 102, title: "يوم عادي في لندن", titleEn: "A Normal Day in London", order: 2, icon: "🇬🇧" },
       { id: 103, title: "عائلتي وأصدقائي", titleEn: "My Family & Friends", order: 3, icon: "👨‍👩‍👧‍👦" },
       { id: 104, title: "التسوق في السوبر ماركت", titleEn: "Supermarket Shopping", order: 4, icon: "🛒" },
+      { id: 105, title: "جوزي والقمر", titleEn: "Josie and the Moon", order: 5, icon: "🌙" },
     ],
   }),
   createLevel(2, "المستوى الثاني", "Level 2", "تطوير مهارات المحادثة والاستماع", "A2", false),
